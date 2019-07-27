@@ -26,27 +26,29 @@
 
 <body>
   <div class="container">
-    <div class="d-flex">
-      <div class="justify-content-center">
+    <div class="d-flex justify-content-center">
+      <div>
         <h2>
           New Event?
         </h2>
         <div>
           Tell us about you
         </div>
-        <input type='text' value='Your name' />
-        <input type='text' value='Your email' />
-        <div>
-          Tell us about your event
-        </div>
-        <input type="text" value="title" />
-        <textarea value="description">
-        </textarea>
-        <div>
-          select some available times
-          Date/Time Picker
-        </div>
-        <button>submit</button>
+        <form action="/create" method="POST">
+          <input type='text' placeholder='Your name' />
+          <input type='text' placeholder='Your email' />
+          <div>
+            Tell us about your event
+          </div>
+          <input type="text" placeholder="title" />
+          <textarea placeholder="description">
+          </textarea>
+          <div>
+            select some available times
+            Date/Time Picker
+          </div>
+          <button class="btn btn-primary" type="submit">submit</button>
+        </form>
       </div>
     </div>
   </div>
