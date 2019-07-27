@@ -16,9 +16,11 @@ CREATE TABLE attendees (
 DROP TABLE IF EXISTS events CASCADE;
 CREATE TABLE events (
   id SERIAL PRIMARY KEY NOT NULL,
-  name VARCHAR(255) NOT NULL,
+  title VARCHAR(255) NOT NULL,
   description TEXT,
-  attendee_id INTEGER references attendees(id)
+  creator_email TEXT references attendees(email),
+  creator_url TEXT,
+  attendee_url TEXT
 );
 
 DROP TABLE IF EXISTS attendee_date_times CASCADE;

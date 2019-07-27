@@ -9,11 +9,25 @@ module.exports = () => {
   router.post("/", (req, res) => {
     console.log(req.body.creatorName);
     console.log(req.body.creatorEmail);
-    creator = {
+    console.log(req.body);
+    let creator = {
       name: req.body.creatorName,
-      email: req.body.creatorEmail
+      email: req.body.creatorEmail,
     };
+
+    let eventDetail = {
+      eventTitle: req.body.eventTitle,
+      eventDescription: req.body.eventDescription
+    };
+
+    let times = {
+      startDate: req.body.startDate,
+      endDate: req.body.endDate
+    };
+
     database.addCreator(creator);
+    database.addEventDetails(eventDetail, creator);
+
   });
   return router;
-}
+};
