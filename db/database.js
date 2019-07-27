@@ -12,9 +12,12 @@ const addCreator = creator => {
 };
 
 const addEventDetails = (eventDetail, creator) => {
-  const addEventQuery = `INSERT INTO events(title, description, creator_email) VALUES ($1, $2, $3)
-    RETURNING *;`
+  console.log(creator);
+  console.log(creator.email);
+  const addEventQuery = `INSERT INTO events(title, description) VALUES ($1, $2)
+    RETURNING *;`;
   return db.query(addEventQuery, [eventDetail.eventTitle, eventDetail.eventDescription])
+    .then(db.query(`INSERT INTO events(creator_id) SELECT id FROM attendees WHERE email = ${creator.email} RETURNING *;`))
     .then(res => res.row)
     .catch(err => console.log(err));
 };
