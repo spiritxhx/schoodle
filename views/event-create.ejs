@@ -10,6 +10,8 @@
   <!-- bootstrap -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <!--
+  <link rel="stylesheet" type="text/css" href="jquery.datetimepicker.css"/> -->
 
   <!-- <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script> -->
   <script type="text/javascript" src="/scripts/app.js"></script>
@@ -22,9 +24,14 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
     integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
     crossorigin="anonymous"></script>
+
 </head>
 
 <body>
+  <script>
+    $('#demo').datetimepicker({ inline: true });
+  </script>
+
   <div class="container">
     <div class="d-flex justify-content-center">
       <div>
@@ -46,13 +53,25 @@
           </textarea>
           <div>
             select some available times
-            Date/Time Picker
+
+            <div>PICK THE DATE AND TIME
+              <form>
+                <p>Start</p><input type="datetime-local" name="startdate" value="2019-06-01T08:30">
+                <p>End</p><input type="datetime-local" name="enddate" value="2019-06-01T08:30" min=>
+                <p>
+                  <!-- <script> document.write(new Date().toDateString()); </script> -->
+                </p>
+              </form>
+              <button class="btn btn-primary" type="button" value="Add">add</button>
+            </div>
           </div>
+
           <button class="btn btn-primary" type="submit">submit</button>
         </form>
       </div>
     </div>
   </div>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 </body>
 
 </html>
