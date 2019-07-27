@@ -29,7 +29,7 @@ module.exports = () => {
       endDate: req.body.endDate
     };
 
-    database.addCreator(creator);
+    // database.addCreator(creator);
     database.addEventDetails(eventDetail, creator);
 
     res.redirect('/create/success');
