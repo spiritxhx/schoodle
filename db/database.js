@@ -1,16 +1,12 @@
 const { Pool } = require('pg');
-
-const pool = new Pool({
-  user: 'labber',
-  password: 'labber',
-  host: 'localhost',
-  databse: 'midterm'
-});
+const dbParams = require('../lib/db.js');
+const db = new Pool(dbParams);
+db.connect();
 
 const addCreator = creator => {
   const addCreatorQuery = `INSERT INTO attendees(name, email) VALUES ($1, $2)
     RETURNING *;`
-  return pool.query(addCreatorQuery, [creator.name, creator.email])
+  return db.query(addCreatorQuery, [creator.name, creator.email])
     .then(res => res.row)
     .catch(err => console.log(err));
 };
