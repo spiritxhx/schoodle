@@ -6,6 +6,10 @@ module.exports = () => {
   router.get("/", (req, res) => {
     res.render("event-create");
   });
+  router.get("/success", (req,res)=>{
+    res.render('event-create-success');
+  });
+
   router.post("/", (req, res) => {
     console.log(req.body.creatorName);
     console.log(req.body.creatorEmail);
@@ -28,6 +32,7 @@ module.exports = () => {
     database.addCreator(creator);
     database.addEventDetails(eventDetail, creator);
 
+    res.redirect('/create/success');
   });
   return router;
 };
