@@ -7,3 +7,11 @@ const pool = new Pool({
   databse: 'midterm'
 });
 
+const addCreator = creator => {
+  const addCreatorQuery = `INSERT INTO attendees(name, email) VALUES ($1, $2)
+    RETURNING *;`
+  return pool.query(addCreatorQuery, [creator.name, creator.email])
+    .then(res => res.row)
+    .catch(err => console.log(err));
+};
+exports.addCreator = addCreator;
