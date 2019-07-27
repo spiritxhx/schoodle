@@ -18,7 +18,7 @@ CREATE TABLE events (
   id SERIAL PRIMARY KEY NOT NULL,
   title VARCHAR(255) NOT NULL,
   description TEXT,
-  creator_email TEXT references attendees(email),
+  creator_id INTEGER references attendees(id),
   creator_url TEXT,
   attendee_url TEXT
 );
