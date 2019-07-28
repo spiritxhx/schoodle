@@ -13,7 +13,6 @@ let generateEventURLS = () =>{
     newOwnerURL: uuidv4()
   };
 };
-exports.generateEventURLS = generateEventURLS;
 
 // router.get("/:newEventURL", (req, res) => {
 
@@ -24,3 +23,15 @@ exports.generateEventURLS = generateEventURLS;
 
 //   res.render("event-invite");
 // });
+
+//a format function for the timestamp type in postgresSQL
+const timeFormatting = dateTime => {
+  let date = dateTime.slice(0, 10);
+  let time = dateTime.slice(11, 16);
+  return `${date} ${time}:00`
+};
+
+// exports.generateEventURLS = generateEventURLS;
+// exports.timeFormatting = timeFormatting;
+
+module.exports = {generateEventURLS, timeFormatting};

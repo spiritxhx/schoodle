@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const database = require('../db/database');
-const generateEventURLS = require('../helper');
+const { generateEventURLS, timeFormatting } = require('../helper');
 
 module.exports = () => {
   // the home page (temperarily) thinking about making a another home page
@@ -27,13 +27,6 @@ module.exports = () => {
       eventDescription: req.body.eventDescription
     };
 
-    //get the start and end time of the event
-    const timeFormatting = dateTime => {
-      let date = dateTime.slice(0, 10);
-      let time = dateTime.slice(11, 16);
-      return `${date} ${time}:00`
-    };
-
     //format the type of the time to be the same as timestamp in databse
     let times = {
       startDate: timeFormatting(req.body.startDate),
@@ -41,7 +34,13 @@ module.exports = () => {
     };
     console.log(times);
 
-    database.addEventDetails(eventDetail, creator, times);
+    //generate the urls for owner and the event
+    const url = {
+      eventURL: generateEventURLS().newEventURL,
+      ownerURL: generateEventURLS().newOwnerURL
+    };
+
+    database.addEventDetails(eventDetail, creator, times, url);
     res.redirect('/create/success');
   });
   return router;

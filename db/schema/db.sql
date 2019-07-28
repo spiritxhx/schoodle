@@ -19,9 +19,9 @@ CREATE TABLE events (
   id SERIAL PRIMARY KEY NOT NULL,
   title VARCHAR(255) NOT NULL,
   description TEXT,
-  creator_id INTEGER references attendees(id) ON DELETE CASCADE,
-  creator_url TEXT,
-  attendee_url TEXT
+  owner_id INTEGER references attendees(id) ON DELETE CASCADE,
+  owner_url TEXT,
+  event_url TEXT
 );
 
 DROP TABLE IF EXISTS attendee_date_times CASCADE;

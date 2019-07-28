@@ -3,18 +3,24 @@ const dbParams = require('../lib/db.js');
 const db = new Pool(dbParams);
 db.connect();
 
-const addEventDetails = (eventDetail, creator, times) => {
-  const addCreatorQuery = `INSERT INTO attendees(name, email) VALUES ($1, $2)
+const addEventDetails = (eventDetail, owner, times, url) => {
+
+  const addOwnerQuery = `INSERT INTO attendees(name, email) VALUES ($1, $2)
     RETURNING *;`;
-  const addEventQuery = `INSERT INTO events(title, description, creator_id) VALUES ($1, $2, $3)
+
+  const addEventQuery = `INSERT INTO events(title, description, owner_id, owner_url, event_url) VALUES ($1, $2, $3, $4, $5)
     RETURNING *;`;
+
   const addTimeQuery = `INSERT INTO date_times(start_date_time, end_date_time, event_id) VALUES ($1, $2, $3)
     RETURNING *;`;
-  return db.query(addCreatorQuery, [creator.name, creator.email])
+
+  return db.query(addOwnerQuery, [owner.name, owner.email])
     .then(res => {
-      //wait till the creator has been created then insert it to events as a foreign key
-      db.query(addEventQuery, [eventDetail.eventTitle, eventDetail.eventDescription, res.rows[0].id])
+
+      //wait till the owner has been created then insert it to events as a foreign key
+      db.query(addEventQuery, [eventDetail.eventTitle, eventDetail.eventDescription, res.rows[0].id, url.eventURL, url.ownerURL])
         .then(res2 => {
+
           //wait till the event has been created then insert it to date_times as a foreign key
           db.query(addTimeQuery, [times.startDate, times.endDate, res2.rows[0].id])
             .then(res3 => res3.rows)
