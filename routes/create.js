@@ -4,41 +4,44 @@ const database = require('../db/database');
 const generateEventURLS = require('../helper');
 
 module.exports = () => {
+  // the home page (temperarily) thinking about making a another home page
   router.get("/", (req, res) => {
     res.render("event-create");
   });
+  //the create success page
   router.get("/success", (req, res) => {
     res.render('event-create-success');
   });
 
   router.post("/", (req, res) => {
     console.log(req.body);
-    let creator = {
+    //get the input name and email
+    const creator = {
       name: req.body.creatorName,
       email: req.body.creatorEmail,
     };
 
-    let eventDetail = {
+    //get the input event title and description
+    const eventDetail = {
       eventTitle: req.body.eventTitle,
       eventDescription: req.body.eventDescription
     };
 
+    //get the start and end time of the event
     const timeFormatting = dateTime => {
       let date = dateTime.slice(0, 10);
       let time = dateTime.slice(11, 16);
       return `${date} ${time}:00`
     };
 
+    //format the type of the time to be the same as timestamp in databse
     let times = {
       startDate: timeFormatting(req.body.startDate),
       endDate: timeFormatting(req.body.endDate)
     };
     console.log(times);
 
-
-    // database.addCreator(creator);
-    database.addEventDetails(eventDetail, creator,times);
-    // database.addDateTime(times);
+    database.addEventDetails(eventDetail, creator, times);
     res.redirect('/create/success');
   });
   return router;

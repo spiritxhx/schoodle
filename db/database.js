@@ -12,9 +12,10 @@ const addEventDetails = (eventDetail, creator, times) => {
     RETURNING *;`;
   return db.query(addCreatorQuery, [creator.name, creator.email])
     .then(res => {
+      //wait till the creator has been created then insert it to events as a foreign key
       db.query(addEventQuery, [eventDetail.eventTitle, eventDetail.eventDescription, res.rows[0].id])
         .then(res2 => {
-          console.log('res2: ', [times.startDate, times.endDate, res2.rows[0].id])
+          //wait till the event has been created then insert it to date_times as a foreign key
           db.query(addTimeQuery, [times.startDate, times.endDate, res2.rows[0].id])
             .then(res3 => res3.rows)
             .catch(err => console.log(err));
@@ -22,12 +23,6 @@ const addEventDetails = (eventDetail, creator, times) => {
     })
 };
 
-// const addDateTime = times => {
-
-//   return db.query(addTimeQuery, [times.startDate, times.endDate])
-//     .then(res => res.rows)
-//     .catch(err => console.log(err));
-// };
 
 // exports.addDateTime = addDateTime;
 exports.addEventDetails = addEventDetails;
