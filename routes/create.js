@@ -24,9 +24,9 @@ module.exports = () => {
     };
 
     const timeFormatting = dateTime => {
-      let date = dateTime.slice(0, 9);
-      let time = dateTime.slice(11, 15);
-      return `${date} ${time}`
+      let date = dateTime.slice(0, 10);
+      let time = dateTime.slice(11, 16);
+      return `${date} ${time}:00`
     };
 
     let times = {
@@ -38,7 +38,7 @@ module.exports = () => {
 
     // database.addCreator(creator);
     database.addEventDetails(eventDetail, creator);
-
+    database.addDateTime(times);
     res.redirect('/create/success');
   });
   return router;
