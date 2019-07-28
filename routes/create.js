@@ -37,8 +37,8 @@ module.exports = () => {
 
 
     // database.addCreator(creator);
-    database.addEventDetails(eventDetail, creator);
-    database.addDateTime(times);
+    database.addEventDetails(eventDetail, creator,times);
+    // database.addDateTime(times);
     res.redirect('/create/success');
   });
   return router;
