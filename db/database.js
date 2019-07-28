@@ -8,7 +8,7 @@ const addEventDetails = (eventDetail, creator, times) => {
     RETURNING *;`;
   const addEventQuery = `INSERT INTO events(title, description, creator_id) VALUES ($1, $2, $3)
     RETURNING *;`;
-  const addTimeQuery = `INSERT INTO date_times(start_date_time, end_date_time) VALUES ($1, $2)
+  const addTimeQuery = `INSERT INTO date_times(start_date_time, end_date_time, ) VALUES ($1, $2, $3)
     RETURNING *;`;
   return db.query(addCreatorQuery, [creator.name, creator.email])
     .then(res => {

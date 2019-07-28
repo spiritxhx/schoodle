@@ -3,7 +3,8 @@ DROP TABLE IF EXISTS date_times CASCADE;
 CREATE TABLE date_times (
  id SERIAL PRIMARY KEY NOT NULL,
  start_date_time TIMESTAMP,
- end_date_time TIMESTAMP
+ end_date_time TIMESTAMP,
+ event_id INTEGER references events(id);
 );
 
 DROP TABLE IF EXISTS attendees CASCADE;
