@@ -10,10 +10,18 @@
   <!-- bootstrap -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <!-- datepicker plugin -->
+  <link rel="stylesheet" type="text/css" href="dist/mtr-datepicker.min.css">
+  <link rel="stylesheet" type="text/css" href="dist/mtr-datepicker.default-theme.min.css">
 
 
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
   <script type="text/javascript" src="/scripts/app.js"></script>
+
+  <!-- datepicker required file -->
+  <script type="text/javascript" src="dist/mtr-datepicker.min.js"></script>
+
+  <!-- bootstrap required file -->
   <script src="https://code.jquery.com/jquery-3.2.1.min.js"
     integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
     crossorigin="anonymous"></script>
@@ -44,7 +52,7 @@
           <div>
             Tell us about your event
           </div>
-          <input type='text' name="eventTitle" placeholder='title'/>
+          <input type='text' name="eventTitle" placeholder='title' />
           <br />
           <textarea type='text' name="eventDescription" placeholder='description'>
           </textarea>
@@ -52,6 +60,13 @@
             select some available times
 
             <div>PICK THE DATE AND TIME
+              <div id="dateTimePicker"></div>
+              <script>
+                var config = {
+                  target: 'dateTimePicker'
+                };
+                var myDatepicker = new MtrDatepicker(config);
+              </script>
               <div>
                 <p>Start</p><input type="datetime-local" name="startDate" value="2019-06-01T08:30">
                 <p>End</p><input type="datetime-local" name="endDate" value="2019-06-01T08:30" min=>
