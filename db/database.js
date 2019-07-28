@@ -8,15 +8,16 @@ const addEventDetails = (eventDetail, creator, times) => {
     RETURNING *;`;
   const addEventQuery = `INSERT INTO events(title, description, creator_id) VALUES ($1, $2, $3)
     RETURNING *;`;
-  const addTimeQuery = `INSERT INTO date_times(start_date_time, end_date_time, ) VALUES ($1, $2, $3)
+  const addTimeQuery = `INSERT INTO date_times(start_date_time, end_date_time, event_id) VALUES ($1, $2, $3)
     RETURNING *;`;
   return db.query(addCreatorQuery, [creator.name, creator.email])
     .then(res => {
       db.query(addEventQuery, [eventDetail.eventTitle, eventDetail.eventDescription, res.rows[0].id])
         .then(res2 => {
+          console.log('res2: ', [times.startDate, times.endDate, res2.rows[0].id])
           db.query(addTimeQuery, [times.startDate, times.endDate, res2.rows[0].id])
             .then(res3 => res3.rows)
-            .catch(err => console.log(err))
+            .catch(err => console.log(err));
         })
     })
 };
