@@ -40,43 +40,33 @@
   <div class="container">
     <div class="d-flex justify-content-center">
       <div>
-        <h2>
-          New Event?
-        </h2>
-        <div>
-          Tell us about you
-        </div>
+        <h2>New Event?</h2>
+        <p>Tell us about you</p>
         <form action="/create" method="POST">
           <input type='text' name="creatorName" placeholder='Your name' />
           <input type='text' name="creatorEmail" placeholder='Your email' />
-          <div>
-            Tell us about your event
-          </div>
+          <p>Tell us about your event</p>
           <input type='text' name="eventTitle" placeholder='title' />
           <br />
           <textarea type='text' name="eventDescription" placeholder='description'>
           </textarea>
-          <div>
-            select some available times
-
+          <p>select some available times</p>
             <div>PICK THE DATE AND TIME
               <div id="dateTimePicker"></div>
               <script>
                 var config = {
-                  target: 'dateTimePicker'
+                  target: 'dateTimePicker',
+                  disableAmPm: true
                 };
                 var myDatepicker = new MtrDatepicker(config);
+                console.log(myDatepicker.toISOString())
               </script>
               <div>
                 <p>Start</p><input type="datetime-local" name="startDate" value="2019-06-01T08:30">
-                <p>End</p><input type="datetime-local" name="endDate" value="2019-06-01T08:30" min=>
-                <p>
-                  <!-- <script> document.write(new Date().toDateString()); </script> -->
-                </p>
+                <p>End</p><input type="datetime-local" name="endDate" value="2019-06-01T08:30">
               </div>
               <button class="btn btn-primary" type="button" value="Add">add</button>
             </div>
-          </div>
 
           <button class="btn btn-primary" type="submit">submit</button>
         </form>
