@@ -40,7 +40,7 @@ module.exports = () => {
       ownerURL: generateEventURLS().newOwnerURL
     };
 
-    database.addEventDetails(eventDetail, creator, times, url);
+    db.query(eventDetail, creator, times, url);
     res.redirect('/create/success');
   });
   return router;

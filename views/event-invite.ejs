@@ -15,10 +15,12 @@
   </head>
 
   <body>
-    <h2>Let<span>"owner"</span>know you're availability to attend their event<span>"event-name"</span></h2>
+    <div class="container">
+      <h2>Let<span>"owner"</span>know you're availability to attend their event<span>"event-name"</span></h2>
 
-    <div>
-      <p>Need a little more information about the event?</p><span>"name"</span><p>says....</p><span>"event description"</span>
+      <div>
+        <p>Need a little more information about the event?</p><span>"name"</span><p>says....</p><span>"event description"</span>
+      </div>
     </div>
 
     <div>
@@ -28,19 +30,20 @@
     </div>
     <div name="add-new-availability">
       <p>Firstly tell us little about yourself</p>
-      <form>
-        <input type="text" name="attendee-name" placeholder="Your Name">
+      <form method="POST" action="/invite">
+        <input type="text" name="attendeeName" placeholder="Your Name">
         </input>
-        <input type="text" name="attendee-email"
+        <input type="text" name="attendeeEmail"
         placeholder="Your Email">
         </input>
+        <button name="add-availability">Add</button>
       </form>
       <table>
         table to select availability....
       </table>
-      <button name="add-availability">Add</button>
-    </div>
 
+    </div>
+<!--
     <div name="modify-availability">
       <div>
         <p>Update your availability</p>
@@ -56,7 +59,7 @@
         </form>
       </div>
       <button name="submit-modification">Modify</button>
-    </div>
+    </div> -->
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
