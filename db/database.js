@@ -49,11 +49,12 @@ const addAttendeeDetails = (attendee) => {
 };
 
 const checkURL = url => {
-  const checkURLQuery = `SELECT id, title, description FROM events WHERE event_url = $1`;
+  const checkURLQuery = `SELECT title, description, start_date_time, end_date_time
+  FROM events JOIN date_times on events.id=event_id WHERE event_url = $1`;
   return db.query(checkURLQuery, [url])
     .then(res => {
-      console.log('res.rows[0]: ', res.rows[0]);
-      return res.rows.length? res.rows[0] : undefined;
+      console.log('res.rows: ', res.rows);
+      return res.rows.length? res.rows : undefined;
     })
     .catch(err => console.log(err));
 };
