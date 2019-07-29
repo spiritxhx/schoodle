@@ -3,6 +3,7 @@ const dbParams = require('../lib/db.js');
 const db = new Pool(dbParams);
 db.connect();
 
+//add event information into the database
 const addEventDetails = (eventDetail, owner, times, url) => {
 
   const addOwnerQuery = `INSERT INTO attendees(name, email) VALUES ($1, $2)

@@ -10,11 +10,9 @@ const dateFormatting = date => {
 
 const createInput = (startTime, endTime, num) => {
   const $input = $('<input>').attr('name', `time${num}`).val(`${startTime} + ${endTime}`).hide();
-  // const $endInput = $('<input>').attr('name', `endTime${num}`).val(endTime).hide();
   const $inputed = $('<p>').text(`You have chosen a time slot from ${startTime} to ${endTime} for the event!`);
 
   $input.appendTo($('.dateTime'));
-  // $endInput.appendTo($('.dateTime'));
   $inputed.appendTo($('.dateTime'));
 };
 
@@ -31,6 +29,8 @@ $(document).ready(function () {
     disableAmPm: true
   };
   let myDatepicker2 = new MtrDatepicker(config2);
+
+  //initialize the counter for the timeslots
   let numOfTimeSlots = 0;
 
   //hide the submit button by default
@@ -45,8 +45,5 @@ $(document).ready(function () {
     let endDateTime = dateFormatting(myDatepicker2.toLocaleString());
 
     createInput(startDateTime, endDateTime, numOfTimeSlots);
-
-    console.log(dateFormatting(myDatepicker.toLocaleString()));
-    console.log(myDatepicker2.toLocaleString());
   })
 });

@@ -27,13 +27,6 @@ module.exports = () => {
       eventDescription: req.body.eventDescription
     };
 
-    //format the type of the time to be the same as timestamp in databse
-    // let times = {
-    //   startDate: req.body.startTime1,
-    //   endDate: req.body.endTime1
-    // };
-    // console.log(times);
-
     let times = JSON.parse(JSON.stringify(req.body));
     delete times.creatorName;
     delete times.creatorEmail;
