@@ -28,7 +28,7 @@
     <h2>Event Created</h2>
   </div>
   <div>
-    Your event's unique URL: <span id="attendeeURL"> <%=eventURL%> </span>
+    Your event's unique URL: <span id="attendeeURL"> localhost8080/event/<%=eventURL%> </span>
     <button onclick="copyToClipboard('#attendeeURL')">Copy</button>
     <script>
       function copyToClipboard(element) {
@@ -43,7 +43,7 @@
   </div>
 
   <div>
-      Your unique URL: <span id="ownerURL">url....</span>
+      Your unique URL: <span id="ownerURL">localhost8080/event/<%=ownerURL%></span>
       <button onclick="copyToClipboard('#ownerURL')">Copy</button>
       <script>
         function copyToClipboard(element) {
