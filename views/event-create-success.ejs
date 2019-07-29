@@ -27,20 +27,36 @@
     <h1>Congratulations!</h1>
     <h2>Event Created</h2>
   </div>
-
   <div>
-    Your event's unique URL: <span id="newURL">url....</span><button onclick="myFunction()">Copy</button>
+    Your event's unique URL: <span id="attendeeURL"> <%=eventURL%> </span>
+    <button onclick="copyToClipboard('#attendeeURL')">Copy</button>
     <script>
-        function myFunction() {
-          let copyText = document.getElementById("newURL");
-          copyText.select();
-          document.execCommand("copy");
-          alert("Copied to clipboard " + copyText.value);
-        }
-        </script>
+      function copyToClipboard(element) {
+        var $temp = $("<input>");
+        $("body").append($temp);
+        $temp.val($(element).text()).select();
+        document.execCommand("copy");
+        $temp.remove();
+      }
+    </script>
+      <div>Send the link to all your guests to check their availability</div>
   </div>
 
-  <div>Send the link to all your guests to check their availability</div>
+  <div>
+      Your unique URL: <span id="ownerURL">url....</span>
+      <button onclick="copyToClipboard('#ownerURL')">Copy</button>
+      <script>
+        function copyToClipboard(element) {
+          var $temp = $("<input>");
+          $("body").append($temp);
+          $temp.val($(element).text()).select();
+          document.execCommand("copy");
+          $temp.remove();
+        }
+      </script>
+      <div>Don't share this link! Use it to make any changes to your event</div>
+    </div>
+
 
 </body>
 

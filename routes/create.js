@@ -41,7 +41,7 @@ module.exports = () => {
     };
 
     database.addEventDetails(eventDetail, creator, times, url);
-    res.redirect('/create/success');
+    res.render("event-create-success", url);
   });
   return router;
 };
