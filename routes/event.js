@@ -1,12 +1,16 @@
 const express = require('express');
-const router  = express.Router();
+const router = express.Router();
 const { timeFormatting } = require('../helper');
 const database = require('../db/database');
 
 module.exports = () => {
   //new invite page
   router.get("/:url", (req, res) => {
-    res.render("event-invite");
+    database.checkURL(req.params.url)
+      .then(id => {
+        console.log('event_id: ', id);
+        id?res.render('event-invite'):res.status(404).send('Page Not Exists!');
+      });
   });
 
   //attendee submitted availability success page

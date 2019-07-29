@@ -25,7 +25,6 @@ const addEventDetails = (eventDetail, owner, times, url) => {
           for (const time in times) {
             let startTime = times[time].split(' + ')[0];
             let endTime = times[time].split(' + ')[1];
-            console.log()
             //wait till the event has been created then insert it to date_times as a foreign key
             db.query(addTimeQuery, [startTime, endTime, res2.rows[0].id])
               .then(res3 => res3.rows)
@@ -49,6 +48,17 @@ const addAttendeeDetails = (attendee) => {
     });
 };
 
+const checkURL = url => {
+  const checkURLQuery = `SELECT id FROM events WHERE event_url = $1`;
+  return db.query(checkURLQuery, [url])
+    .then(res => {
+      // console.log('res.rows[0].id: ', res.rows[0].id);
+      return res.rows.length? res.rows[0].id : 0;
+    })
+    .catch(err => console.log(err));
+};
+
 // exports.addDateTime = addDateTime;
 exports.addEventDetails = addEventDetails;
 exports.addAttendeeDetails = addAttendeeDetails;
+exports.checkURL = checkURL;

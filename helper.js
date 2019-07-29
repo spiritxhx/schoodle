@@ -9,8 +9,8 @@ const uuidv4 = require('uuid/v4');
 
 let generateEventURLS = () =>{
   return {
-    newEventURL: uuidv4(),
-    newOwnerURL: uuidv4()
+    newEventURL: uuidv4().split('-').join(''),
+    newOwnerURL: uuidv4().split('-').join('')
   };
 };
 
