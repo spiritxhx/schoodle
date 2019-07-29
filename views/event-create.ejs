@@ -49,23 +49,33 @@
           <textarea type='text' name="eventDescription" placeholder='description'>
           </textarea>
           <p>select some available times</p>
-          <div>PICK THE DATE AND TIME
-            <div id="dateTimePicker"></div>
-            <script>
-              let config = {
-                target: 'dateTimePicker',
-                disableAmPm: true
-              };
-              let myDatepicker = new MtrDatepicker(config);
-              console.log(myDatepicker.toISOString())
-            </script>
-            <div>
-              <p>Start</p><input type="datetime-local" name="startDate" value="2019-06-01T08:30">
-              <p>End</p><input type="datetime-local" name="endDate" value="2019-06-01T08:30">
-            </div>
-            <button class="btn btn-primary" type="button" value="Add">add</button>
+          <p>PICK THE DATE AND TIME</p>
+          <div class="d-flex justify-content-center">
+            <div id="dateTimePicker" name="startDate"></div>
+            <div id="dateTimePicker2" name="endDate"></div>
           </div>
-
+          <!-- script for dateTimePicker -->
+          <script>
+            let config = {
+              target: 'dateTimePicker',
+              disableAmPm: true
+            };
+            let myDatepicker = new MtrDatepicker(config);
+            console.log(myDatepicker.toISOString())
+          </script>
+          <script>
+            let config2 = {
+              target: 'dateTimePicker2',
+              disableAmPm: true
+            };
+            let myDatepicker2 = new MtrDatepicker(config2);
+            console.log(myDatepicker2.toISOString())
+          </script>
+          <button class="btn btn-primary" type="button" value="Add">add</button>
+          <!-- <div>
+            <p>Start</p><input type="datetime-local" name="startDate" value="2019-06-01T08:30">
+            <p>End</p><input type="datetime-local" name="endDate" value="2019-06-01T08:30">
+          </div> -->
           <button class="btn btn-primary" type="submit">submit</button>
         </form>
       </div>
