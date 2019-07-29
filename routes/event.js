@@ -4,12 +4,14 @@ const { timeFormatting } = require('../helper');
 const database = require('../db/database');
 
 module.exports = () => {
-  //new invite page
+  //new invite for the event url page
   router.get("/:url", (req, res) => {
     database.checkURL(req.params.url)
-      .then(id => {
-        console.log('event_id: ', id);
-        id?res.render('event-invite'):res.status(404).send('Page Not Exists!');
+      .then(info => {
+        console.log('event_id: ', info.id);
+        console.log('event_title: ', info.title);
+        console.log('event_description: ', info.description);
+        info ? res.render('event-invite') : res.status(404).send('Page Not Exists!');
       });
   });
 
