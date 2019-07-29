@@ -8,3 +8,9 @@
 //     }
 //   });;
 // });
+$(document).ready(function() {
+  $('.addTime').on('click', function() {
+    let startDate = $('#dateTimePicker');
+    console.log(startDate);
+  })
+});
