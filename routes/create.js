@@ -29,8 +29,8 @@ module.exports = () => {
 
     //format the type of the time to be the same as timestamp in databse
     let times = {
-      startDate: timeFormatting(req.body.startDate),
-      endDate: timeFormatting(req.body.endDate)
+      startDate: req.body.startTime1,
+      endDate: req.body.endTime1
     };
     console.log(times);
 

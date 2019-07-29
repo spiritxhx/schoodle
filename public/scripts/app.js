@@ -8,11 +8,13 @@ const dateFormatting = date => {
   return ans;
 };
 
-const createInput = (startTime, endTime) => {
-  const $startInput = $('<input>');
-  const $endInput = $('<input>');
-  const $inputed = $('<p>').text('this is a test');
+const createInput = (startTime, endTime, num) => {
+  const $startInput = $('<input>').attr('name', `startTime${num}`).val(startTime).hide();
+  const $endInput = $('<input>').attr('name', `endTime${num}`).val(endTime).hide();
+  const $inputed = $('<p>').text(`You have chosen a time slot from ${startTime} to ${endTime} for the event!`);
 
+  $startInput.appendTo($('.dateTime'));
+  $endInput.appendTo($('.dateTime'));
   $inputed.appendTo($('.dateTime'));
 };
 
@@ -30,12 +32,19 @@ $(document).ready(function () {
   };
   let myDatepicker2 = new MtrDatepicker(config2);
   let numOfTimeSlots = 0;
+
+  //hide the submit button by default
+  $('.submitAll').hide();
   $('.addTime').on('click', function () {
     // let startDate = $('#dateTimePicker');
+    $('.submitAll').show();
+
+    //add the numOfTimeSlots
+    numOfTimeSlots++;
     let startDateTime = dateFormatting(myDatepicker.toLocaleString());
     let endDateTime = dateFormatting(myDatepicker2.toLocaleString());
 
-    createInput(startDateTime, endDateTime);
+    createInput(startDateTime, endDateTime, numOfTimeSlots);
 
     console.log(dateFormatting(myDatepicker.toLocaleString()));
     console.log(myDatepicker2.toLocaleString());
