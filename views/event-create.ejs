@@ -15,23 +15,21 @@
   <link rel="stylesheet" type="text/css" href="dist/mtr-datepicker.default-theme.min.css">
 
 
-  <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+  <!-- <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script> -->
   <script type="text/javascript" src="/scripts/app.js"></script>
 
   <!-- datepicker required file -->
   <script type="text/javascript" src="dist/mtr-datepicker.min.js"></script>
 
   <!-- bootstrap required file -->
-  <script src="https://code.jquery.com/jquery-3.2.1.min.js"
-    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-    crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
     integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
     crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
     integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
     crossorigin="anonymous"></script>
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 
 </head>
 
@@ -51,22 +49,22 @@
           <textarea type='text' name="eventDescription" placeholder='description'>
           </textarea>
           <p>select some available times</p>
-            <div>PICK THE DATE AND TIME
-              <div id="dateTimePicker"></div>
-              <script>
-                var config = {
-                  target: 'dateTimePicker',
-                  disableAmPm: true
-                };
-                var myDatepicker = new MtrDatepicker(config);
-                console.log(myDatepicker.toISOString())
-              </script>
-              <div>
-                <p>Start</p><input type="datetime-local" name="startDate" value="2019-06-01T08:30">
-                <p>End</p><input type="datetime-local" name="endDate" value="2019-06-01T08:30">
-              </div>
-              <button class="btn btn-primary" type="button" value="Add">add</button>
+          <div>PICK THE DATE AND TIME
+            <div id="dateTimePicker"></div>
+            <script>
+              let config = {
+                target: 'dateTimePicker',
+                disableAmPm: true
+              };
+              let myDatepicker = new MtrDatepicker(config);
+              console.log(myDatepicker.toISOString())
+            </script>
+            <div>
+              <p>Start</p><input type="datetime-local" name="startDate" value="2019-06-01T08:30">
+              <p>End</p><input type="datetime-local" name="endDate" value="2019-06-01T08:30">
             </div>
+            <button class="btn btn-primary" type="button" value="Add">add</button>
+          </div>
 
           <button class="btn btn-primary" type="submit">submit</button>
         </form>
