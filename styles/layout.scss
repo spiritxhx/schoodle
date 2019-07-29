@@ -1,17 +1,110 @@
 // See: https://sass-lang.com/
 
+$formbackground: #1F4562;
+
 body {
+  background-color: $formbackground;
+}
+
+#page-layout {
   display: flex;
   justify-content: center;
   flex-direction: column;
-  background-color: #EEE;
+  background-color: #1F4562;
+  width: 100%;
+  padding-left: 10%;
+  padding-right: 10%;
+  align-items: center;
 
-  h1 {
-    color: #244751;
+  color: whitesmoke;
+  font-family: 'Frank Ruhl Libre', serif;
+  font-size: 1.3rem;
+
+  .fa-clock {
+    font-size: 5rem;
+    padding-top: 10%;
+    padding-bottom: 5%;
+  }
+
+  h2 {
+    padding-top: 5%;
+    justify-content: center;
+    font-size: 2.2rem;
+    align-content: center;
+    text-align: center;
+  }
+
+  p {
+    display: flex;
+    flex-direction: column;
+    display: block;
+    text-align: center;
+  }
+
+  .owner-info {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 10%;
+    padding-top: 10%;
+    align-content: space-around;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .event-info {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding-bottom: 10%;
+  }
+
+  input {
+    width: 80%;
+    background-color: lighten($formbackground, 75%);
+    margin-top: 5%;
+  }
+
+  textarea {
+    width: 80%;
+    background-color: lighten($formbackground, 75%);
+    margin-top: 5%;
+  }
+
+  .date-select {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 10%;
+
+    #dateTimePicker {
+      padding-left: 5%;
+      padding-right: 5%;
+      margin-bottom: 10%;
+    }
+
+    #dateTimePicker2 {
+      padding-left: 5%;
+      padding-right: 5%;
+      margin-bottom: 10%;
+    }
+
+    .dateTime p {
+        margin-bottom: 0%;
   }
 }
 
-#head-container {
+
+.btn .addTime{
+  justify-content: center;
+  align-content: center;
+  }
+
+
+
+}
+
+head {
   display: flex;
   flex-direction: column;
+
 }
