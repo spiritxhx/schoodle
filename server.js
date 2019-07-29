@@ -34,12 +34,12 @@ app.use(express.static("public"));
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
 const eventCreate = require("./routes/create");
-const eventInvite = require("./routes/invite");
+const eventInvite = require("./routes/event");
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 app.use("/create", eventCreate());
-app.use("/invite", eventInvite());
+app.use("/event", eventInvite());
 // Note: mount other resources here, using the same pattern above
 
 

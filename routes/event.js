@@ -5,7 +5,7 @@ const database = require('../db/database');
 
 module.exports = () => {
   //new invite page
-  router.get("/", (req, res) => {
+  router.get("/:url", (req, res) => {
     res.render("event-invite");
   });
 
@@ -25,7 +25,7 @@ module.exports = () => {
 
     // };
     database.addAttendeeDetails(attendeeDetails);
-    res.redirect('/invite/success');
+    res.redirect('/event/success');
   });
   return router;
 };

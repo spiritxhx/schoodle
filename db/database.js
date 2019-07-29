@@ -41,10 +41,10 @@ const addAttendeeDetails = (attendee) => {
   const addAvailabilityQuery = `INSERT INTO attendee_date_times(date_time_id, attendee_id) VALUES ($1, $2);`;
 
   return db.query(addAttendeeDetailsQuery, [attendee.name, attendee.email])
-    .then(res2 => {
-      console.log("++++++++++++++", res2.rows[0].id);
+    .then(res => {
+      console.log("++++++++++++++", res.rows[0].id);
 
-      db.query(addAvailabilityQuery, [1, res2.rows[0].id])
+      db.query(addAvailabilityQuery, [1, res.rows[0].id])
         .catch(err => console.log(err));
     });
 };
