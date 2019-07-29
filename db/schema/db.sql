@@ -2,15 +2,9 @@
 DROP TABLE IF EXISTS date_times CASCADE;
 CREATE TABLE date_times (
  id SERIAL PRIMARY KEY NOT NULL,
-<<<<<<< HEAD
- event_id INTEGER references events(id) ON DELETE CASCADE,
- start_date_time TIMESTAMP,
- end_date_time TIMESTAMP
-=======
  start_date_time TEXT,
  end_date_time TEXT,
  event_id INTEGER references events(id) ON DELETE CASCADE
->>>>>>> create-ajax
 );
 
 DROP TABLE IF EXISTS attendees CASCADE;

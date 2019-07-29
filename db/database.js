@@ -3,6 +3,7 @@ const dbParams = require('../lib/db.js');
 const db = new Pool(dbParams);
 db.connect();
 
+//add event information into the database
 const addEventDetails = (eventDetail, owner, times, url) => {
 
   const addOwnerQuery = `INSERT INTO attendees(name, email) VALUES ($1, $2)
@@ -20,11 +21,16 @@ const addEventDetails = (eventDetail, owner, times, url) => {
       //wait till the owner has been created then insert it to events as a foreign key
       db.query(addEventQuery, [eventDetail.eventTitle, eventDetail.eventDescription, res.rows[0].id, url.eventURL, url.ownerURL])
         .then(res2 => {
-
-          //wait till the event has been created then insert it to date_times as a foreign key
-          db.query(addTimeQuery, [times.startDate, times.endDate, res2.rows[0].id])
-            .then(res3 => res3.rows)
-            .catch(err => console.log(err));
+          //deal with each of the time slot been sent in
+          for (const time in times) {
+            let startTime = times[time].split(' + ')[0];
+            let endTime = times[time].split(' + ')[1];
+            console.log()
+            //wait till the event has been created then insert it to date_times as a foreign key
+            db.query(addTimeQuery, [startTime, endTime, res2.rows[0].id])
+              .then(res3 => res3.rows)
+              .catch(err => console.log(err));
+          }
         });
     });
 };

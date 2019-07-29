@@ -14,7 +14,7 @@ module.exports = () => {
   });
 
   router.post("/", (req, res) => {
-    console.log(req.body);
+    // console.log(req.body);
     //get the input name and email
     const creator = {
       name: req.body.creatorName,
@@ -27,11 +27,11 @@ module.exports = () => {
       eventDescription: req.body.eventDescription
     };
 
-    //format the type of the time to be the same as timestamp in databse
-    let times = {
-      startDate: req.body.startTime1,
-      endDate: req.body.endTime1
-    };
+    let times = JSON.parse(JSON.stringify(req.body));
+    delete times.creatorName;
+    delete times.creatorEmail;
+    delete times.eventTitle;
+    delete times.eventDescription;
     console.log(times);
 
     //generate the urls for owner and the event
