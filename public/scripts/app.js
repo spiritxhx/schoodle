@@ -1,12 +1,6 @@
 
 //formatting the locale time into a timestamp type
-const dateFormatting = date => {
-  let ans = "";
-  let dateArr = date.split(', ');
-  let time = dateArr[0].toString().split('/');
-  ans = `${time[2]}-${time[0].length === 1 ? '0' + time[0] : '' + time[0]}-${time[1].length === 1 ? '0' + time[1] : '' + time[1]} ${dateArr[1]}`
-  return ans;
-};
+const { dateFormatting } = require('../../helper');
 
 const createInput = (startTime, endTime, num) => {
   const $input = $('<input>').attr('name', `time${num}`).val(`${startTime} + ${endTime}`).hide();
@@ -41,8 +35,8 @@ $(document).ready(function () {
 
     //add the numOfTimeSlots
     numOfTimeSlots++;
-    let startDateTime = dateFormatting(myDatepicker.toLocaleString());
-    let endDateTime = dateFormatting(myDatepicker2.toLocaleString());
+    let startDateTime = dateFormatting(myDatepicker.toString());
+    let endDateTime = dateFormatting(myDatepicker2.toString());
 
     createInput(startDateTime, endDateTime, numOfTimeSlots);
   });
