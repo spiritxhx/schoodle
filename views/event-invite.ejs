@@ -43,7 +43,7 @@
         </tr>
         <tr>
           <% for (const info of data) { %>
-          <th>From <%=info.start_date_time %> To <%=info.end_date_time %></th>
+          <th>From <%=info.start_date_time.toString().slice(0,21) %> To <%=info.end_date_time.toString().slice(0,21) %></th>
           <% } %>
         </tr>
       </table>

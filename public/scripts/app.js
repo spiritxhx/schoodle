@@ -2,14 +2,18 @@
 //formatting the locale time into a timestamp type
 const dateFormatting = date => {
   let ans = "";
-  let dateArr = date.split(', ');
-  let time = dateArr[0].toString().split('/');
-  ans = `${time[2]}-${time[0].length === 1 ? '0' + time[0] : '' + time[0]}-${time[1].length === 1 ? '0' + time[1] : '' + time[1]} ${dateArr[1]}`
+  let dateArr = date.split(':');
+  ans = (dateArr[0]+':'+dateArr[1]).toString();
   return ans;
 };
+const timeFormatting = dateTime => {
+  let date = dateTime.slice(0, 10);
+  let time = dateTime.slice(11, 16);
+  return `${date} ${time}:00`
+};
 
-const createInput = (startTime, endTime, num) => {
-  const $input = $('<input>').attr('name', `time${num}`).val(`${startTime} + ${endTime}`).hide();
+const createInput = (startTime, endTime, num, oriStart, oriEnd) => {
+  const $input = $('<input>').attr('name', `time${num}`).val(`${oriStart} + ${oriEnd}`).hide();
   const $inputed = $('<p>').text(`You have chosen a time slot from ${startTime} to ${endTime} for your event!`);
 
   $input.appendTo($('.dateTime'));
@@ -41,9 +45,11 @@ $(document).ready(function () {
 
     //add the numOfTimeSlots
     numOfTimeSlots++;
-    let startDateTime = dateFormatting(myDatepicker.toLocaleString());
-    let endDateTime = dateFormatting(myDatepicker2.toLocaleString());
+    let startDateTime = dateFormatting(myDatepicker.toString());
+    let endDateTime = dateFormatting(myDatepicker2.toString());
+    let oriStart = timeFormatting(myDatepicker.toISOString());
+    let oriEnd = timeFormatting(myDatepicker2.toISOString());
 
-    createInput(startDateTime, endDateTime, numOfTimeSlots);
+    createInput(startDateTime, endDateTime, numOfTimeSlots, oriStart, oriEnd);
   });
 });

@@ -25,6 +25,12 @@ let generateEventURLS = () =>{
 // });
 
 //a format function for the timestamp type in postgresSQL
+const dateFormatting = date => {
+  let ans = "";
+  let dateArr = date.split(':');
+  ans = (dateArr[0]+':'+dateArr[1]).toString();
+  return ans;
+};
 const timeFormatting = dateTime => {
   let date = dateTime.slice(0, 10);
   let time = dateTime.slice(11, 16);
@@ -34,4 +40,4 @@ const timeFormatting = dateTime => {
 // exports.generateEventURLS = generateEventURLS;
 // exports.timeFormatting = timeFormatting;
 
-module.exports = {generateEventURLS, timeFormatting};
+module.exports = {generateEventURLS, timeFormatting, dateFormatting};
