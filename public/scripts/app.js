@@ -14,10 +14,16 @@ const timeFormatting = dateTime => {
 
 const createInput = (startTime, endTime, num, oriStart, oriEnd) => {
   const $input = $('<input>').attr('name', `time${num}`).val(`${oriStart} + ${oriEnd}`).hide();
-  const $inputed = $('<p>').text(`You have chosen a time slot from ${startTime} to ${endTime} for your event!`);
-
   $input.appendTo($('.dateTime'));
-  $inputed.appendTo($('.dateTime'));
+  if (num === 1) {
+    const $first = $('<p id="choice">').text(`You're chosen time slot:`);
+    const $firstInput = $('<p class="date-selection">').text(`${startTime} to ${endTime}`);
+    $first.appendTo($('.dateTime'));
+    $firstInput.appendTo($('.dateTime'));
+  } else {
+    const $inputed = $('<p class="date-selection">').text(`${startTime} to ${endTime}`);
+    $inputed.appendTo($('.dateTime'));
+  }
 };
 
 $(document).ready(function () {
