@@ -62,7 +62,7 @@ const checkURL = url => {
 
 const fetchAttendees = url => {
   //fetch the names and date_times of the attendees going to this event
-  const fetchQuery = `SELECT attendees.name, start_date_time, end_date_time, date_times.id
+  const fetchQuery = `SELECT attendees.id as attendeeId, attendees.name, start_date_time, end_date_time, date_times.id as dateTimeId
   FROM event_attendees JOIN attendees on attendees.id = attendee_id
   JOIN events on event_id = events.id
   JOIN attendee_date_times on attendees.id = attendee_id
@@ -70,7 +70,7 @@ const fetchAttendees = url => {
   WHERE event_url = $1 AND attendees.id=attendee_date_times.attendees_id`;
   return db.query(fetchQuery, [url])
     .then(res => {
-      // console.log('res.rows2: ', res.rows);
+      console.log('res.rows2: ', res.rows);
       return res.rows.length ? res.rows : undefined;
     })
     .catch(err => console.log(err));
