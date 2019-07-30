@@ -5,16 +5,13 @@ const database = require('../db/database');
 
 module.exports = () => {
   //new invite for the event url page
-  router.get("/:url", (req, res) => {
+  router.get("/url/:url", (req, res) => {
     database.checkURL(req.params.url)
       .then(infos => {
         if (infos) {
-          console.log('event_title: ', infos[0].title);
-          console.log('event_description: ', infos[0].description);
           let templateVars = {
-            title: infos[0].title,
-            description: infos[0].description
-          };
+            data: infos
+          }
           res.render('event-invite', templateVars);
         } else {
           res.status(404).send('Page Not Exists!');

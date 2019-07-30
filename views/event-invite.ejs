@@ -29,11 +29,11 @@
 <body>
   <div class="container">
     <form action="" method="GET">
-      <h2>Let<span>"owner"</span>know you're availability to attend their event<span>"event-name"</span></h2>
+      <h2>Let <%=data[0].name %> know you're availability to attend their event <%=data[0].title %> </h2>
 
       <div>
-        <p>Need a little more information about the event?</p><span>"name"</span>
-        <p>says....</p><span>"event description"</span>
+        <p>Need a little more information about the event?</p><span><%=data[0].title %></span>
+        <p>says....</p><span><%=data[0].description %></span>
       </div>
   </div>
   </form>
@@ -44,7 +44,7 @@
   </div>
   <div name="add-new-availability">
     <p>Firstly tell us little about yourself</p>
-    <form method="POST" action="/invite">
+    <form method="POST" action="/event">
       <input type="text" name="attendeeName" placeholder="Your Name">
       </input>
       <input type="text" name="attendeeEmail" placeholder="Your Email">
@@ -73,16 +73,6 @@
       </div>
       <button name="submit-modification">Modify</button>
     </div> -->
-
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-    crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-    crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-    crossorigin="anonymous"></script>
 
 </body>
 
