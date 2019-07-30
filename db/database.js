@@ -67,7 +67,7 @@ const fetchAttendees = url => {
   JOIN events on event_id = events.id
   JOIN attendee_date_times on attendees.id = attendee_id
   JOIN date_times on date_times.id = date_time_id
-  WHERE event_url = $1 AND attendees.id=attendee_date_times.attendees_id;`;
+  WHERE event_url = $1 AND attendees.id=attendee_date_times.attendees_id`;
   return db.query(fetchQuery, [url])
     .then(res => {
       // console.log('res.rows2: ', res.rows);

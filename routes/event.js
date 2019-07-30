@@ -15,7 +15,10 @@ module.exports = () => {
             data: values[0],
             attendees: values[1]
           }
-          console.log('templateVars: ', templateVars);
+          console.log('values[0]: ', values[0]);
+          console.log('values[1]: ', values[1]);
+
+          // console.log('templateVars: ', templateVars);
           res.render('event-invite', templateVars);
         } else {
           res.status(404).send('Page Not Exists!');

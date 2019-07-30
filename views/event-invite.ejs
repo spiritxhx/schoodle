@@ -23,14 +23,14 @@
 
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <script src="https://kit.fontawesome.com/ef0d3f5c2f.js"></script>
+  <script src="https://kit.fontawesome.com/ef0d3f5c2f.js"></script>
 
 </head>
 
 
 <body id="body">
-    <% include ./header %>
-    <div id="page-layout">
+  <% include ./header %>
+  <div id="page-layout">
     <form action="" method="GET">
       <h2>Let <%=data[0].name %> know you're availability to attend their event <%=data[0].title %> </h2>
 
@@ -50,13 +50,20 @@
           <% } %>
         </tr>
         <% let names=[] %>
+        <% if (! attendees) { %>
+        <tr>
+          No one accepted yet! :(
+        </tr>
+        <%} else {%>
+
         <% for (const attendee of attendees) { %>
         <% if (!names.includes(attendee.name)) {%>
         <% names.push(attendee.name) %>
         <tr>
           <th><%=attendee.name %></th>
+
         </tr>
-        <% }} %>
+        <% }}} %>
       </table>
       <button name="modify">M</button>
       <button name="modify">M</button>
