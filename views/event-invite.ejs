@@ -43,12 +43,20 @@
     <div>
       <table>"table showing everyones availability"
         <tr>
-        </tr>
-        <tr>
+          <th>Attendees</th>
           <% for (const info of data) { %>
-          <th>From <%=info.start_date_time.toString().slice(0,21) %> To <%=info.end_date_time.toString().slice(0,21) %></th>
+          <th>From <%=info.start_date_time.toString().slice(0,21) %> To <%=info.end_date_time.toString().slice(0,21) %>
+          </th>
           <% } %>
         </tr>
+        <% let names=[] %>
+        <% for (const attendee of attendees) { %>
+        <% if (!names.includes(attendee.name)) {%>
+        <% names.push(attendee.name) %>
+        <tr>
+          <th><%=attendee.name %></th>
+        </tr>
+        <% }} %>
       </table>
       <button name="modify">M</button>
       <button name="modify">M</button>

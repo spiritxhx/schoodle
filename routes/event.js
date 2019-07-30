@@ -39,6 +39,7 @@ module.exports = () => {
           res.status(404).send('Error - Page Does Not Exist!');
         }
       })
+      .catch(err => console.log(err));
   });
 
   //attendee submitted availability success page
