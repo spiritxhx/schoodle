@@ -40,6 +40,8 @@
     <div>
       <table>"table showing everyones availability"
         <tr>
+        </tr>
+        <tr>
           <% for (const info of data) { %>
           <th>From <%=info.start_date_time %> To <%=info.end_date_time %></th>
           <% } %>
