@@ -1,12 +1,22 @@
 const express = require('express');
-const router  = express.Router();
+const router = express.Router();
 const { timeFormatting } = require('../helper');
 const database = require('../db/database');
 
 module.exports = () => {
-  //new invite page
-  router.get("/", (req, res) => {
-    res.render("event-invite");
+  //new invite for the event url page
+  router.get("/url/:url", (req, res) => {
+    database.checkURL(req.params.url)
+      .then(infos => {
+        if (infos) {
+          let templateVars = {
+            data: infos
+          }
+          res.render('event-invite', templateVars);
+        } else {
+          res.status(404).send('Page Not Exists!');
+        }
+      });
   });
 
   //attendee submitted availability success page
@@ -25,7 +35,7 @@ module.exports = () => {
 
     // };
     database.addAttendeeDetails(attendeeDetails);
-    res.redirect('/invite/success');
+    res.redirect('/event/success');
   });
   return router;
 };

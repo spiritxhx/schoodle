@@ -1,50 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Event Invitation</title>
 
-    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
-    <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+<head>
+  <title>Event Invitation</title>
 
-    <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-    <script type="text/javascript" src="/scripts/app.js"></script>
+  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
+  <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-  </head>
+  <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
 
-  <body>
-    <div class="container">
-      <form action="" method="GET">
-      <h2>Let<span>"owner"</span>know you're availability to attend their event<span>"event-name"</span></h2>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+</head>
+
+<body>
+  <div class="container">
+    <form action="" method="GET">
+      <h2>Let <%=data[0].name %> know you're availability to attend their event <%=data[0].title %> </h2>
 
       <div>
-        <p>Need a little more information about the event?</p><span>"name"</span><p>says....</p><span>"event description"</span>
+        <p>Need a little more information about the event?</p><span><%=data[0].title %></span>
+        <p>says....</p><span><%=data[0].description %></span>
       </div>
-    </div>
+  </div>
   </form>
-    <div>
+  <div>
     <table>"table showing everyones availability"</table>
     <button name="modify">M</button>
     <button name="modify">M</button>
-    </div>
-    <div name="add-new-availability">
-      <p>Firstly tell us little about yourself</p>
-      <form method="POST" action="/invite">
-        <input type="text" name="attendeeName" placeholder="Your Name">
-        </input>
-        <input type="text" name="attendeeEmail"
-        placeholder="Your Email">
-        </input>
-        <button name="add-availability">Add</button>
-      </form>
-      <table>
-        table to select availability....
-      </table>
+  </div>
+  <div name="add-new-availability">
+    <p>Firstly tell us little about yourself</p>
+    <form method="POST" action="/event">
+      <input type="text" name="attendeeName" placeholder="Your Name">
+      </input>
+      <input type="text" name="attendeeEmail" placeholder="Your Email">
+      </input>
+      <button name="add-availability">Add</button>
+    </form>
+    <table>
+      table to select availability....
+    </table>
 
-    </div>
-<!--
+  </div>
+  <!--
     <div name="modify-availability">
       <div>
         <p>Update your availability</p>
@@ -62,9 +74,6 @@
       <button name="submit-modification">Modify</button>
     </div> -->
 
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
 
-  </body>
 </html>

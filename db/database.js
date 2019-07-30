@@ -25,7 +25,6 @@ const addEventDetails = (eventDetail, owner, times, url) => {
           for (const time in times) {
             let startTime = times[time].split(' + ')[0];
             let endTime = times[time].split(' + ')[1];
-            console.log()
             //wait till the event has been created then insert it to date_times as a foreign key
             db.query(addTimeQuery, [startTime, endTime, res2.rows[0].id])
               .then(res3 => res3.rows)
@@ -41,14 +40,27 @@ const addAttendeeDetails = (attendee) => {
   const addAvailabilityQuery = `INSERT INTO attendee_date_times(date_time_id, attendee_id) VALUES ($1, $2);`;
 
   return db.query(addAttendeeDetailsQuery, [attendee.name, attendee.email])
-    .then(res2 => {
-      console.log("++++++++++++++", res2.rows[0].id);
+    .then(res => {
+      console.log("++++++++++++++", res.rows[0].id);
 
-      db.query(addAvailabilityQuery, [1, res2.rows[0].id])
+      db.query(addAvailabilityQuery, [1, res.rows[0].id])
         .catch(err => console.log(err));
     });
+};
+
+const checkURL = url => {
+  const checkURLQuery = `SELECT title, description, start_date_time, end_date_time, name
+  FROM events JOIN date_times on events.id=event_id
+  JOIN attendees on attendees.id=owner_id WHERE event_url = $1`;
+  return db.query(checkURLQuery, [url])
+    .then(res => {
+      console.log('res.rows: ', res.rows);
+      return res.rows.length? res.rows : undefined;
+    })
+    .catch(err => console.log(err));
 };
 
 // exports.addDateTime = addDateTime;
 exports.addEventDetails = addEventDetails;
 exports.addAttendeeDetails = addAttendeeDetails;
+exports.checkURL = checkURL;
