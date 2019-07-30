@@ -36,12 +36,15 @@
 
 </head>
 
+<header>
+  <% include ./header %>
+</header>
+
 <body>
 
   <div id="page-layout">
-    <i class="far fa-clock"></i>
     <div>
-      <h2>Planning a New Event?</h2>
+      <h1>Planning a New Event?</h1>
       <div class="owner-info">
       <p>Tell me about you</p>
       <form action="/create" method="POST">
@@ -64,22 +67,10 @@
             <p>And the end date/time</p>
             <div id="dateTimePicker2" name="endDate"></div>
           </div>
-<<<<<<< HEAD
-        </div>
-        <button class="btn btn-primary addTime" type="button" value="Add">Add</button>
-      </div>
-        <!-- <div>
-            <p>Start</p><input type="datetime-local" name="startDate" value="2019-06-01T08:30">
-            <p>End</p><input type="datetime-local" name="endDate" value="2019-06-01T08:30">
-          </div> -->
-        <button class="btn btn-primary submitAll" type="submit">Submit</button>
-      </form>
-=======
-          <button class="btn btn-primary addTime" type="button" value="Add">add</button>
-          <button class="btn btn-primary submitAll" type="submit">submit</button>
+          <button class="btn btn-primary addTime" id="add" type="button" value="Add">add</button>
+          <button class="btn btn-success submitAll" id="submit" type="submit">submit</button>
         </form>
       </div>
->>>>>>> cd9945f5286f715d34f09ad093a1e35a42dcb441
     </div>
   </div>
 

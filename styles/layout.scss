@@ -6,6 +6,21 @@ body {
   background-color: $formbackground;
 }
 
+header {
+  background-color: $formbackground;
+  display: flex;
+
+    #icon {
+      display: flex;
+      font-size: 7rem;
+      padding-top: 10%;
+      padding-bottom: 5%;
+      color: whitesmoke;
+      justify-content: center;
+      align-items: center;
+    }
+}
+
 #page-layout {
   display: flex;
   justify-content: center;
@@ -20,9 +35,12 @@ body {
   font-family: 'Frank Ruhl Libre', serif;
   font-size: 1.3rem;
 
-  .fa-clock {
-    font-size: 5rem;
-    padding-top: 10%;
+  h1 {
+    padding-top: 5%;
+    justify-content: center;
+    font-size: 2.8rem;
+    align-content: center;
+    text-align: center;
     padding-bottom: 5%;
   }
 
@@ -32,6 +50,7 @@ body {
     font-size: 2.2rem;
     align-content: center;
     text-align: center;
+    padding-bottom: 5%;
   }
 
   p {
@@ -60,13 +79,13 @@ body {
 
   input {
     width: 80%;
-    background-color: lighten($formbackground, 75%);
+    background-color: lighten($formbackground, 70%);
     margin-top: 5%;
   }
 
   textarea {
     width: 80%;
-    background-color: lighten($formbackground, 75%);
+    background-color: lighten($formbackground, 70%);
     margin-top: 5%;
   }
 
@@ -80,12 +99,14 @@ body {
       padding-left: 5%;
       padding-right: 5%;
       margin-bottom: 10%;
+      background-color: lighten($formbackground, 70%);
     }
 
     #dateTimePicker2 {
       padding-left: 5%;
       padding-right: 5%;
       margin-bottom: 10%;
+      background-color: lighten($formbackground, 70%);
     }
 
     .dateTime p {
@@ -93,18 +114,46 @@ body {
   }
 }
 
+}
 
-.btn .addTime{
+
+#add .addTime {
   justify-content: center;
   align-content: center;
-  }
-
-
-
+  margin-bottom: 2.5%;
 }
+
 
 head {
   display: flex;
   flex-direction: column;
+}
 
+#attendeeURL {
+  text-align: center;
+
+    p {
+      margin-bottom: 0%;
+    }
+    button {
+      color: whitesmoke;
+    }
+}
+
+#ownerURL {
+  padding-top: 10%;
+  text-align: center;
+    p {
+      margin-bottom: 0%;
+    }
+    button {
+      color: whitesmoke;
+    }
+}
+
+.copy-button {
+  justify-content: flex-end;
+  align-content: flex-end;
+  display: inline-block;
+  align-items: flex-end;
 }

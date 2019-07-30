@@ -10,7 +10,7 @@ const dateFormatting = date => {
 
 const createInput = (startTime, endTime, num) => {
   const $input = $('<input>').attr('name', `time${num}`).val(`${startTime} + ${endTime}`).hide();
-  const $inputed = $('<p>').text(`You have chosen a time slot from ${startTime} to ${endTime} for the event!`);
+  const $inputed = $('<p>').text(`You have chosen a time slot from ${startTime} to ${endTime} for your event!`);
 
   $input.appendTo($('.dateTime'));
   $inputed.appendTo($('.dateTime'));
@@ -45,5 +45,5 @@ $(document).ready(function () {
     let endDateTime = dateFormatting(myDatepicker2.toLocaleString());
 
     createInput(startDateTime, endDateTime, numOfTimeSlots);
-  })
+  });
 });
