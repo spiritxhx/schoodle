@@ -9,7 +9,7 @@ const addEventDetails = (eventDetail, owner, times, url) => {
   const addOwnerQuery = `INSERT INTO attendees(name, email) VALUES ($1, $2)
     RETURNING *;`;
 
-  const addEventQuery = `INSERT INTO events(title, description, owner_id, owner_url, event_url) VALUES ($1, $2, $3, $4, $5)
+  const addEventQuery = `INSERT INTO events(title, description, owner_id, event_url, owner_url) VALUES ($1, $2, $3, $4, $5)
     RETURNING *;`;
 
   const addTimeQuery = `INSERT INTO date_times(start_date_time, end_date_time, event_id) VALUES ($1, $2, $3)

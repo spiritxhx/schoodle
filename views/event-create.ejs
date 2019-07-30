@@ -45,22 +45,23 @@
   <div id="page-layout">
     <div>
       <h1>Planning a New Event?</h1>
-      <div class="owner-info">
       <p>Tell me about you</p>
       <form action="/create" method="POST">
-        <input type='text' name="creatorName" placeholder='Your Name' />
-        <input type='text' name="creatorEmail" placeholder='Your Email' />
-      </div>
-      <div class="event-info">
-        <p>Tell me about your event</p>
-        <input type='text' name="eventTitle" placeholder='Choose a name for our Event' />
-        <textarea type='text' name="eventDescription" rows='4' placeholder='Let your friends know a little something about your event....'></textarea>
+        <div class="owner-info">
+          <input type='text' name="creatorName" placeholder='Your Name' />
+          <input type='text' name="creatorEmail" placeholder='Your Email' />
+        </div>
+        <div class="event-info">
+          <p>Tell me about your event</p>
+          <input type='text' name="eventTitle" placeholder='Choose a name for our Event' />
+          <textarea type='text' name="eventDescription" rows='4'
+            placeholder='Let your friends know a little something about your event....'></textarea>
         </div>
         <div class="date-select">
-        <p>Select some available dates and time</p>
-        <!-- dateTimePicker -->
-        <div class="dateTime">
-         <!-- style="width:500px;">
+          <p>Select some available dates and time</p>
+          <!-- dateTimePicker -->
+          <div class="dateTime">
+            <!-- style="width:500px;">
           <div class="d-flex"> -->
             <p>Choose the start date/time</p>
             <div id="dateTimePicker" name="startDate"></div>
@@ -69,9 +70,9 @@
           </div>
           <button class="btn btn-primary addTime" id="add" type="button" value="Add">add</button>
           <button class="btn btn-success submitAll" id="submit" type="submit">submit</button>
-        </form>
-      </div>
+      </form>
     </div>
+  </div>
   </div>
 
 </body>
