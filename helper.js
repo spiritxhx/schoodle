@@ -31,7 +31,13 @@ const dateFormatting = date => {
   ans = (dateArr[0]+':'+dateArr[1]).toString();
   return ans;
 };
+const timeFormatting = dateTime => {
+  let date = dateTime.slice(0, 10);
+  let time = dateTime.slice(11, 16);
+  return `${date} ${time}:00`
+};
+
 // exports.generateEventURLS = generateEventURLS;
 // exports.timeFormatting = timeFormatting;
 
-module.exports = {generateEventURLS, dateFormatting};
+module.exports = {generateEventURLS, timeFormatting, dateFormatting};
