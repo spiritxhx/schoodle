@@ -21,6 +21,7 @@ module.exports = () => {
           res.status(404).send('Page Not Exists!');
         }
       })
+      .catch(err => console.log(err));
   });
 
   //attendee submitted availability success page

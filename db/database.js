@@ -49,7 +49,7 @@ const addAttendeeDetails = (attendee) => {
 };
 
 const checkURL = url => {
-  const checkURLQuery = `SELECT title, description, start_date_time, end_date_time, name
+  const checkURLQuery = `SELECT title, description, start_date_time, end_date_time, name, date_times.id
   FROM events JOIN date_times on events.id=event_id
   FULL JOIN attendees on attendees.id=owner_id WHERE event_url = $1`;
   return db.query(checkURLQuery, [url])
@@ -61,7 +61,8 @@ const checkURL = url => {
 };
 
 const fetchAttendees = url => {
-  const fetchQuery = `SELECT attendees.name, start_date_time, end_date_time
+  //fetch the names and date_times of the attendees going to this event
+  const fetchQuery = `SELECT attendees.name, start_date_time, end_date_time, date_times.id
   FROM event_attendees JOIN attendees on attendees.id = attendee_id
   JOIN events on event_id = events.id
   JOIN attendee_date_times on attendees.id = attendee_id
