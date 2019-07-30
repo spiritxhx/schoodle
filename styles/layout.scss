@@ -106,33 +106,50 @@ header {
     flex-direction: column;
     align-items: center;
     padding-bottom: 10%;
+    height: 80%;
+
+    .dateTime {
+      width: 80%;
+    }
 
     #dateTimePicker {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       padding-left: 5%;
       padding-right: 5%;
       margin-bottom: 10%;
       background-color: lighten($formbackground, 70%);
+      height: 80%;
     }
 
     #dateTimePicker2 {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       padding-left: 5%;
       padding-right: 5%;
       margin-bottom: 10%;
       background-color: lighten($formbackground, 70%);
+      height: 80%;
     }
 
     .dateTime p {
         margin-bottom: 0%;
+        display: flex;
+        justify-content: center;
+        height: 80%;
   }
 }
 
 }
 
 
-#add .addTime {
+#add {
   justify-content: center;
   align-content: center;
-  margin-bottom: 2.5%;
+  margin-bottom: 5%;
+  margin-top: 5%;
 }
 
 
@@ -171,8 +188,6 @@ head {
     }
 }
 
-
-
 .copy-button {
   cursor: copy;
   font-size: 0.8rem;
@@ -192,3 +207,6 @@ head {
   color: whitesmoke;
 }
 
+.date-selection {
+  font-size: 1.1rem;
+}

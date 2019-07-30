@@ -23,21 +23,24 @@
 
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <script src="https://kit.fontawesome.com/ef0d3f5c2f.js"></script>
+  <script src="https://kit.fontawesome.com/ef0d3f5c2f.js"></script>
 
 </head>
 
 
 <body id="body">
-    <% include ./header %>
-    <div id="page-layout">
+  <% include ./header %>
+  <div id="page-layout">
     <form action="" method="GET">
-      <h2>Let <%=data[0].name %> know you're availability to attend their event <%=data[0].title %> </h2>
+      <h2>Welcome <%=data[0].name%></h2>
 
-      <div>
-        <p>Need a little more information about the event?</p><span><%=data[0].title %></span>
-        <p>says....</p><span><%=data[0].description %></span>
-      </div>
+      <h3>See the responses for your event <%=data[0].title %></h3>
+
+      <h4>Need tom make any changes?</h4>
+      <h4><%=data[0].title %></h4> <button name="modify">M</button>
+      <h4><%data[0].description%></h4> <button name="modify">M</button>
+
+
     </form>
 
     <div>
@@ -46,44 +49,13 @@
         </tr>
         <tr>
           <% for (const info of data) { %>
-          <th>From <%=info.start_date_time.toString().slice(0,21) %> To <%=info.end_date_time.toString().slice(0,21) %></th>
+          <th>From <%=info.start_date_time.toString().slice(0,21) %> To <%=info.end_date_time.toString().slice(0,21) %>
+          </th>
           <% } %>
         </tr>
       </table>
-      <button name="modify">M</button>
-      <button name="modify">M</button>
-    </div>
-    <div name="add-new-availability">
-      <p>Firstly tell us little about yourself</p>
-      <form method="POST" action="/event">
-        <input type="text" name="attendeeName" placeholder="Your Name">
-        </input>
-        <input type="text" name="attendeeEmail" placeholder="Your Email">
-        </input>
-        <button name="add-availability">Add</button>
-      </form>
-      <table>
-        table to select availability....
-      </table>
 
     </div>
-    <!--
-    <div name="modify-availability">
-      <div>
-        <p>Update your availability</p>
-        <table>
-        table to select availability....
-        </table>
-      </div>
-      <div>
-        <p>Hey<span>"name"</span>, firstly just confirm it's you by entering your email below
-        </p>
-        <form>
-          <input type="email" name="attendee-email" placeholder="Your Email">
-        </form>
-      </div>
-      <button name="submit-modification">Modify</button>
-    </div> -->
   </div>
 </body>
 
