@@ -34,13 +34,12 @@
   <script type="text/javascript" src="/scripts/app.js"></script>
   <script src="https://kit.fontawesome.com/ef0d3f5c2f.js"></script>
 
+
 </head>
 
-<header>
-  <% include ./header %>
-</header>
+<body id="body">
 
-<body>
+    <% include ./header %>
 
   <div id="page-layout">
     <div>
@@ -48,7 +47,7 @@
       <p>Tell me about you</p>
       <form action="/create" method="POST">
         <div class="owner-info">
-          <input type='text' name="creatorName" placeholder='Your Name' />
+          <input type='text' name="creatorName" placeholder='Your Name' class="input"/>
           <input type='text' name="creatorEmail" placeholder='Your Email' />
         </div>
         <div class="event-info">
