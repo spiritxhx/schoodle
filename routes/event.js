@@ -6,17 +6,21 @@ const database = require('../db/database');
 module.exports = () => {
   //new invite for the event url page
   router.get("/url/:url", (req, res) => {
-    database.checkURL(req.params.url)
-      .then(infos => {
-        if (infos) {
+    let url_infos = database.checkURL(req.params.url);
+    let fetchAttendees = database.fetchAttendees(req.params.url);
+    Promise.all([url_infos, fetchAttendees])
+      .then(values => {
+        if (values[0]) {
           let templateVars = {
-            data: infos
+            data: values[0],
+            attendees: values[1]
           }
+          console.log('templateVars: ', templateVars);
           res.render('event-invite', templateVars);
         } else {
           res.status(404).send('Page Not Exists!');
         }
-      });
+      })
   });
 
   //attendee submitted availability success page
