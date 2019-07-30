@@ -27,7 +27,7 @@ CREATE TABLE events (
 DROP TABLE IF EXISTS attendee_date_times CASCADE;
 CREATE TABLE attendee_date_times (
   date_time_id INTEGER references date_times(id) ON DELETE CASCADE,
-  attendee_id INTEGER references attendees(id) ON DELETE CASCADE
+  attendees_id INTEGER references attendees(id) ON DELETE CASCADE
 );
 
 DROP TABLE IF EXISTS event_attendees CASCADE;
