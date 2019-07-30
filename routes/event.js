@@ -5,7 +5,7 @@ const database = require('../db/database');
 
 module.exports = () => {
   //new invite for the event url page
-  router.get("/url/:url", (req, res) => {
+  router.get("/attendee/:url", (req, res) => {
     let url_infos = database.checkURL(req.params.url);
     let fetchAttendees = database.fetchAttendees(req.params.url);
     Promise.all([url_infos, fetchAttendees])
@@ -18,7 +18,25 @@ module.exports = () => {
           console.log('templateVars: ', templateVars);
           res.render('event-invite', templateVars);
         } else {
-          res.status(404).send('Page Not Exists!');
+          res.status(404).send('Error - Page Does Not Exist!');
+        }
+      })
+  });
+
+  router.get("/organiser/:url", (req, res) => {
+    let url_infos = database.checkURL(req.params.url);
+    let fetchAttendees = database.fetchAttendees(req.params.url);
+    Promise.all([url_infos, fetchAttendees])
+      .then(values => {
+        if (values[0]) {
+          let templateVars = {
+            data: values[0],
+            attendees: values[1]
+          }
+          console.log('templateVars: ', templateVars);
+          res.render('organiser-event-invite', templateVars);
+        } else {
+          res.status(404).send('Error - Page Does Not Exist!');
         }
       })
   });
