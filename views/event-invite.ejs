@@ -35,28 +35,36 @@
         <p>Need a little more information about the event?</p><span><%=data[0].title %></span>
         <p>says....</p><span><%=data[0].description %></span>
       </div>
-  </div>
-  </form>
-  <div>
-    <table>"table showing everyones availability"</table>
-    <button name="modify">M</button>
-    <button name="modify">M</button>
-  </div>
-  <div name="add-new-availability">
-    <p>Firstly tell us little about yourself</p>
-    <form method="POST" action="/event">
-      <input type="text" name="attendeeName" placeholder="Your Name">
-      </input>
-      <input type="text" name="attendeeEmail" placeholder="Your Email">
-      </input>
-      <button name="add-availability">Add</button>
     </form>
-    <table>
-      table to select availability....
-    </table>
 
-  </div>
-  <!--
+    <div>
+      <table>"table showing everyones availability"
+        <tr>
+        </tr>
+        <tr>
+          <% for (const info of data) { %>
+          <th>From <%=info.start_date_time %> To <%=info.end_date_time %></th>
+          <% } %>
+        </tr>
+      </table>
+      <button name="modify">M</button>
+      <button name="modify">M</button>
+    </div>
+    <div name="add-new-availability">
+      <p>Firstly tell us little about yourself</p>
+      <form method="POST" action="/event">
+        <input type="text" name="attendeeName" placeholder="Your Name">
+        </input>
+        <input type="text" name="attendeeEmail" placeholder="Your Email">
+        </input>
+        <button name="add-availability">Add</button>
+      </form>
+      <table>
+        table to select availability....
+      </table>
+
+    </div>
+    <!--
     <div name="modify-availability">
       <div>
         <p>Update your availability</p>
@@ -73,7 +81,7 @@
       </div>
       <button name="submit-modification">Modify</button>
     </div> -->
-
+  </div>
 </body>
 
 </html>

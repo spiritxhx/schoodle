@@ -20,13 +20,13 @@ $(document).ready(function () {
   let config = {
     target: 'dateTimePicker',
     utcTimezone: 'America/Montreal',
-    disableAmPm: true
+    future: true
   };
   let myDatepicker = new MtrDatepicker(config);
   let config2 = {
     target: 'dateTimePicker2',
     utcTimezone: 'America/Montreal',
-    disableAmPm: true
+    future: true
   };
   let myDatepicker2 = new MtrDatepicker(config2);
 
