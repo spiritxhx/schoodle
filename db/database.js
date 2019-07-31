@@ -34,21 +34,33 @@ const addEventDetails = (eventDetail, owner, times, url) => {
     });
 };
 
-
-const addAttendeeDetails = (attendee) => {
+//add attendee into the table
+const addAttendeeDetails = attendee => {
   const addAttendeeDetailsQuery = `INSERT INTO attendees(name, email) VALUES ($1, $2) RETURNING *;`;
-  const addAvailabilityQuery = `INSERT INTO attendee_date_times(date_time_id, attendee_id) VALUES ($1, $2);`;
+  const addEventAttendeeQuery = `INSERT INTO event_attendees(event_id, attendee_id) VALUES ($1, $2) RETURNING *;`;
+  const addAttendeeDateTimeQuery = `INSERT INTO attendee_date_times(date_time_id, attendees_id) VALUES ($1, $2) RETURNING *;`;
 
   return db.query(addAttendeeDetailsQuery, [attendee.name, attendee.email])
     .then(res => {
-
-      db.query(addAvailabilityQuery, [1, res.rows[0].id])
-        .catch(err => console.log(err));
+      const addTable1 = db.query(addEventAttendeeQuery, [attendee.eventId, res.rows[0].id]);
+      addTable1
+        .then(res2 => {
+          if (attendee.timeslotId.length > 1) {
+            for (const ts of attendee.timeslotId) {
+              db.query(addAttendeeDateTimeQuery, [ts, res.rows[0].id]);
+            }
+          } else {
+            db.query(addAttendeeDateTimeQuery, [attendee.timeslotId, res.rows[0].id])
+              .then(res3 => res3.rows)
+              .catch(err => console.log(err));
+          }
+        });
     });
 };
 
 const checkURL = url => {
-  const checkURLQuery = `SELECT title, description, start_date_time, end_date_time, name, date_times.id, events.event_url as eventURL
+  const checkURLQuery = `SELECT title, description, start_date_time, end_date_time, name, date_times.id,
+  events.event_url as eventURL, events.id as eventId
   FROM events JOIN date_times on events.id=event_id
   FULL JOIN attendees on attendees.id=owner_id WHERE event_url = $1`;
   return db.query(checkURLQuery, [url])
@@ -131,6 +143,7 @@ const fetchEventInfo = eventid => {
     })
     .catch(err => console.log(err));
 };
+
 
 // exports.addDateTime = addDateTime;
 exports.addEventDetails = addEventDetails;

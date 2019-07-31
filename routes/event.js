@@ -18,6 +18,7 @@ module.exports = () => {
         infos.description = values[0][0].description;
         infos.owner = values[0][0].name;
         infos.eventURL = values[0][0].eventurl;
+        infos.eventId = values[0][0].eventid;
         //time slot information contains the attendee who is available in this time slot
         let timeslots = {};
         for (const timeslot of values[0]) {
@@ -38,7 +39,7 @@ module.exports = () => {
         //the attendee names array without duplicate
         let attendeeNames = [];
         for (const attendee of values[1]) {
-          if (!attendeeNames.includes(attendee.name)){
+          if (!attendeeNames.includes(attendee.name)) {
             attendeeNames.push(attendee.name);
           }
         }
@@ -110,14 +111,19 @@ module.exports = () => {
     const attendeeInfo = {
       name: req.body.attendeeName,
       email: req.body.attendeeEmail,
-      enventURL: req.body.eventURL,
+      eventURL: req.body.eventURL,
+      eventId: req.body.eventId,
       timeslotId: req.body.timeslotId
     };
-    if (!attendeeInfo.name||!attendeeInfo.email||!attendeeInfo.timeslotId){
-      res.status(400).send('Please input all the information! (including the timeslots, your name and email)')
+    console.log(attendeeInfo);
+    if (!attendeeInfo.name || !attendeeInfo.email || !attendeeInfo.timeslotId) {
+      res.status(400).send('Please input all the information! (including the timeslots, your name and email)');
     }
-
-
+    database.addAttendeeDetails(attendeeInfo)
+      .then(res2 => {
+        let url='/event/attendee/' + attendeeInfo.eventURL;
+        res.redirect(url);
+      })
   });
 
   return router;
