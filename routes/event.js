@@ -26,12 +26,14 @@ module.exports = () => {
             timeslots[timeslot.id].start_date_time = timeslot.start_date_time;
             timeslots[timeslot.id].end_date_time = timeslot.end_date_time;
             // timeslots[timeslot.id].id = timeslot.id;
-            timeslots[timeslot.id].attendees=[];
-            for (attendee of values[1]) {
-              // console.log('attendee: ', attendee);
-              if (attendee.datetimeid === timeslot.id) {
-                if(!timeslots[timeslot.id].attendees.includes(attendee.datetimeid))
-                timeslots[timeslot.id].attendees.push(attendee.name);
+            timeslots[timeslot.id].attendees = [];
+            if (values[1]) {
+              for (attendee of values[1]) {
+                // console.log('attendee: ', attendee);
+                if (attendee.datetimeid === timeslot.id) {
+                  if (!timeslots[timeslot.id].attendees.includes(attendee.datetimeid))
+                    timeslots[timeslot.id].attendees.push(attendee.name);
+                }
               }
             }
           }
