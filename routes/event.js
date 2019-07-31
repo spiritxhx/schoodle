@@ -13,6 +13,7 @@ module.exports = () => {
     Promise.all([url_infos, fetchAttendees])
       .then(values => {
         //general event information
+        console.log('values: ', values);
         let infos = {};
         infos.title = values[0][0].title;
         infos.description = values[0][0].description;
@@ -38,9 +39,11 @@ module.exports = () => {
 
         //the attendee names array without duplicate
         let attendeeNames = [];
-        for (const attendee of values[1]) {
-          if (!attendeeNames.includes(attendee.name)) {
-            attendeeNames.push(attendee.name);
+        if (values[1]) {
+          for (const attendee of values[1]) {
+            if (!attendeeNames.includes(attendee.name)) {
+              attendeeNames.push(attendee.name);
+            }
           }
         }
         if (values[0]) {
@@ -56,28 +59,6 @@ module.exports = () => {
         }
       });
   });
-  // without table
-  // router.get("/organiser/:url", (req, res) => {
-  //   let url_infos = database.checkOwnerURL(req.params.url);
-  //   let fetchAttendees = database.fetchAttendees(req.params.url);
-  //   let fetchEventId = database.fetchEventId(req.params.url);
-  //   Promise.all([url_infos, fetchAttendees, fetchEventId])
-  //     .then(values => {
-  //       if (values[0]) {
-  //         let templateVars = {
-  //           data: values[0],
-  //           attendees: values[1],
-  //           eventid: values[2][0].id
-  //           // eventId: values[2]
-  //         };
-  //         console.log('templateVars: ', templateVars);
-  //         res.render('organiser-event-invite', templateVars);
-  //       } else {
-  //         res.status(404).send('Error - Page Does Not Exist!');
-  //       }
-  //     })
-  //     .catch(err => console.log(err));
-  // });
 
   // with table
   router.get("/organiser/:url", (req, res) => {
@@ -190,7 +171,7 @@ module.exports = () => {
   });
 
 
-  router.post("/", (req, res) => {
+  router.post("/attendee", (req, res) => {
     // console.log(req.body);
     const attendeeInfo = {
       name: req.body.attendeeName,
@@ -205,7 +186,7 @@ module.exports = () => {
     }
     database.addAttendeeDetails(attendeeInfo)
       .then(res2 => {
-        let url='/event/attendee/' + attendeeInfo.eventURL;
+        let url = '/event/attendee/' + attendeeInfo.eventURL;
         res.redirect(url);
       })
   });
