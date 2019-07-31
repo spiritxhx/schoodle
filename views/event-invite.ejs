@@ -44,8 +44,9 @@
       <table>"table showing everyones availability"
         <tr>
           <th>Attendees</th>
-          <% for (const info of data) { %>
-          <th>From <%=info.start_date_time.toString().slice(0,21) %> To <%=info.end_date_time.toString().slice(0,21) %>
+          <% for (const info in timeslots) { %>
+          <th>From <%=timeslots[info].start_date_time.toString().slice(0,21) %> To
+            <%=timeslots[info].end_date_time.toString().slice(0,21) %>
           </th>
           <% } %>
         </tr>
@@ -61,9 +62,17 @@
         <% names.push(attendee.name) %>
         <tr>
           <th><%=attendee.name %></th>
-
+          <% for (const ts in timeslots) { %>
+          <% if(timeslots[ts].attendees.includes(attendee.name)) { %>
+          <th>checked</th>
+          <% } else { %>
+          <th>not checked</th>
+          <% } %>
+          <% } %>
         </tr>
-        <% }}} %>
+        <% } %>
+        <% } %>
+        <% } %>
       </table>
       <button name="modify">M</button>
       <button name="modify">M</button>
