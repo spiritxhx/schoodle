@@ -30,7 +30,7 @@
   <div id="attendeeURL">
     <h3>Your event's unique link:</h3>
     <p>
-    <a id="attendee-url" href="http://localhost:8080/event/url/<%=eventURL%>" target="_blank">http://localhost:8080/event/url/<%=eventURL%></a>
+    <a id="attendee-url" href="http://localhost:8080/event/attendee/<%=eventURL%>" target="_blank">http://localhost:8080/event/attendee/<%=eventURL%></a>
     <button class="copy-button" onclick="copyToClipboard('#attendee-url')">Copy</button>
     </p>
     <script>
@@ -46,7 +46,7 @@
   </div>
 
   <div id="ownerURL">
-      <h3>Your unique event link:</h3><p><a id="owner-url" href="http://localhost:8080/event/<%=ownerURL%>" target="_blank">http://localhost:8080/event/<%=ownerURL%></a>
+      <h3>Your unique event link:</h3><p><a id="owner-url" href="http://localhost:8080/event/organiser/<%=ownerURL%>" target="_blank">http://localhost:8080/event/organiser<%=ownerURL%></a>
       <button class="copy-button" onclick="copyToClipboard('#owner-url')">Copy</button>
     </p>
       <script>
