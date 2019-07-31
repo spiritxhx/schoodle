@@ -166,7 +166,6 @@ module.exports = () => {
 
   });
 
-<<<<<<< HEAD
   router.post("/organiser/modifydescription", (req, res) => {
     let title = req.body['modify-description'][0];
     let eventid = req.body['eventIdVal'];
@@ -193,11 +192,7 @@ module.exports = () => {
 
   router.post("/", (req, res) => {
     // console.log(req.body);
-    const attendeeDetails = {
-=======
-  router.post("/attendee", (req, res) => {
     const attendeeInfo = {
->>>>>>> 3294ed71c10ab82aaec0ea881cfa5643f25181d9
       name: req.body.attendeeName,
       email: req.body.attendeeEmail,
       eventURL: req.body.eventURL,
