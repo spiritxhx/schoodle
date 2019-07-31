@@ -10,10 +10,36 @@ module.exports = () => {
     let fetchAttendees = database.fetchAttendees(req.params.url);
     Promise.all([url_infos, fetchAttendees])
       .then(values => {
+
+        let infos = {};
+        infos.title = values[0][0].title;
+        infos.description = values[0][0].description;
+        infos.owner = values[0][0].name;
+
+        let timeslots = {};
+        for (const timeslot of values[0]) {
+          timeslots[timeslot.id] = {};
+          timeslots[timeslot.id].start_date_time = timeslot.start_date_time;
+          timeslots[timeslot.id].end_date_time = timeslot.end_date_time;
+          // timeslots[timeslot.id].id = timeslot.id;
+          timeslots[timeslot.id].attendees = [];
+          if (values[1]) {
+            for (attendee of values[1]) {
+              // console.log('attendee: ', attendee);
+              if (attendee.datetimeid === timeslot.id) {
+                if (!timeslots[timeslot.id].attendees.includes(attendee.datetimeid))
+                  timeslots[timeslot.id].attendees.push(attendee.name);
+              }
+            }
+          }
+        }
+        console.log(timeslots);
         if (values[0]) {
           let templateVars = {
             data: values[0],
-            attendees: values[1]
+            attendees: values[1],
+            infos: infos,
+            timeslots: timeslots
           }
           // console.log('templateVars: ', templateVars);
           res.render('event-invite', templateVars);
@@ -34,6 +60,7 @@ module.exports = () => {
             data: values[0],
             attendees: values[1],
             eventid: values[2][0].id
+            // eventId: values[2]
           };
           console.log('templateVars: ', templateVars);
           res.render('organiser-event-invite', templateVars);
