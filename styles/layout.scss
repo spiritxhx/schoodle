@@ -124,7 +124,7 @@ header {
       padding-left: 5%;
       padding-right: 5%;
       margin-bottom: 10%;
-      background-color: lighten($formbackground, 70%);
+      background-color: $formbackground;
       height: 80%;
     }
 
@@ -135,7 +135,7 @@ header {
       padding-left: 5%;
       padding-right: 5%;
       margin-bottom: 10%;
-      background-color: lighten($formbackground, 70%);
+      background-color: $formbackground;
       height: 80%;
     }
 

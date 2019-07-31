@@ -17,13 +17,17 @@ const createInput = (startTime, endTime, num, oriStart, oriEnd) => {
   $input.appendTo($('.dateTime'));
   if (num === 1) {
     const $first = $('<p id="choice">').text(`You're chosen time slot:`);
-    const $firstInput = $('<p class="date-selection">').text(`${startTime} to ${endTime}`);
+    const $firstInput = $(`<p class="date-selection selection${num}">`).text(`${startTime} to ${endTime}`).hide();
     $first.appendTo($('.dateTime'));
     $firstInput.appendTo($('.dateTime'));
+    $firstInput.slideDown();
   } else {
-    const $inputed = $('<p class="date-selection">').text(`${startTime} to ${endTime}`);
+    const $inputed = $(`<p class="date-selection selection${num}">`).text(`${startTime} to ${endTime}`).hide();
     $inputed.appendTo($('.dateTime'));
+    $inputed.slideDown();
   }
+  // $(`selection${num}`).slideDown();
+
 };
 
 $(document).ready(function () {
@@ -47,8 +51,7 @@ $(document).ready(function () {
   $('.submitAll').hide();
   $('.addTime').on('click', function () {
     // let startDate = $('#dateTimePicker');
-    $('.submitAll').slideDown();
-
+    $('.submitAll').show();
     //add the numOfTimeSlots
     numOfTimeSlots++;
     let startDateTime = dateFormatting(myDatepicker.toString());
@@ -57,5 +60,6 @@ $(document).ready(function () {
     let oriEnd = timeFormatting(myDatepicker2.toISOString());
 
     createInput(startDateTime, endDateTime, numOfTimeSlots, oriStart, oriEnd);
+    // $(`.selction${numOfTimeSlots}`).slideDown();
   });
 });
