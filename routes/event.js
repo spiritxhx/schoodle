@@ -31,7 +31,7 @@ module.exports = () => {
               // console.log('attendee: ', attendee);
               if (attendee.datetimeid === timeslot.id) {
                 if(!timeslots[timeslot.id].attendees.includes(attendee.datetimeid))
-                timeslots[timeslot.id].attendees.push(attendee.attendeeid);
+                timeslots[timeslot.id].attendees.push(attendee.name);
               }
             }
           }
