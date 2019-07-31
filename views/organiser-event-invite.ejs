@@ -43,10 +43,10 @@
     <div>
       <table>
         <tr>
-          <th><i class="fas fa-users"></i></th>
+          <th id="attendee"><i class="fas fa-users"></i></th>
           <% for (const info in timeslots) { %>
-          <th><p><%=timeslots[info].start_date_time.toString().slice(0,21) %></p><p>~</p><p>
-            <%=timeslots[info].end_date_time.toString().slice(0,21) %></p>
+          <th><p><%=timeslots[info].start_date_time.toString().slice(4,21) + " " + timeslots[info].start_date_time.toString().slice(0,3)%></p><p>~</p><p>
+            <%=timeslots[info].end_date_time.toString().slice(4,21) + " " + timeslots[info].end_date_time.toString().slice(0,3) %></p>
           </th>
           <% } %>
         </tr>
