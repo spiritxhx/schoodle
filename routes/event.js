@@ -65,7 +65,8 @@ module.exports = () => {
           let templateVars = {
             data: values[0],
             attendees: values[1],
-            eventId: values[2]
+            eventid: values[2][0].id
+            // eventId: values[2]
           };
           console.log('templateVars: ', templateVars);
           res.render('organiser-event-invite', templateVars);
@@ -83,30 +84,29 @@ module.exports = () => {
 
   router.post("/modifyname", (req, res) => {
     let title = req.body['modify-name'][0];
-    // let url = req.params.url;
-    console.log("FUCKKKKKK");
+    let eventid = req.body['eventIdVal'];
 
-    database.updateEventTitle(title);
+    database.updateEventTitle(title, eventid)
+      .then(res2 => {
+        let fetchEventInfo = database.fetchEventInfo(eventid);
+        let fetchAttendees = database.fetchAttendeesByEventId(eventid);
+        Promise.all([fetchEventInfo, fetchAttendees])
+          .then(values => {
+            let templateVars = {
+              data: values[0],
+              attendees: values[1],
+              eventid: eventid
+            };
+            console.log('data: ', values[0]);
+            res.render('organiser-event-invite', templateVars);
+          })
+          .catch(err => console.log(err));
+      });
 
-    let urlInfo = database.checkOwnerURL(req.params.url);
-    let fetchAttendees = database.fetchAttendees(req.params.url);
-    Promise.all([urlInfo, fetchAttendees])
-      .then(values => {
-        if (values[0]) {
-          let templateVars = {
-            data: values[0],
-            attendees: values[1]
-          };
-          res.render('organiser-event-invite', templateVars);
-        } else {
-          res.status(404).send('Error - Page Does Not Exist!');
-        }
-      })
-      .catch(err => console.log(err));
   });
 
   router.post("/", (req, res) => {
-    console.log(req.body);
+    // console.log(req.body);
     const attendeeDetails = {
       name: req.body.attendeeName,
       email: req.body.attendeeEmail,
