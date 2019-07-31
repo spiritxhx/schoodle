@@ -36,62 +36,63 @@
 
       <h2>Welcome <%=data[0].name%></h2>
 
-      <h3>See the responses for your event <%=data[0].title %></h3>
+      <h3>See the responses for your event</h3><h3><%=data[0].title %></h3>
 
     </form>
 
+    <div>
+      <table>
+        <tr>
+          <th><i class="fas fa-users"></i></th>
+          <% for (const info in timeslots) { %>
+          <th><p><%=timeslots[info].start_date_time.toString().slice(0,21) %></p><p>~</p><p>
+            <%=timeslots[info].end_date_time.toString().slice(0,21) %></p>
+          </th>
+          <% } %>
+        </tr>
+        <% let names=[] %>
+        <% if (attendees.length === 0) { %>
+        <tr><p class="no-attendees">
+          No one has added their availability just yet!</p>
+        </tr>
+        <%} else {%>
+        <% for (const attendeeName of attendees) { %>
+        <tr>
+          <th><%=attendeeName %></th>
+          <% for (const ts in timeslots) { %>
+          <% if(timeslots[ts].attendees.includes(attendeeName)) { %>
+          <th><i class="far fa-check-circle"></i></th>
+          <% } else { %>
+          <th><i class="far fa-times-circle"></i></th>
+          <% } %>
+          <% } %>
+        </tr>
+        <% } %>
+        <% } %>
+      </table>
+    </div>
+
+    <div class="modify-event">
+      <p>Need to make a change to your event?</p>
+
+      <form action="/event/organiser/modifyname" method="POST">
+        <input type="text" name="modify-name" class="validate" id="name" value="<%=data[0].title%>">
+
+        <button name="modify-name" type="submit"><i class="fas fa-pencil-alt"></i></button>
+
+        <input name="eventIdVal" type="hidden" value=<%=eventid%>>
+      </form>
+
+      <form action="/event/organiser/modifydescription" method="POST">
+        <textarea name="modify-description" id="description"
+          value="<%=data[0].description%>"><%=data[0].description%></textarea>
+
+        <button name="modify-description" type="submit"><i class="fas fa-pencil-alt"></i></button>
+
+        <input name="eventIdVal" type="hidden" value=<%=eventid%>>
+      </form>
+    </div>
   </div>
-
-  <div>
-    <table>"table showing everyones availability"
-      <tr>
-        <th>Attendees</th>
-        <% for (const info in timeslots) { %>
-        <th>From <%=timeslots[info].start_date_time.toString().slice(0,21) %> To
-          <%=timeslots[info].end_date_time.toString().slice(0,21) %>
-        </th>
-        <% } %>
-      </tr>
-      <% let names=[] %>
-      <% if (! attendees) { %>
-      <tr>
-        No one accepted yet! :(
-      </tr>
-      <%} else {%>
-      <% for (const attendeeName of attendees) { %>
-      <tr>
-        <th><%=attendeeName %></th>
-        <% for (const ts in timeslots) { %>
-        <% if(timeslots[ts].attendees.includes(attendeeName)) { %>
-        <th>available</th>
-        <% } else { %>
-        <th>not available</th>
-        <% } %>
-        <% } %>
-      </tr>
-      <% } %>
-      <% } %>
-    </table>
-  </div>
-
-  <h4>Need to make a change to your event?</h4>
-
-  <form action="/event/organiser/modifyname" method="POST">
-    <input type="text" name="modify-name" class="validate" id="name" value="<%=data[0].title%>">
-
-    <button name="modify-name" type="submit">Modify</button>
-
-    <input name="eventIdVal" type="hidden" value=<%=eventid%>>
-  </form>
-
-  <form action="/event/organiser/modifydescription" method="POST">
-    <textarea name="modify-description" id="description"
-      value="<%=data[0].description%>"><%=data[0].description%></textarea>
-
-    <button name="modify-description" type="submit">Modify</button>
-
-    <input name="eventIdVal" type="hidden" value=<%=eventid%>>
-  </form>
 
 </body>
 
