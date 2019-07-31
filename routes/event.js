@@ -13,7 +13,6 @@ module.exports = () => {
     Promise.all([url_infos, fetchAttendees])
       .then(values => {
         //general event information
-        console.log('values: ', values);
         let infos = {};
         infos.title = values[0][0].title;
         infos.description = values[0][0].description;
@@ -110,7 +109,6 @@ module.exports = () => {
             timeslots: timeslots,
             eventid: values[2][0].id
           };
-          console.log('templateVars: ', templateVars);
           res.render('organiser-event-invite', templateVars);
         } else {
           res.status(404).send('Error - Page Does Not Exist!');

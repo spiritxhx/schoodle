@@ -9,6 +9,8 @@
   <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
 
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
@@ -20,10 +22,9 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
     integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
     crossorigin="anonymous"></script>
-
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <script src="https://kit.fontawesome.com/ef0d3f5c2f.js"></script>
+  <!-- jQuery file to handle the button click event -->
+  <script type="text/javascript" src="/scripts/new-invite.js"></script>
 
 </head>
 
@@ -50,7 +51,6 @@
           </th>
           <% } %>
         </tr>
-        <% let names=[] %>
         <% if (! attendees) { %>
         <tr>
           No one accepted yet! :(
@@ -70,16 +70,16 @@
         <% } %>
         <% } %>
       </table>
-      <button name="modify">M</button>
-      <button name="modify">M</button>
+      <button class="updateBtn">Update Your Availability</button>
+      <button class="addBtn">Add Your Availability</button>
     </div>
     <div name="add-new-availability">
-      <p>Firstly tell us little about yourself</p>
-      <form method="POST" action="/event/attendee">
+      <form method="POST" action="/event/attendee" class="addAttendee">
+        <p>Firstly tell us little about yourself</p>
         <input type="text" name="attendeeName" placeholder="Your Name">
         <input type="text" name="attendeeEmail" placeholder="Your Email">
-        <input type="hidden" name="eventURL" value=<%=infos.eventURL %> >
-        <input type="hidden" name="eventId" value=<%=infos.eventId %> >
+        <input type="hidden" name="eventURL" value=<%=infos.eventURL %>>
+        <input type="hidden" name="eventId" value=<%=infos.eventId %>>
         <br>
         <table>
           table to select availability....
@@ -93,12 +93,39 @@
           <tr>
             <% for (const tsid in timeslots) { %>
             <th>
-              <input type="checkbox" name="timeslotId" value=<%=tsid %> >
+              <input type="checkbox" name="timeslotId" value=<%=tsid %>>
             </th>
             <% } %>
           </tr>
         </table>
-        <button name="add-availability">Submit</button>
+        <button>Submit</button>
+      </form>
+      <!-- the form will show up when user click the update button -->
+      <form method="POST" action="/event/attendee" class="updateAttendee">
+        <p>Please Confirm Your Name And Email</p>
+        <input type="text" name="attendeeName" placeholder="Your Name">
+        <input type="text" name="attendeeEmail" placeholder="Your Email">
+        <input type="hidden" name="eventURL" value=<%=infos.eventURL %>>
+        <input type="hidden" name="eventId" value=<%=infos.eventId %>>
+        <br>
+        <table>
+          table to select availability....
+          <tr>
+            <% for (const info in timeslots) { %>
+            <th>From <%=timeslots[info].start_date_time.toString().slice(0,21) %> To
+              <%=timeslots[info].end_date_time.toString().slice(0,21) %>
+            </th>
+            <% } %>
+          </tr>
+          <tr>
+            <% for (const tsid in timeslots) { %>
+            <th>
+              <input type="checkbox" name="timeslotId" value=<%=tsid %>>
+            </th>
+            <% } %>
+          </tr>
+        </table>
+        <button>Comfirm</button>
       </form>
     </div>
   </div>
