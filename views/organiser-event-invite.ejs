@@ -31,31 +31,42 @@
 <body id="body">
   <% include ./header %>
   <div id="page-layout">
+
     <form action="" method="GET">
+
       <h2>Welcome <%=data[0].name%></h2>
 
       <h3>See the responses for your event <%=data[0].title %></h3>
 
-      <h4>Need to make a change to your event?</h4>
-      <h4><%=data[0].title %></h4> <button name="modify">M</button>
-      <h4><%data[0].description%></h4> <button name="modify">M</button>
-
-
+      <div>
+        <table>"table showing everyones availability"
+          <tr>
+          </tr>
+          <tr>
+            <% for (const info of data) { %>
+            <th>From <%=info.start_date_time.toString().slice(0,21) %> To
+              <%=info.end_date_time.toString().slice(0,21) %>
+            </th>
+            <% } %>
+          </tr>
+        </table>
     </form>
 
-    <div>
-      <table>"table showing everyones availability"
-        <tr>
-        </tr>
-        <tr>
-          <% for (const info of data) { %>
-          <th>From <%=info.start_date_time.toString().slice(0,21) %> To <%=info.end_date_time.toString().slice(0,21) %>
-          </th>
-          <% } %>
-        </tr>
-      </table>
+  </div>
+  <form action="/event/modifyname" method="POST">
+    <h4>Need to make a change to your event?</h4>
+    <h4><%=data[0].title %></h4>
+    <input type='text' name="modify-name" placeholder=<%=data[0].title %> />
+    <button name="modify-name" type="submit">M</button>
 
-    </div>
+    <h4><%=data[0].description%></h4>
+    <input type='text' name="modify-description" placeholder=<%=data[0].description %>
+    <button name="modify-description"type="submit">M</button>
+
+    <input type="hidden" name="eventId" value=<%=data[0].id%>>
+
+  </form>
+
   </div>
 </body>
 
