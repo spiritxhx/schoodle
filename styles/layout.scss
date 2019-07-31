@@ -67,6 +67,11 @@ header {
     padding-bottom: 5%;
   }
 
+  h3 {
+    font-size: 1.8;
+    text-align: center;
+  }
+
   p {
     display: flex;
     flex-direction: column;
@@ -209,4 +214,78 @@ head {
 
 .date-selection {
   font-size: 1.1rem;
+}
+
+.modify-event {
+  display: flex;
+  flex-direction: column;
+  padding-top: 10%;
+  padding-bottom: 10%;
+  align-items: center;
+  justify-content: center;
+
+  p{
+    margin-bottom: 0%;
+  }
+
+  button {
+    font-size: 10px;
+  }
+
+  #name {
+    background-color: #1F4562;
+    border: none;
+    font-style: inherit;
+    color: whitesmoke;
+    overflow: scroll;
+  }
+
+  #name:focus {
+    outline: none !important;
+  }
+
+
+  #description {
+    background-color: #1F4562;
+    border: none;
+    font-style: inherit;
+    color: whitesmoke;
+    overflow: scroll;
+    resize: none;
+  }
+
+  #description:focus {
+    outline: none !important;
+  }
+
+}
+
+table {
+  font-size: 1rem;
+  color: #082540;
+  background-color: #698Eb1;
+  // background-color: #4F81B1;
+  table-layout: fixed;
+  text-align: center;
+  margin-top: 5%;
+
+  p {
+    margin: 0;
+  }
+
+  tr {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+
+  th {
+    padding-top: 5px;
+  }
+  i:before {
+    font-size: 1.6rem;
+    color: whitesmoke;
+    }
+    i.fa-users:before {
+      color: #082540;
+    }
 }
