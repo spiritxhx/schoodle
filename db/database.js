@@ -48,7 +48,7 @@ const addAttendeeDetails = (attendee) => {
 };
 
 const checkURL = url => {
-  const checkURLQuery = `SELECT title, description, start_date_time, end_date_time, name, date_times.id
+  const checkURLQuery = `SELECT title, description, start_date_time, end_date_time, name, date_times.id, events.event_url as eventURL
   FROM events JOIN date_times on events.id=event_id
   FULL JOIN attendees on attendees.id=owner_id WHERE event_url = $1`;
   return db.query(checkURLQuery, [url])
@@ -80,7 +80,7 @@ const fetchAttendees = url => {
   WHERE event_url = $1 AND attendees.id=attendee_date_times.attendees_id`;
   return db.query(fetchQuery, [url])
     .then(res => {
-      console.log('res.rows2: ', res.rows);
+      // console.log('res.rows2: ', res.rows);
       return res.rows.length ? res.rows : undefined;
     })
     .catch(err => console.log(err));

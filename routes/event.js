@@ -5,18 +5,19 @@ const database = require('../db/database');
 
 module.exports = () => {
   //new invite for the event url page
+  //contains all the information of the events
+  //and including the table of availability
   router.get("/attendee/:url", (req, res) => {
     let url_infos = database.checkURL(req.params.url);
     let fetchAttendees = database.fetchAttendees(req.params.url);
     Promise.all([url_infos, fetchAttendees])
       .then(values => {
-
         //general event information
         let infos = {};
         infos.title = values[0][0].title;
         infos.description = values[0][0].description;
         infos.owner = values[0][0].name;
-
+        infos.eventURL = values[0][0].eventurl;
         //time slot information contains the attendee who is available in this time slot
         let timeslots = {};
         for (const timeslot of values[0]) {
@@ -105,18 +106,18 @@ module.exports = () => {
 
   });
 
-  router.post("/", (req, res) => {
-    // console.log(req.body);
-    const attendeeDetails = {
+  router.post("/attendee", (req, res) => {
+    const attendeeInfo = {
       name: req.body.attendeeName,
       email: req.body.attendeeEmail,
+      enventURL: req.body.eventURL,
+      timeslotId: req.body.timeslotId
     };
+    if (!attendeeInfo.name||!attendeeInfo.email||!attendeeInfo.timeslotId){
+      res.status(400).send('Please input all the information! (including the timeslots, your name and email)')
+    }
 
-    // let availabilitySelection = {
 
-    // };
-    database.addAttendeeDetails(attendeeDetails);
-    res.redirect('/event/success');
   });
 
   return router;
