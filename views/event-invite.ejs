@@ -56,21 +56,17 @@
           No one accepted yet! :(
         </tr>
         <%} else {%>
-
-        <% for (const attendee of attendees) { %>
-        <% if (!names.includes(attendee.name)) {%>
-        <% names.push(attendee.name) %>
+        <% for (const attendeeName of attendees) { %>
         <tr>
-          <th><%=attendee.name %></th>
+          <th><%=attendeeName %></th>
           <% for (const ts in timeslots) { %>
-          <% if(timeslots[ts].attendees.includes(attendee.name)) { %>
-          <th>checked</th>
+          <% if(timeslots[ts].attendees.includes(attendeeName)) { %>
+          <th>available</th>
           <% } else { %>
-          <th>not checked</th>
+          <th>not available</th>
           <% } %>
           <% } %>
         </tr>
-        <% } %>
         <% } %>
         <% } %>
       </table>
@@ -88,6 +84,11 @@
       </form>
       <table>
         table to select availability....
+        <% for (const info in timeslots) { %>
+        <th>From <%=timeslots[info].start_date_time.toString().slice(0,21) %> To
+          <%=timeslots[info].end_date_time.toString().slice(0,21) %>
+        </th>
+        <% } %>
       </table>
 
     </div>

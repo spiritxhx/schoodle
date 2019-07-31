@@ -33,11 +33,16 @@ module.exports = () => {
             }
           }
         }
-        console.log(timeslots);
+        let attendeeNames = [];
+        for (const attendee of values[1]) {
+          if (!attendeeNames.includes(attendee.name)){
+            attendeeNames.push(attendee.name);
+          }
+        }
         if (values[0]) {
           let templateVars = {
             data: values[0],
-            attendees: values[1],
+            attendees: attendeeNames,
             infos: infos,
             timeslots: timeslots
           }
