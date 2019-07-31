@@ -34,13 +34,15 @@ $(document).ready(function () {
   let config = {
     target: 'dateTimePicker',
     utcTimezone: 'America/Montreal',
-    future: true
+    future: true,
+    smartHours: true
   };
   let myDatepicker = new MtrDatepicker(config);
   let config2 = {
     target: 'dateTimePicker2',
     utcTimezone: 'America/Montreal',
-    future: true
+    future: true,
+    smartHours: true
   };
   let myDatepicker2 = new MtrDatepicker(config2);
 
