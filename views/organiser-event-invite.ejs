@@ -39,7 +39,7 @@
       <h3>See the responses for your event <%=data[0].title %></h3>
 
       <div>
-        <table>"table showing everyones availability"
+        <!-- <table>"table showing everyones availability"
           <tr>
           </tr>
           <tr>
@@ -49,7 +49,7 @@
             </th>
             <% } %>
           </tr>
-        </table>
+        </table> -->
     </form>
 
   </div>
@@ -63,7 +63,7 @@
     <input type='text' name="modify-description" placeholder=<%=data[0].description %>
     <button name="modify-description"type="submit">M</button>
 
-    <input type="hidden" name="eventId" value=<%=data[0].id%>>
+    <input name="eventIdVal" value=<%=eventid%> >
 
   </form>
 
