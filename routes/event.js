@@ -102,6 +102,7 @@ module.exports = () => {
         }
         if (values[0]) {
           let templateVars = {
+            data: values[0],
             attendees: attendeeNames,
             infos: infos,
             timeslots: timeslots,
