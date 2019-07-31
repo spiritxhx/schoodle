@@ -37,7 +37,7 @@ module.exports = () => {
         //the attendee names array without duplicate
         let attendeeNames = [];
         for (const attendee of values[1]) {
-          if (!attendeeNames.includes(attendee.name)){
+          if (!attendeeNames.includes(attendee.name)) {
             attendeeNames.push(attendee.name);
           }
         }
@@ -52,9 +52,32 @@ module.exports = () => {
         } else {
           res.status(404).send('Error - Page Does Not Exist!');
         }
-      })
+      });
   });
+  // without table
+  // router.get("/organiser/:url", (req, res) => {
+  //   let url_infos = database.checkOwnerURL(req.params.url);
+  //   let fetchAttendees = database.fetchAttendees(req.params.url);
+  //   let fetchEventId = database.fetchEventId(req.params.url);
+  //   Promise.all([url_infos, fetchAttendees, fetchEventId])
+  //     .then(values => {
+  //       if (values[0]) {
+  //         let templateVars = {
+  //           data: values[0],
+  //           attendees: values[1],
+  //           eventid: values[2][0].id
+  //           // eventId: values[2]
+  //         };
+  //         console.log('templateVars: ', templateVars);
+  //         res.render('organiser-event-invite', templateVars);
+  //       } else {
+  //         res.status(404).send('Error - Page Does Not Exist!');
+  //       }
+  //     })
+  //     .catch(err => console.log(err));
+  // });
 
+  // with table
   router.get("/organiser/:url", (req, res) => {
     let url_infos = database.checkOwnerURL(req.params.url);
     let fetchAttendees = database.fetchAttendees(req.params.url);
@@ -82,7 +105,7 @@ module.exports = () => {
     res.render('event-invite-availability-submitted');
   });
 
-  router.post("/modifyname", (req, res) => {
+  router.post("/organiser/modifyname", (req, res) => {
     let title = req.body['modify-name'][0];
     let eventid = req.body['eventIdVal'];
 
@@ -104,6 +127,30 @@ module.exports = () => {
       });
 
   });
+
+  router.post("/organiser/modifydescription", (req, res) => {
+    let title = req.body['modify-description'][0];
+    let eventid = req.body['eventIdVal'];
+
+    database.updateEventDescription(title, eventid)
+      .then(res2 => {
+        let fetchEventInfo = database.fetchEventInfo(eventid);
+        let fetchAttendees = database.fetchAttendeesByEventId(eventid);
+        Promise.all([fetchEventInfo, fetchAttendees])
+          .then(values => {
+            let templateVars = {
+              data: values[0],
+              attendees: values[1],
+              eventid: eventid
+            };
+            console.log('data: ', values[0]);
+            res.render('organiser-event-invite', templateVars);
+          })
+          .catch(err => console.log(err));
+      });
+
+  });
+
 
   router.post("/", (req, res) => {
     // console.log(req.body);

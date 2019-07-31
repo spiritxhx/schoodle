@@ -120,6 +120,15 @@ const updateEventTitle = (title, eventid) => {
     .catch(err => console.log(err));
 };
 
+const updateEventDescription = (title, eventid) => {
+  let updateQuery = `UPDATE events SET description = $1 WHERE id = $2;`;
+  return db.query(updateQuery, [title, eventid])
+    .then(res => {
+      return res.rows;
+    })
+    .catch(err => console.log(err));
+};
+
 const fetchEventInfo = eventid => {
   const fetchEventInfoQuery = `SELECT title, description, owner_url, start_date_time, end_date_time, name, date_times.id, events.id
   FROM events JOIN date_times on events.id=event_id
@@ -139,6 +148,7 @@ exports.checkURL = checkURL;
 exports.fetchAttendees = fetchAttendees;
 exports.checkOwnerURL = checkOwnerURL;
 exports.updateEventTitle = updateEventTitle;
+exports.updateEventDescription = updateEventDescription;
 exports.fetchEventId = fetchEventId;
 exports.fetchEventInfo = fetchEventInfo;
 exports.fetchAttendeesByEventId = fetchAttendeesByEventId;
