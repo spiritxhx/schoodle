@@ -55,11 +55,32 @@ const addAttendeeDetails = attendee => {
     });
 };
 
-const deleteAttendeeDetails = attendee => {
-  const deleteQuery = `DELETE FROM attendee_date_times WHERE attendees_name=$1 AND attendees_email=$2`;
+const updateAttendeeDetails = attendee => {
+  const deleteQuery = `DELETE FROM attendee_date_times
+  WHERE attendees_id IN (SELECT attendees.id
+  FROM attendees
+  WHERE attendees.name=$1 AND attendees.email=$2);`;
+  const getAttendeeIdQuery = `SELECT attendees.id FROM attendees
+  WHERE attendees.name=$1 AND attendees.email=$2;`;
+  const addAttendeeDateTimeQuery = `INSERT INTO attendee_date_times(date_time_id, attendees_id) VALUES ($1, $2) RETURNING *;`;
+  //delete information in date_time_attendee with the attendee first
   return db.query(deleteQuery, [attendee.name, attendee.email])
-    .then(res => res.rows)
-    .catch(err => console.log(err));
+    .then(res => {
+      db.query(getAttendeeIdQuery, [attendee.name, attendee.email])
+        .then(res2 => {
+          console.log('res2.rows[0]: ', res2.rows[0]);
+          if (attendee.timeslotId.length > 1) {
+            for (const ts of attendee.timeslotId) {
+              db.query(addAttendeeDateTimeQuery, [ts, res2.rows[0].id]);
+            }
+          } else {
+            db.query(addAttendeeDateTimeQuery, [attendee.timeslotId, res2.rows[0].id])
+              .then(res3 => res3.rows)
+              .catch(err => console.log(err));
+          }
+        })
+        .catch(err => console.log(err));
+    });
 };
 
 const checkURL = url => {
@@ -176,7 +197,7 @@ const fetchEventInfo = eventid => {
 // exports.addDateTime = addDateTime;
 exports.addEventDetails = addEventDetails;
 exports.addAttendeeDetails = addAttendeeDetails;
-exports.deleteAttendeeDetails = deleteAttendeeDetails;
+exports.updateAttendeeDetails = updateAttendeeDetails;
 exports.checkURL = checkURL;
 exports.fetchAttendees = fetchAttendees;
 exports.checkOwnerURL = checkOwnerURL;

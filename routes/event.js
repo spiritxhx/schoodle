@@ -196,6 +196,12 @@ module.exports = () => {
       timeslotId: req.body.timeslotId
     };
     console.log("attendeeInfo: ", attendeeInfo);
+    database.updateAttendeeDetails(attendeeInfo)
+      .then(res2 => {
+        let url = '/event/attendee/' + attendeeInfo.eventURL;
+        res.redirect(url);
+      })
+      .catch(err => console.log(err));
   });
 
   return router;
