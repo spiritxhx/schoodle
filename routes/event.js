@@ -38,9 +38,11 @@ module.exports = () => {
 
         //the attendee names array without duplicate
         let attendeeNames = [];
-        for (const attendee of values[1]) {
-          if (!attendeeNames.includes(attendee.name)) {
-            attendeeNames.push(attendee.name);
+        if (values[1]) {
+          for (const attendee of values[1]) {
+            if (!attendeeNames.includes(attendee.name)) {
+              attendeeNames.push(attendee.name);
+            }
           }
         }
         if (values[0]) {
@@ -56,28 +58,6 @@ module.exports = () => {
         }
       });
   });
-  // without table
-  // router.get("/organiser/:url", (req, res) => {
-  //   let url_infos = database.checkOwnerURL(req.params.url);
-  //   let fetchAttendees = database.fetchAttendees(req.params.url);
-  //   let fetchEventId = database.fetchEventId(req.params.url);
-  //   Promise.all([url_infos, fetchAttendees, fetchEventId])
-  //     .then(values => {
-  //       if (values[0]) {
-  //         let templateVars = {
-  //           data: values[0],
-  //           attendees: values[1],
-  //           eventid: values[2][0].id
-  //           // eventId: values[2]
-  //         };
-  //         console.log('templateVars: ', templateVars);
-  //         res.render('organiser-event-invite', templateVars);
-  //       } else {
-  //         res.status(404).send('Error - Page Does Not Exist!');
-  //       }
-  //     })
-  //     .catch(err => console.log(err));
-  // });
 
   // with table
   router.get("/organiser/:url", (req, res) => {
@@ -120,16 +100,13 @@ module.exports = () => {
             }
           }
         }
-
         if (values[0]) {
           let templateVars = {
-            data: values[0],
             attendees: attendeeNames,
             infos: infos,
             timeslots: timeslots,
             eventid: values[2][0].id
           };
-          console.log('templateVars: ', templateVars);
           res.render('organiser-event-invite', templateVars);
         } else {
           res.status(404).send('Error - Page Does Not Exist!');
@@ -190,7 +167,7 @@ module.exports = () => {
   });
 
 
-  router.post("/", (req, res) => {
+  router.post("/attendee", (req, res) => {
     // console.log(req.body);
     const attendeeInfo = {
       name: req.body.attendeeName,
@@ -199,15 +176,32 @@ module.exports = () => {
       eventId: req.body.eventId,
       timeslotId: req.body.timeslotId
     };
-    console.log(attendeeInfo);
     if (!attendeeInfo.name || !attendeeInfo.email || !attendeeInfo.timeslotId) {
       res.status(400).send('Please input all the information! (including the timeslots, your name and email)');
     }
     database.addAttendeeDetails(attendeeInfo)
       .then(res2 => {
-        let url='/event/attendee/' + attendeeInfo.eventURL;
+        let url = '/event/attendee/' + attendeeInfo.eventURL;
         res.redirect(url);
       })
+  });
+
+  //the update attendee availability function
+  router.post("/attendee/update", (req, res) => {
+    const attendeeInfo = {
+      name: req.body.attendeeName,
+      email: req.body.attendeeEmail,
+      eventURL: req.body.eventURL,
+      eventId: req.body.eventId,
+      timeslotId: req.body.timeslotId
+    };
+    console.log("attendeeInfo: ", attendeeInfo);
+    database.updateAttendeeDetails(attendeeInfo)
+      .then(res2 => {
+        let url = '/event/attendee/' + attendeeInfo.eventURL;
+        res.redirect(url);
+      })
+      .catch(err => console.log(err));
   });
 
   return router;

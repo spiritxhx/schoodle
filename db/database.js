@@ -8,13 +8,10 @@ const addEventDetails = (eventDetail, owner, times, url) => {
 
   const addOwnerQuery = `INSERT INTO attendees(name, email) VALUES ($1, $2)
     RETURNING *;`;
-
   const addEventQuery = `INSERT INTO events(title, description, owner_id, event_url, owner_url) VALUES ($1, $2, $3, $4, $5)
     RETURNING *;`;
-
   const addTimeQuery = `INSERT INTO date_times(start_date_time, end_date_time, event_id) VALUES ($1, $2, $3)
     RETURNING *;`;
-
   return db.query(addOwnerQuery, [owner.name, owner.email])
     .then(res => {
 
@@ -55,6 +52,34 @@ const addAttendeeDetails = attendee => {
               .catch(err => console.log(err));
           }
         });
+    });
+};
+
+const updateAttendeeDetails = attendee => {
+  const deleteQuery = `DELETE FROM attendee_date_times
+  WHERE attendees_id IN (SELECT attendees.id
+  FROM attendees
+  WHERE attendees.name=$1 AND attendees.email=$2);`;
+  const getAttendeeIdQuery = `SELECT attendees.id FROM attendees
+  WHERE attendees.name=$1 AND attendees.email=$2;`;
+  const addAttendeeDateTimeQuery = `INSERT INTO attendee_date_times(date_time_id, attendees_id) VALUES ($1, $2) RETURNING *;`;
+  //delete information in date_time_attendee with the attendee first
+  return db.query(deleteQuery, [attendee.name, attendee.email])
+    .then(res => {
+      db.query(getAttendeeIdQuery, [attendee.name, attendee.email])
+        .then(res2 => {
+          console.log('res2.rows[0]: ', res2.rows[0]);
+          if (attendee.timeslotId.length > 1) {
+            for (const ts of attendee.timeslotId) {
+              db.query(addAttendeeDateTimeQuery, [ts, res2.rows[0].id]);
+            }
+          } else {
+            db.query(addAttendeeDateTimeQuery, [attendee.timeslotId, res2.rows[0].id])
+              .then(res3 => res3.rows)
+              .catch(err => console.log(err));
+          }
+        })
+        .catch(err => console.log(err));
     });
 };
 
@@ -172,6 +197,7 @@ const fetchEventInfo = eventid => {
 // exports.addDateTime = addDateTime;
 exports.addEventDetails = addEventDetails;
 exports.addAttendeeDetails = addAttendeeDetails;
+exports.updateAttendeeDetails = updateAttendeeDetails;
 exports.checkURL = checkURL;
 exports.fetchAttendees = fetchAttendees;
 exports.checkOwnerURL = checkOwnerURL;
