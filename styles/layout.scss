@@ -3,9 +3,20 @@
 
 $formbackground: #1F4562;
 
+$screen-md-min: 768px;
+
+// @mixin md {
+//   @media (min-width: #{$screen-md-min}) {
+//       @content;
+//   }
+// }
+
 #body {
   background-color: $formbackground;
   padding-bottom: 10%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }
 
 header {
@@ -41,14 +52,21 @@ header {
   justify-content: center;
   flex-direction: column;
   background-color: #1F4562;
-  width: 100%;
-  padding-left: 10%;
-  padding-right: 10%;
   align-items: center;
-
+  width: 100%;
+  padding-left: 5%;
+  padding-right: 5%;
   color: whitesmoke;
   font-family: 'Frank Ruhl Libre', serif;
   font-size: 1.3rem;
+
+  @media (min-width: 768px) {
+    width: 60%;
+      margin-left: 20%;
+      margin-right: 20%;
+      padding-left: 0%;
+      padding-right: 0%;
+  }
 
   h1 {
     padding-top: 5%;
@@ -265,10 +283,11 @@ table {
   font-size: 1rem;
   color: #082540;
   background-color: #698Eb1;
-  // background-color: #4F81B1;
   table-layout: fixed;
   text-align: center;
   margin-top: 5%;
+  border: 5px;
+  vertical-align: top;
 
   p {
     margin: 0;
@@ -277,11 +296,21 @@ table {
   tr {
     padding-left: 5px;
     padding-right: 5px;
+    border: 5px;
   }
 
   th {
     padding-top: 5px;
+    max-width: 120px;
+    padding-left: 5px;
   }
+
+  #attendee {
+    max-width: 150px;
+    min-width: 100px;
+  }
+
+
   i:before {
     font-size: 1.6rem;
     color: whitesmoke;
@@ -294,3 +323,5 @@ table {
 .no-attendees {
   padding-top: 10%;
 }
+
+
