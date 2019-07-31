@@ -8,13 +8,10 @@ const addEventDetails = (eventDetail, owner, times, url) => {
 
   const addOwnerQuery = `INSERT INTO attendees(name, email) VALUES ($1, $2)
     RETURNING *;`;
-
   const addEventQuery = `INSERT INTO events(title, description, owner_id, event_url, owner_url) VALUES ($1, $2, $3, $4, $5)
     RETURNING *;`;
-
   const addTimeQuery = `INSERT INTO date_times(start_date_time, end_date_time, event_id) VALUES ($1, $2, $3)
     RETURNING *;`;
-
   return db.query(addOwnerQuery, [owner.name, owner.email])
     .then(res => {
 
@@ -56,6 +53,13 @@ const addAttendeeDetails = attendee => {
           }
         });
     });
+};
+
+const deleteAttendeeDetails = attendee => {
+  const deleteQuery = `DELETE FROM attendee_date_times WHERE attendees_name=$1 AND attendees_email=$2`;
+  return db.query(deleteQuery, [attendee.name, attendee.email])
+    .then(res => res.rows)
+    .catch(err => console.log(err));
 };
 
 const checkURL = url => {
@@ -172,6 +176,7 @@ const fetchEventInfo = eventid => {
 // exports.addDateTime = addDateTime;
 exports.addEventDetails = addEventDetails;
 exports.addAttendeeDetails = addAttendeeDetails;
+exports.deleteAttendeeDetails = deleteAttendeeDetails;
 exports.checkURL = checkURL;
 exports.fetchAttendees = fetchAttendees;
 exports.checkOwnerURL = checkOwnerURL;

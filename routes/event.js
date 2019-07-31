@@ -100,10 +100,8 @@ module.exports = () => {
             }
           }
         }
-
         if (values[0]) {
           let templateVars = {
-            data: values[0],
             attendees: attendeeNames,
             infos: infos,
             timeslots: timeslots,
@@ -178,7 +176,6 @@ module.exports = () => {
       eventId: req.body.eventId,
       timeslotId: req.body.timeslotId
     };
-    console.log(attendeeInfo);
     if (!attendeeInfo.name || !attendeeInfo.email || !attendeeInfo.timeslotId) {
       res.status(400).send('Please input all the information! (including the timeslots, your name and email)');
     }
@@ -187,6 +184,18 @@ module.exports = () => {
         let url = '/event/attendee/' + attendeeInfo.eventURL;
         res.redirect(url);
       })
+  });
+
+  //the update attendee availability function
+  router.post("/attendee/update", (req, res) => {
+    const attendeeInfo = {
+      name: req.body.attendeeName,
+      email: req.body.attendeeEmail,
+      eventURL: req.body.eventURL,
+      eventId: req.body.eventId,
+      timeslotId: req.body.timeslotId
+    };
+    console.log("attendeeInfo: ", attendeeInfo);
   });
 
   return router;
