@@ -60,6 +60,18 @@ const checkURL = url => {
     .catch(err => console.log(err));
 };
 
+const checkOwnerURL = url => {
+  const checkURLQuery = `SELECT title, description, start_date_time, end_date_time, name, date_times.id
+  FROM events JOIN date_times on events.id=event_id
+  FULL JOIN attendees on attendees.id=owner_id WHERE owner_url = $1`;
+  return db.query(checkURLQuery, [url])
+    .then(res => {
+      // console.log('res.rows: ', res.rows);
+      return res.rows.length ? res.rows : undefined;
+    })
+    .catch(err => console.log(err));
+};
+
 const fetchAttendees = url => {
   //fetch the names and date_times of the attendees going to this event
   const fetchQuery = `SELECT attendees.name, start_date_time, end_date_time, date_times.id
@@ -76,8 +88,29 @@ const fetchAttendees = url => {
     .catch(err => console.log(err));
 };
 
+const fetchEventId = url => {
+  const eventIdQuery = `SELECT id FROM events WHERE owner_url = $1;`;
+  return db.query(eventIdQuery, [url])
+    .then(res => {
+      return res.rows;
+    })
+    .catch(err => console.log(err));
+};
+
+const updateEventTitle = (title, url) => {
+  let updateQuery = `UPDATE events SET title = $1 WHERE owner_url = $2;`;
+  return db.query(updateQuery, [title, url])
+    .then(res => {
+      return res.rows;
+    })
+    .catch(err => console.log(err));
+};
+
 // exports.addDateTime = addDateTime;
 exports.addEventDetails = addEventDetails;
 exports.addAttendeeDetails = addAttendeeDetails;
 exports.checkURL = checkURL;
 exports.fetchAttendees = fetchAttendees;
+exports.checkOwnerURL = checkOwnerURL;
+exports.updateEventTitle = updateEventTitle;
+exports.fetchEventId = fetchEventId;
