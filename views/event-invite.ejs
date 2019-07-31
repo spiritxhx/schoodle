@@ -32,11 +32,11 @@
   <% include ./header %>
   <div id="page-layout">
     <form action="" method="GET">
-      <h2>Let <%=data[0].name %> know you're availability to attend their event <%=data[0].title %> </h2>
+      <h2>Let <%=infos.owner %> know you're availability to attend their event <%=infos.title %> </h2>
 
       <div>
-        <p>Need a little more information about the event?</p><span><%=data[0].title %></span>
-        <p>says....</p><span><%=data[0].description %></span>
+        <p>Need a little more information about the event?</p><span><%=infos.title %></span>
+        <p>says....</p><span><%=infos.description %></span>
       </div>
     </form>
 
@@ -84,31 +84,23 @@
       </form>
       <table>
         table to select availability....
-        <% for (const info in timeslots) { %>
-        <th>From <%=timeslots[info].start_date_time.toString().slice(0,21) %> To
-          <%=timeslots[info].end_date_time.toString().slice(0,21) %>
-        </th>
-        <% } %>
+        <tr>
+          <% for (const info in timeslots) { %>
+          <th>From <%=timeslots[info].start_date_time.toString().slice(0,21) %> To
+            <%=timeslots[info].end_date_time.toString().slice(0,21) %>
+          </th>
+          <% } %>
+        </tr>
+        <tr>
+          <% for (const info in timeslots) { %>
+          <th>
+            <input type="checkbox" >
+          </th>
+          <% } %>
+        </tr>
       </table>
 
     </div>
-    <!--
-    <div name="modify-availability">
-      <div>
-        <p>Update your availability</p>
-        <table>
-        table to select availability....
-        </table>
-      </div>
-      <div>
-        <p>Hey<span>"name"</span>, firstly just confirm it's you by entering your email below
-        </p>
-        <form>
-          <input type="email" name="attendee-email" placeholder="Your Email">
-        </form>
-      </div>
-      <button name="submit-modification">Modify</button>
-    </div> -->
   </div>
 </body>
 

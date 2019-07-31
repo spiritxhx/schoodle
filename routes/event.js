@@ -11,21 +11,21 @@ module.exports = () => {
     Promise.all([url_infos, fetchAttendees])
       .then(values => {
 
+        //general event information
         let infos = {};
         infos.title = values[0][0].title;
         infos.description = values[0][0].description;
         infos.owner = values[0][0].name;
 
+        //time slot information contains the attendee who is available in this time slot
         let timeslots = {};
         for (const timeslot of values[0]) {
           timeslots[timeslot.id] = {};
           timeslots[timeslot.id].start_date_time = timeslot.start_date_time;
           timeslots[timeslot.id].end_date_time = timeslot.end_date_time;
-          // timeslots[timeslot.id].id = timeslot.id;
           timeslots[timeslot.id].attendees = [];
           if (values[1]) {
             for (attendee of values[1]) {
-              // console.log('attendee: ', attendee);
               if (attendee.datetimeid === timeslot.id) {
                 if (!timeslots[timeslot.id].attendees.includes(attendee.datetimeid))
                   timeslots[timeslot.id].attendees.push(attendee.name);
@@ -33,6 +33,8 @@ module.exports = () => {
             }
           }
         }
+
+        //the attendee names array without duplicate
         let attendeeNames = [];
         for (const attendee of values[1]) {
           if (!attendeeNames.includes(attendee.name)){
@@ -41,7 +43,6 @@ module.exports = () => {
         }
         if (values[0]) {
           let templateVars = {
-            data: values[0],
             attendees: attendeeNames,
             infos: infos,
             timeslots: timeslots
