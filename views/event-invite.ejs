@@ -55,7 +55,7 @@
         <%} else {%>
         <% for (const attendeeName of attendees) { %>
         <tr>
-          <th><%=attendeeName %></th>
+          <th class="text-capitalize"><%=attendeeName %></th>
           <% for (const ts in timeslots) { %>
           <% if(timeslots[ts].attendees.includes(attendeeName)) { %>
           <th>available</th>
@@ -118,7 +118,8 @@
           <tr>
             <% for (const tsid in timeslots) { %>
             <th>
-              <input type="checkbox" name="timeslotId" value=<%=tsid %>>
+              <input type="checkbox" name="timeslotId" value=<%=tsid %> id=<%=tsid %> >
+              <label for=<%=tsid %></label>
             </th>
             <% } %>
           </tr>

@@ -1,7 +1,7 @@
 
-INSERT INTO attendees (name, email) VALUES ('Bob Martin', 'bob.martin@gmail.com');
-INSERT INTO attendees (name, email) VALUES ('Sally Francis', 'sally.francis@hotmail.com');
-INSERT INTO attendees (name, email) VALUES ('BOB', 'BOB@ME');
+INSERT INTO attendees (name, email) VALUES ('bob martin', 'bob.martin@gmail.com');
+INSERT INTO attendees (name, email) VALUES ('sally francis', 'sally.francis@hotmail.com');
+INSERT INTO attendees (name, email) VALUES ('bob', 'bob@me');
 
 INSERT INTO events (owner_id, title, description, owner_url, event_url) VALUES (1, 'Sunday Brunch', 'Let''s go for brunch', 'ownerurl1', 'eventurl1');
 INSERT INTO events (owner_id, title, description, owner_url, event_url) VALUES (2, 'My birthday Family Dinner', 'Dinner at my house for my birthday', 'ownerurl2', 'eventurl2');

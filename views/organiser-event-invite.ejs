@@ -34,7 +34,7 @@
 
     <form action="" method="GET">
 
-      <h2>Welcome <%=data[0].name%></h2>
+      <h2>Welcome <span class="text-capitalize"><%=data[0].name%></span></h2>
 
       <h3>See the responses for your event</h3><h3><%=data[0].title %></h3>
 
@@ -50,7 +50,6 @@
           </th>
           <% } %>
         </tr>
-        <% let names=[] %>
         <% if (attendees.length === 0) { %>
         <tr><p class="no-attendees">
           No one has added their availability just yet!</p>
@@ -58,7 +57,7 @@
         <%} else {%>
         <% for (const attendeeName of attendees) { %>
         <tr>
-          <th><%=attendeeName %></th>
+          <th class="text-capitalize"><%=attendeeName %></th>
           <% for (const ts in timeslots) { %>
           <% if(timeslots[ts].attendees.includes(attendeeName)) { %>
           <th><i class="far fa-check-circle"></i></th>

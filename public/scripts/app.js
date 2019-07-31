@@ -47,7 +47,7 @@ $(document).ready(function () {
   $('.submitAll').hide();
   $('.addTime').on('click', function () {
     // let startDate = $('#dateTimePicker');
-    $('.submitAll').show();
+    $('.submitAll').slideDown();
 
     //add the numOfTimeSlots
     numOfTimeSlots++;
