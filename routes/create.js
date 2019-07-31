@@ -17,8 +17,8 @@ module.exports = () => {
     // console.log(req.body);
     //get the input name and email
     const creator = {
-      name: req.body.creatorName,
-      email: req.body.creatorEmail,
+      name: req.body.creatorName.toLowerCase(),
+      email: req.body.creatorEmail.toLowerCase(),
     };
 
     //get the input event title and description

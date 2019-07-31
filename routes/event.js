@@ -170,8 +170,8 @@ module.exports = () => {
   router.post("/attendee", (req, res) => {
     // console.log(req.body);
     const attendeeInfo = {
-      name: req.body.attendeeName,
-      email: req.body.attendeeEmail,
+      name: req.body.attendeeName.toLowerCase(),
+      email: req.body.attendeeEmail.toLowerCase(),
       eventURL: req.body.eventURL,
       eventId: req.body.eventId,
       timeslotId: req.body.timeslotId
@@ -189,8 +189,8 @@ module.exports = () => {
   //the update attendee availability function
   router.post("/attendee/update", (req, res) => {
     const attendeeInfo = {
-      name: req.body.attendeeName,
-      email: req.body.attendeeEmail,
+      name: req.body.attendeeName.toLowerCase(),
+      email: req.body.attendeeEmail.toLowerCase(),
       eventURL: req.body.eventURL,
       eventId: req.body.eventId,
       timeslotId: req.body.timeslotId
