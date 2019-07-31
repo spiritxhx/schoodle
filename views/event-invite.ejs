@@ -75,31 +75,31 @@
     </div>
     <div name="add-new-availability">
       <p>Firstly tell us little about yourself</p>
-      <form method="POST" action="/event">
+      <form method="POST" action="/event/attendee">
         <input type="text" name="attendeeName" placeholder="Your Name">
-        </input>
         <input type="text" name="attendeeEmail" placeholder="Your Email">
-        </input>
-        <button name="add-availability">Add</button>
+        <input type="hidden" name="eventURL" value=<%=infos.eventURL %> >
+        <input type="hidden" name="eventId" value=<%=infos.eventId %> >
+        <br>
+        <table>
+          table to select availability....
+          <tr>
+            <% for (const info in timeslots) { %>
+            <th>From <%=timeslots[info].start_date_time.toString().slice(0,21) %> To
+              <%=timeslots[info].end_date_time.toString().slice(0,21) %>
+            </th>
+            <% } %>
+          </tr>
+          <tr>
+            <% for (const tsid in timeslots) { %>
+            <th>
+              <input type="checkbox" name="timeslotId" value=<%=tsid %> >
+            </th>
+            <% } %>
+          </tr>
+        </table>
+        <button name="add-availability">Submit</button>
       </form>
-      <table>
-        table to select availability....
-        <tr>
-          <% for (const info in timeslots) { %>
-          <th>From <%=timeslots[info].start_date_time.toString().slice(0,21) %> To
-            <%=timeslots[info].end_date_time.toString().slice(0,21) %>
-          </th>
-          <% } %>
-        </tr>
-        <tr>
-          <% for (const info in timeslots) { %>
-          <th>
-            <input type="checkbox" >
-          </th>
-          <% } %>
-        </tr>
-      </table>
-
     </div>
   </div>
 </body>

@@ -5,18 +5,20 @@ const database = require('../db/database');
 
 module.exports = () => {
   //new invite for the event url page
+  //contains all the information of the events
+  //and including the table of availability
   router.get("/attendee/:url", (req, res) => {
     let url_infos = database.checkURL(req.params.url);
     let fetchAttendees = database.fetchAttendees(req.params.url);
     Promise.all([url_infos, fetchAttendees])
       .then(values => {
-
         //general event information
         let infos = {};
         infos.title = values[0][0].title;
         infos.description = values[0][0].description;
         infos.owner = values[0][0].name;
-
+        infos.eventURL = values[0][0].eventurl;
+        infos.eventId = values[0][0].eventid;
         //time slot information contains the attendee who is available in this time slot
         let timeslots = {};
         for (const timeslot of values[0]) {
@@ -164,6 +166,7 @@ module.exports = () => {
 
   });
 
+<<<<<<< HEAD
   router.post("/organiser/modifydescription", (req, res) => {
     let title = req.body['modify-description'][0];
     let eventid = req.body['eventIdVal'];
@@ -191,15 +194,25 @@ module.exports = () => {
   router.post("/", (req, res) => {
     // console.log(req.body);
     const attendeeDetails = {
+=======
+  router.post("/attendee", (req, res) => {
+    const attendeeInfo = {
+>>>>>>> 3294ed71c10ab82aaec0ea881cfa5643f25181d9
       name: req.body.attendeeName,
       email: req.body.attendeeEmail,
+      eventURL: req.body.eventURL,
+      eventId: req.body.eventId,
+      timeslotId: req.body.timeslotId
     };
-
-    // let availabilitySelection = {
-
-    // };
-    database.addAttendeeDetails(attendeeDetails);
-    res.redirect('/event/success');
+    console.log(attendeeInfo);
+    if (!attendeeInfo.name || !attendeeInfo.email || !attendeeInfo.timeslotId) {
+      res.status(400).send('Please input all the information! (including the timeslots, your name and email)');
+    }
+    database.addAttendeeDetails(attendeeInfo)
+      .then(res2 => {
+        let url='/event/attendee/' + attendeeInfo.eventURL;
+        res.redirect(url);
+      })
   });
 
   return router;
