@@ -51,9 +51,9 @@
           <% } %>
         </tr>
         <% let names=[] %>
-        <% if (! attendees) { %>
-        <tr>
-          No one accepted yet! :(
+        <% if (attendees.length === 0) { %>
+        <tr><p class="no-attendees">
+          No one has added their availability just yet!</p>
         </tr>
         <%} else {%>
         <% for (const attendeeName of attendees) { %>
