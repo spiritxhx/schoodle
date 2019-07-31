@@ -38,20 +38,40 @@
 
       <h3>See the responses for your event <%=data[0].title %></h3>
 
-      <div>
-        <!-- <table>"table showing everyones availability"
-          <tr>
-          </tr>
-          <tr>
-            <% for (const info of data) { %>
-            <th>From <%=info.start_date_time.toString().slice(0,21) %> To
-              <%=info.end_date_time.toString().slice(0,21) %>
-            </th>
-            <% } %>
-          </tr>
-        </table> -->
     </form>
 
+  </div>
+
+  <div>
+    <table>"table showing everyones availability"
+      <tr>
+        <th>Attendees</th>
+        <% for (const info in timeslots) { %>
+        <th>From <%=timeslots[info].start_date_time.toString().slice(0,21) %> To
+          <%=timeslots[info].end_date_time.toString().slice(0,21) %>
+        </th>
+        <% } %>
+      </tr>
+      <% let names=[] %>
+      <% if (! attendees) { %>
+      <tr>
+        No one accepted yet! :(
+      </tr>
+      <%} else {%>
+      <% for (const attendeeName of attendees) { %>
+      <tr>
+        <th><%=attendeeName %></th>
+        <% for (const ts in timeslots) { %>
+        <% if(timeslots[ts].attendees.includes(attendeeName)) { %>
+        <th>available</th>
+        <% } else { %>
+        <th>not available</th>
+        <% } %>
+        <% } %>
+      </tr>
+      <% } %>
+      <% } %>
+    </table>
   </div>
 
   <h4>Need to make a change to your event?</h4>

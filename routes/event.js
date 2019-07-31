@@ -80,16 +80,52 @@ module.exports = () => {
   // with table
   router.get("/organiser/:url", (req, res) => {
     let url_infos = database.checkOwnerURL(req.params.url);
-    let fetchAttendees = database.fetchAttendees(req.params.url);
+    let fetchAttendees = database.fetchAttendeesForOwner(req.params.url);
     let fetchEventId = database.fetchEventId(req.params.url);
     Promise.all([url_infos, fetchAttendees, fetchEventId])
       .then(values => {
+        // console.log("VALUES", values);
+        //general event information
+        let infos = {};
+        infos.title = values[0][0].title;
+        infos.description = values[0][0].description;
+        infos.owner = values[0][0].name;
+
+        //time slot information contains the attendee who is available in this time slot
+        let timeslots = {};
+        for (const timeslot of values[0]) {
+          console.log('timeslot: ', timeslot);
+          timeslots[timeslot.id] = {};
+          timeslots[timeslot.id].start_date_time = timeslot.start_date_time;
+          timeslots[timeslot.id].end_date_time = timeslot.end_date_time;
+          timeslots[timeslot.id].attendees = [];
+          if (values[1]) {
+            for (let attendee of values[1]) {
+              if (attendee.datetimeid === timeslot.id) {
+                if (!timeslots[timeslot.id].attendees.includes(attendee.datetimeid))
+                  timeslots[timeslot.id].attendees.push(attendee.name);
+              }
+            }
+          }
+        }
+
+        //the attendee names array without duplicate
+        let attendeeNames = [];
+        if (values[1]) {
+          for (const attendee of values[1]) {
+            if (!attendeeNames.includes(attendee.name)) {
+              attendeeNames.push(attendee.name);
+            }
+          }
+        }
+
         if (values[0]) {
           let templateVars = {
             data: values[0],
-            attendees: values[1],
+            attendees: attendeeNames,
+            infos: infos,
+            timeslots: timeslots,
             eventid: values[2][0].id
-            // eventId: values[2]
           };
           console.log('templateVars: ', templateVars);
           res.render('organiser-event-invite', templateVars);
