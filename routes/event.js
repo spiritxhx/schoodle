@@ -175,7 +175,8 @@ module.exports = () => {
       email: req.body.attendeeEmail.toLowerCase(),
       eventURL: req.body.eventURL,
       eventId: req.body.eventId,
-      timeslotId: req.body.timeslotId
+      timeslotId: req.body.timeslotId,
+      eventOwner: req.body.owner
     };
     if (!attendeeInfo.name || !attendeeInfo.email || !attendeeInfo.timeslotId) {
       res.status(400).send('Please input all the information! (including the timeslots, your name and email)');
@@ -183,7 +184,7 @@ module.exports = () => {
     database.addAttendeeDetails(attendeeInfo)
       .then(res2 => {
         let url = '/event/attendee/' + attendeeInfo.eventURL;
-        res.redirect(url);
+        res.render('event-invite-availability-submitted', attendeeInfo);
       })
   });
 
@@ -194,13 +195,14 @@ module.exports = () => {
       email: req.body.attendeeEmail.toLowerCase(),
       eventURL: req.body.eventURL,
       eventId: req.body.eventId,
-      timeslotId: req.body.timeslotId
+      timeslotId: req.body.timeslotId,
+      eventOwner: req.body.owner
     };
-    console.log("attendeeInfo: ", attendeeInfo);
+    // console.log("attendeeInfo: ", attendeeInfo);
     database.updateAttendeeDetails(attendeeInfo)
       .then(res2 => {
         let url = '/event/attendee/' + attendeeInfo.eventURL;
-        res.redirect(url);
+        res.render('event-invite-availability-submitted', attendeeInfo);
       })
       .catch(err => console.log(err));
   });
