@@ -1,5 +1,4 @@
 // See: https://sass-lang.com/
-@import "someStuff";
 
 $background: #1f4562;
 $creme: #cca773;
@@ -55,68 +54,109 @@ header {
   font-size: 1.3rem;
 }
 
-  h1 {
-    padding-top: 5%;
-    justify-content: center;
-    font-size: 2.8rem;
-    align-content: center;
-    text-align: center;
-    padding-bottom: 5%;
+h1 {
+  padding-top: 5%;
+  justify-content: center;
+  font-size: 2.8rem;
+  align-content: center;
+  text-align: center;
+  padding-bottom: 5%;
+}
+
+h2 {
+  padding-top: 5%;
+  justify-content: center;
+  font-size: 2.2rem;
+  align-content: center;
+  text-align: center;
+  padding-bottom: 5%;
+}
+
+h3 {
+  font-size: 1.8;
+  text-align: center;
+}
+
+p {
+  display: flex;
+  flex-direction: column;
+  display: block;
+  text-align: center;
+}
+
+.create-div {
+  width: 100%;
+}
+
+.owner-info {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 10%;
+  align-items: center;
+  justify-content: center;
+}
+
+.event-info {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding-bottom: 10%;
+}
+
+input {
+  background-color: lighten($background, 70%);
+  margin-top: 5%;
+  width: 100%;
+}
+
+textarea {
+  background-color: lighten($background, 70%);
+  margin-top: 5%;
+  width: 100%;
+}
+
+.date-select {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 10%;
+  height: 80%;
+
+  .dateTime {
+    width: 80%;
   }
 
-  h2 {
-    padding-top: 5%;
-    justify-content: center;
-    font-size: 2.2rem;
-    align-content: center;
-    text-align: center;
-    padding-bottom: 5%;
-  }
-
-  h3 {
-    font-size: 1.8;
-    text-align: center;
-  }
-
-  p {
+  #dateTimePicker {
     display: flex;
     flex-direction: column;
-    display: block;
-    text-align: center;
-  }
-
-  .create-div {
-    width: 100%;
-  }
-
-  .owner-info {
-    display: flex;
-    flex-direction: column;
-    padding-bottom: 10%;
     align-items: center;
-    justify-content: center;
+    padding-left: 5%;
+    padding-right: 5%;
+    margin-bottom: 10%;
+    background-color: $background;
+    height: 80%;
   }
 
-  .event-info {
+  #dateTimePicker2 {
     display: flex;
-    align-items: center;
     flex-direction: column;
-    padding-bottom: 10%;
+    align-items: center;
+    padding-left: 5%;
+    padding-right: 5%;
+    margin-bottom: 10%;
+    background-color: $background;
+    height: 80%;
   }
 
-  input {
-    background-color: lighten($background, 70%);
-    margin-top: 5%;
-    width: 100%;
+  .mtr-default-value {
+    background: $lightblue !important;
+  }
+  .mtr-default-value-name {
+    background: $lightblue !important;
   }
 
-  textarea {
-    background-color: lighten($background, 70%);
-    margin-top: 5%;
-    width: 100%;
-  }
-
-  .date-select {
+  .dateTime p {
+    margin-bottom: 0%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -163,15 +203,11 @@ header {
       height: 80%;
     }
   }
+}
 
-  #add {
-    justify-content: center;
-    align-content: center;
-    margin-bottom: 5%;
-    margin-top: 5%;
-  }
-
-
-
-
-
+#add {
+  justify-content: center;
+  align-content: center;
+  margin-bottom: 5%;
+  margin-top: 5%;
+}
