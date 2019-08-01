@@ -1,12 +1,59 @@
 // See: https://sass-lang.com/
+@import "someStuff";
 
-$background: #1F4562;
-$creme:#CCA773;
-$darktext:#082540;
-$lightblue:#4F81B1;
-$formbackground:#698EB1;
+$background: #1f4562;
+$creme: #cca773;
+$darktext: #082540;
+$lightblue: #4f81b1;
+$formbackground: #698eb1;
 
-$screen-md: 768px;
+#body {
+  background-color: $background;
+  padding-bottom: 5%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+header {
+  background-color: $background;
+  display: flex;
+  border: $background solid 2px;
+  margin: 0;
+  padding: 0;
+  padding-top: 10%;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+
+  div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    margin: 0;
+    height: 100%;
+  }
+
+  #icon::before {
+    width: 10%;
+    font-size: 7rem;
+    color: whitesmoke;
+  }
+}
+
+#page-layout {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  background-color: $background;
+  align-items: center;
+  width: 100%;
+  padding: 5%;
+  color: whitesmoke;
+  font-family: "Frank Ruhl Libre", serif;
+  font-size: 1.3rem;
+}
 
   h1 {
     padding-top: 5%;
@@ -38,141 +85,9 @@ $screen-md: 768px;
     text-align: center;
   }
 
-  .owner-info {
-    display: flex;
-    flex-direction: column;
-    padding-bottom: 10%;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .event-info {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    padding-bottom: 10%;
-  }
-
-  input {
-    width: 80%;
-    background-color: lighten($background, 70%);
-    margin-top: 5%;
-  }
-
-  textarea {
-    width: 80%;
-    background-color: lighten($background, 70%);
-    margin-top: 5%;
-  }
-
-  .date-select {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-bottom: 10%;
-    height: 80%;
-
-    .dateTime {
-      width: 80%;
-    }
-
-    #dateTimePicker {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding-left: 5%;
-      padding-right: 5%;
-      margin-bottom: 10%;
-      background-color: lighten($background, 70%);
-      height: 80%;
-    }
-
-    #dateTimePicker2 {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding-left: 5%;
-      padding-right: 5%;
-      margin-bottom: 10%;
-      background-color: lighten($background, 70%);
-      height: 80%;
-    }
-
-    .dateTime p {
-        margin-bottom: 0%;
-        display: flex;
-        justify-content: center;
-        height: 80%;
-  }
-}
-
-}
-
-
-#add {
-  justify-content: center;
-  align-content: center;
-  margin-bottom: 5%;
-  margin-top: 5%;
-}
-
-
 head {
   display: flex;
   flex-direction: column;
-}
-
-#attendeeURL {
-  text-align: center;
-    div {
-      padding-top: 3%;
-    }
-    p {
-      display: flex;
-      flex-direction: column;
-    }
-    h3 {
-      font-size: 1.4rem;
-    }
-}
-
-#ownerURL {
-  padding-top: 10%;
-  text-align: center;
-  cursor: pointer;
-    div {
-      padding-top: 3%;
-    }
-    p {
-      display: flex;
-      flex-direction: column;
-    }
-    h3 {
-      font-size: 1.4rem;
-    }
-}
-
-.copy-button {
-  cursor: copy;
-  font-size: 0.8rem;
-  padding: 0;
-  border: none;
-  border-radius: 5px;
-  padding-left: 2px;
-  padding-right: 2px;
-  align-self: flex-end;
-}
-
-#attendee-url {
-  color: whitesmoke;
-}
-
-#owner-url {
-  color: whitesmoke;
-}
-
-.date-selection {
-  font-size: 1.1rem;
 }
 
 .modify-event {
@@ -183,7 +98,7 @@ head {
   align-items: center;
   justify-content: center;
 
-  p{
+  p {
     margin-bottom: 0%;
   }
 
@@ -197,7 +112,7 @@ head {
   }
 
   #name {
-    background-color: #1F4562;
+    background-color: #1f4562;
     border: none;
     font-style: inherit;
     color: whitesmoke;
@@ -207,7 +122,6 @@ head {
   #name:focus {
     outline: none !important;
   }
-
 
   #description {
     background-color: $background;
@@ -221,10 +135,49 @@ head {
   #description:focus {
     outline: none !important;
   }
-
 }
 
+table {
+  font-size: 1rem;
+  color: $darktext;
+  background-color: $formbackground;
+  table-layout: fixed;
+  text-align: center;
+  margin-top: 5%;
+  border: 5px;
+  vertical-align: top;
 
+  p {
+    margin: 0;
+  }
 
+  tr {
+    padding-left: 5px;
+    padding-right: 5px;
+    border: 5px;
+  }
 
+  th {
+    padding-top: 5px;
+    max-width: 120px;
+    padding-left: 5px;
+    // border-right: solid 5px #1F4562;
+  }
 
+  #attendee {
+    max-width: 150px;
+    min-width: 100px;
+  }
+
+  i:before {
+    font-size: 1.6rem;
+    color: whitesmoke;
+  }
+  i.fa-users:before {
+    color: $darktext;
+  }
+}
+
+.no-attendees {
+  padding-top: 10%;
+}

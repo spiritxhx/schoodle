@@ -6,7 +6,9 @@
 
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
   <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
-  <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+  <!-- <link rel="stylesheet" href="/styles/layout.css" type="text/css" /> -->
+  <link rel="stylesheet" href="/styles/event-create-success.css" type="text/css"/>
+
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
@@ -47,7 +49,6 @@
         <div>Send the link to all your guests to check their availability</div>
       </div>
 
-<<<<<<< HEAD
   <div id="ownerURL">
       <h3>Your unique event link:</h3><p><a id="owner-url" href="http://localhost:8080/event/organiser/<%=ownerURL%>" target="_blank">http://localhost:8080/event/organiser/<%=ownerURL%></a>
       <button class="copy-button" onclick="copyToClipboard('#owner-url')">Copy</button>
@@ -63,25 +64,6 @@
       </script>
       <div>Don't share this link! Use it to make any changes to your event</div>
       <div>Save the links before you leave or refresh this page!!</div>
-=======
-      <div id="ownerURL">
-        <h3>Your unique event link:</h3>
-        <p><a id="owner-url" href="http://localhost:8080/event/organiser/<%=ownerURL%>"
-            target="_blank">http://localhost:8080/event/organiser/<%=ownerURL%></a>
-          <button class="copy-button" onclick="copyToClipboard('#owner-url')">Copy</button>
-        </p>
-        <script>
-          function copyToClipboard(element) {
-            var $temp = $("<input>");
-            $("body").append($temp);
-            $temp.val($(element).text()).select();
-            document.execCommand("copy");
-            $temp.remove();
-          }
-        </script>
-        <div>Don't share this link! Use it to make any changes to your event</div>
-      </div>
->>>>>>> organiser-page
     </div>
   </div>
 </body>

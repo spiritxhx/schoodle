@@ -7,8 +7,6 @@ $darktext: #082540;
 $lightblue: #4f81b1;
 $formbackground: #698eb1;
 
-$screen-md: 768px;
-
 #body {
   background-color: $background;
   padding-bottom: 5%;
@@ -55,14 +53,7 @@ header {
   color: whitesmoke;
   font-family: "Frank Ruhl Libre", serif;
   font-size: 1.3rem;
-
-  @media (max-width: 768px) {
-    width: 60%;
-    margin-left: 20%;
-    margin-right: 20%;
-    padding-left: 0%;
-    padding-right: 0%;
-  }
+}
 
   h1 {
     padding-top: 5%;
@@ -161,7 +152,6 @@ header {
       height: 80%;
     }
   }
-}
 
 #add {
   justify-content: center;
