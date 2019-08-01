@@ -26,6 +26,8 @@ module.exports = () => {
           timeslots[timeslot.id].start_date_time = timeslot.start_date_time;
           timeslots[timeslot.id].end_date_time = timeslot.end_date_time;
           timeslots[timeslot.id].attendees = [];
+          console.log('timeslot.start_date_time: ', timeslot.start_date_time);
+          console.log('timeslot.start_date_time.toString(): ', timeslot.start_date_time.toString());
           if (values[1]) {
             for (attendee of values[1]) {
               if (attendee.datetimeid === timeslot.id) {

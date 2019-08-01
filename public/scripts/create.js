@@ -59,8 +59,8 @@ $(document).ready(function () {
       $('.submitAll').show();
       let startDateTime = dateFormatting(myDatepicker.toString());
       let endDateTime = dateFormatting(myDatepicker2.toString());
-      let oriStart = timeFormatting(myDatepicker.toISOString());
-      let oriEnd = timeFormatting(myDatepicker2.toISOString());
+      let oriStart = (myDatepicker.toISOString());
+      let oriEnd = (myDatepicker2.toISOString());
 
       createInput(startDateTime, endDateTime, numOfTimeSlots, oriStart, oriEnd);
     } else {
