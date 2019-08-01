@@ -57,6 +57,9 @@ header {
 
 form {
   width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
 }
 
 h1 {
@@ -89,9 +92,11 @@ p {
   text-align: center;
 }
 
-head {
+#head {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .modify-event {
@@ -103,7 +108,7 @@ head {
   justify-content: center;
 
   p {
-    margin-bottom: 0%;
+    margin-bottom: 5%;
   }
 
   i:before {
@@ -115,12 +120,24 @@ head {
     font-size: 10px;
   }
 
+ #name-btn {
+   margin-top: 10px;
+   margin-left: 10px;
+ }
+
+ #description-btn {
+  margin-top: 18px;
+  margin-left: 10px;
+}
+
   #name {
-    background-color: #1f4562;
+    background-color: whitesmoke;
     border: none;
     font-style: inherit;
-    color: whitesmoke;
+    color: $darktext;
     overflow: scroll;
+    height: 45px;
+    width: 500px;
   }
 
   #name:focus {
@@ -131,9 +148,12 @@ head {
     background-color: $background;
     border: none;
     font-style: inherit;
-    color: whitesmoke;
+    color: $darktext;
+    background-color: whitesmoke;
     overflow: scroll;
     resize: none;
+    margin-top: 10px;
+    width: 500px;
   }
 
   #description:focus {
@@ -153,9 +173,9 @@ table.center {
   vertical-align: top;
 
 
-  // p {
-  //   margin: 0%;
-  // }
+  p {
+    margin: 0%;
+  }
 
   tr {
     padding-left: 5px;
@@ -166,9 +186,18 @@ table.center {
   th {
     padding-top: 5px;
     max-width: 120px;
-    padding-left: 5px;
-    // border-right: solid 5px #1F4562;
+    border-right: solid 5px #1F4562;
   }
+
+  .break {
+    margin: 0px;
+    padding: 0px;
+  }
+
+  .from-time {
+    border-bottom: solid 5px #1F4562;
+  }
+
 
   #attendee {
     max-width: 150px;
@@ -188,7 +217,7 @@ table.center {
   padding-top: 10%;
 }
 
-@media only screen and (max-width: 639px) {
+@media only screen and (max-width: 1080px) {
   .organiser-page {
     width: 90%;
   }
@@ -197,9 +226,23 @@ table.center {
     margin-top: 15%;
   }
 
+  #body {
+    font-size: 50px;
+  }
+
+  h1 {
+    margin-bottom: 10%;
+  }
+  #form {
+    margin-top: 15%;
+  }
+
+  .modify-event {
+    padding-top: 0%;
+  }
 }
 
-@media only screen and (min-width: 640px) {
+@media only screen and (min-width: 1081px) {
   .organiser-page {
     width: 70%;
   }
