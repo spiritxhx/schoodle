@@ -83,8 +83,8 @@
           table to select availability....
           <tr>
             <% for (const info in timeslots) { %>
-            <th>From <%=timeslots[info].start_date_time %> To
-              <%=timeslots[info].end_date_time %>
+            <th>From <%=timeslots[info].start_date_time.toString().slice(0,21) %> To
+              <%=timeslots[info].end_date_time.toString().slice(0,21) %>
             </th>
             <% } %>
           </tr>
