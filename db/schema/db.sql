@@ -2,8 +2,8 @@
 DROP TABLE IF EXISTS date_times CASCADE;
 CREATE TABLE date_times (
  id SERIAL PRIMARY KEY NOT NULL,
- start_date_time TIMESTAMP,
- end_date_time TIMESTAMP,
+ start_date_time TIMESTAMPTZ,
+ end_date_time TIMESTAMPTZ,
  event_id INTEGER references events(id) ON DELETE CASCADE
 );
 
