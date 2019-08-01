@@ -1,0 +1,93 @@
+// See: https://sass-lang.com/
+
+$background: #1F4562;
+$creme:#CCA773;
+$darktext:#082540;
+$lightblue:#4F81B1;
+$formbackground:#698EB1;
+
+$screen-md: 768px;
+
+.success-page {
+  h1 {
+    padding-top: 5%;
+    justify-content: center;
+    font-size: 2.8rem;
+    align-content: center;
+    text-align: center;
+    padding-bottom: 5%;
+  }
+
+  h2 {
+    padding-top: 5%;
+    justify-content: center;
+    font-size: 2.2rem;
+    align-content: center;
+    text-align: center;
+    padding-bottom: 5%;
+  }
+
+  h3 {
+    font-size: 1.8;
+    text-align: center;
+  }
+  p {
+    display: flex;
+    flex-direction: column;
+    display: block;
+    text-align: center;
+  }
+
+  #attendeeURL {
+    text-align: center;
+      div {
+        padding-top: 3%;
+      }
+      p {
+        display: flex;
+        flex-direction: column;
+      }
+      h3 {
+        font-size: 1.4rem;
+      }
+  }
+
+  #ownerURL {
+    padding-top: 10%;
+    text-align: center;
+    cursor: pointer;
+      div {
+        padding-top: 3%;
+      }
+      p {
+        display: flex;
+        flex-direction: column;
+      }
+      h3 {
+        font-size: 1.4rem;
+      }
+}
+
+.copy-button {
+  cursor: copy;
+  font-size: 0.8rem;
+  padding: 0;
+  border: none;
+  border-radius: 5px;
+  padding-left: 2px;
+  padding-right: 2px;
+  align-self: flex-end;
+}
+
+}
+
+
+
+
+
+
+
+
+
+
+
