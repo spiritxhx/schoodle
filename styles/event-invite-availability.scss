@@ -1,0 +1,93 @@
+// See: https://sass-lang.com/
+
+// See: https://sass-lang.com/
+@import "someStuff";
+
+$background: #1f4562;
+$creme: #cca773;
+$darktext: #082540;
+$lightblue: #4f81b1;
+$formbackground: #698eb1;
+
+#body {
+  background-color: $background;
+  padding-bottom: 5%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+header {
+  background-color: $background;
+  display: flex;
+  border: $background solid 2px;
+  margin: 0;
+  padding: 0;
+  padding-top: 10%;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+
+  div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    margin: 0;
+    height: 100%;
+  }
+
+  #icon::before {
+    width: 10%;
+    font-size: 7rem;
+    color: whitesmoke;
+  }
+}
+
+#page-layout {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  background-color: $background;
+  align-items: center;
+  width: 100%;
+  padding: 5%;
+  color: whitesmoke;
+  font-family: "Frank Ruhl Libre", serif;
+  font-size: 1.3rem;
+}
+
+h1 {
+  padding-top: 5%;
+  justify-content: center;
+  font-size: 2.8rem;
+  align-content: center;
+  text-align: center;
+  padding-bottom: 5%;
+}
+
+h2 {
+  padding-top: 5%;
+  justify-content: center;
+  font-size: 2.2rem;
+  align-content: center;
+  text-align: center;
+  padding-bottom: 5%;
+}
+
+h3 {
+  font-size: 1.8;
+  text-align: center;
+}
+
+p {
+  display: flex;
+  flex-direction: column;
+  display: block;
+  text-align: center;
+}
+
+head {
+  display: flex;
+  flex-direction: column;
+}

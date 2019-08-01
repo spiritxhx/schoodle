@@ -6,7 +6,8 @@
 
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
   <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
-  <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+  <!-- <link rel="stylesheet" href="/styles/layout.css" type="text/css" /> -->
+  <link rel="stylesheet" href="/styles/event-create.css" type="text/css" />
   <!-- bootstrap -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -39,38 +40,37 @@
 
 <body id="body">
 
-    <% include ./header %>
+  <% include ./header %>
 
   <div id="page-layout">
-    <div class="create_div">
-      <h1>Planning a New Event?</h1>
-      <p>Tell me about you</p>
-      <form action="/create" method="POST">
-        <div class="owner-info">
-          <input type='text' name="creatorName" placeholder='Your Name' />
-          <input type='text' name="creatorEmail" placeholder='Your Email' />
-        </div>
-        <div class="event-info">
-          <p>Tell me about your event</p>
-          <input type='text' name="eventTitle" placeholder='Choose a name for our Event' />
-          <textarea type='text' name="eventDescription" rows='4'
-            placeholder='Let your friends know a little something about your event....'></textarea>
-        </div>
-        <div class="date-select">
-          <p>Select some available dates and time</p>
-          <!-- dateTimePicker -->
-          <div class="dateTime">
-            <!-- style="width:500px;">
+    <h1>Planning a New Event?</h1>
+    <p>Tell me about you</p>
+    <form action="/create" method="POST">
+      <div class="owner-info">
+        <input type='text' name="creatorName" placeholder='Your Name' />
+        <input type='text' name="creatorEmail" placeholder='Your Email' />
+      </div>
+      <div class="event-info">
+        <p>Tell me about your event</p>
+        <input type='text' name="eventTitle" placeholder='Choose a name for our Event' />
+        <textarea type='text' name="eventDescription" rows='4'
+          placeholder='Let your friends know a little something about your event....'></textarea>
+      </div>
+      <div class="date-select">
+        <p>Select some available dates and time</p>
+        <!-- dateTimePicker -->
+        <div class="dateTime">
+          <!-- style="width:500px;">
           <div class="d-flex"> -->
-            <p>Choose the start date/time</p>
-            <div id="dateTimePicker" name="startDate"></div>
-            <p>And the end date/time</p>
-            <div id="dateTimePicker2" name="endDate"></div>
-          </div>
-          <button class="btn btn-primary addTime" id="add" type="button" value="Add">add</button>
-          <button class="btn btn-success submitAll" id="submit" type="submit">submit</button>
-      </form>
-    </div>
+          <p>Choose the start date/time</p>
+          <div id="dateTimePicker" name="startDate"></div>
+          <p>And the end date/time</p>
+          <div id="dateTimePicker2" name="endDate"></div>
+        </div>
+        <button class="btn btn-primary addTime" id="add" type="button" value="Add">add</button>
+        <button class="btn btn-success submitAll" id="submit" type="submit">submit</button>
+    </form>
+
   </div>
   </div>
 

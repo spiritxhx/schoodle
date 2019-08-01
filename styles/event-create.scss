@@ -6,53 +6,157 @@ $darktext: #082540;
 $lightblue: #4f81b1;
 $formbackground: #698eb1;
 
-$screen-md: 768px;
+#body {
+  background-color: $background;
+  padding-bottom: 5%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
 
-.create_div {
-  h1 {
-    padding-top: 5%;
+header {
+  background-color: $background;
+  display: flex;
+  border: $background solid 2px;
+  margin: 0;
+  padding: 0;
+  padding-top: 10%;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+
+  div {
+    display: flex;
     justify-content: center;
-    font-size: 2.8rem;
-    align-content: center;
-    text-align: center;
-    padding-bottom: 5%;
-  }
-
-  p {
-    display: flex;
-    flex-direction: column;
-    display: block;
-    text-align: center;
-  }
-
-  .owner-info {
-    display: flex;
-    flex-direction: column;
-    padding-bottom: 10%;
     align-items: center;
-    justify-content: center;
+    flex-direction: row;
+    margin: 0;
+    height: 100%;
   }
 
-  .event-info {
+  #icon::before {
+    width: 10%;
+    font-size: 7rem;
+    color: whitesmoke;
+  }
+}
+
+#page-layout {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  background-color: $background;
+  align-items: center;
+  width: 100%;
+  padding: 5%;
+  color: whitesmoke;
+  font-family: "Frank Ruhl Libre", serif;
+  font-size: 1.3rem;
+}
+
+h1 {
+  padding-top: 5%;
+  justify-content: center;
+  font-size: 2.8rem;
+  align-content: center;
+  text-align: center;
+  padding-bottom: 5%;
+}
+
+h2 {
+  padding-top: 5%;
+  justify-content: center;
+  font-size: 2.2rem;
+  align-content: center;
+  text-align: center;
+  padding-bottom: 5%;
+}
+
+h3 {
+  font-size: 1.8;
+  text-align: center;
+}
+
+p {
+  display: flex;
+  flex-direction: column;
+  display: block;
+  text-align: center;
+}
+
+.create-div {
+  width: 100%;
+}
+
+.owner-info {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 10%;
+  align-items: center;
+  justify-content: center;
+}
+
+.event-info {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding-bottom: 10%;
+}
+
+input {
+  background-color: lighten($background, 70%);
+  margin-top: 5%;
+  width: 100%;
+}
+
+textarea {
+  background-color: lighten($background, 70%);
+  margin-top: 5%;
+  width: 100%;
+}
+
+.date-select {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 10%;
+  height: 80%;
+
+  .dateTime {
+    width: 80%;
+  }
+
+  #dateTimePicker {
     display: flex;
-    align-items: center;
     flex-direction: column;
-    padding-bottom: 10%;
+    align-items: center;
+    padding-left: 5%;
+    padding-right: 5%;
+    margin-bottom: 10%;
+    background-color: $background;
+    height: 80%;
   }
 
-  input {
-    width: 80%;
-    background-color: lighten($background, 70%);
-    margin-top: 5%;
+  #dateTimePicker2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-left: 5%;
+    padding-right: 5%;
+    margin-bottom: 10%;
+    background-color: $background;
+    height: 80%;
   }
 
-  textarea {
-    width: 80%;
-    background-color: lighten($background, 70%);
-    margin-top: 5%;
+  .mtr-default-value {
+    background: $lightblue !important;
+  }
+  .mtr-default-value-name {
+    background: $lightblue !important;
   }
 
-  .date-select {
+  .dateTime p {
+    margin-bottom: 0%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -70,7 +174,7 @@ $screen-md: 768px;
       padding-left: 5%;
       padding-right: 5%;
       margin-bottom: 10%;
-      background-color: #1f4562;
+      background-color: $background;
       height: 80%;
     }
 
@@ -81,7 +185,7 @@ $screen-md: 768px;
       padding-left: 5%;
       padding-right: 5%;
       margin-bottom: 10%;
-      background-color: #1f4562;
+      background-color: $background;
       height: 80%;
     }
 
@@ -99,15 +203,11 @@ $screen-md: 768px;
       height: 80%;
     }
   }
+}
 
-  #add {
-    justify-content: center;
-    align-content: center;
-    margin-bottom: 5%;
-    margin-top: 5%;
-  }
-
-  .date-selection {
-    font-size: 1.1rem;
-  }
+#add {
+  justify-content: center;
+  align-content: center;
+  margin-bottom: 5%;
+  margin-top: 5%;
 }

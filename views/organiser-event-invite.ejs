@@ -6,7 +6,8 @@
 
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
   <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
-  <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+  <!-- <link rel="stylesheet" href="/styles/layout.css" type="text/css" /> -->
+  <link rel="stylesheet" href="/styles/organiser-event-invite.css" type="text/css" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
@@ -31,9 +32,8 @@
 <body id="body">
   <% include ./header %>
   <div id="page-layout">
-
     <form action="" method="GET">
-
+<div class="organiser-page">
       <h1>Welcome <span class="text-capitalize"><%=data[0].name%></span></h1>
 
       <h2>See the responses for your event</h2><h2><%=data[0].title %></h2>
@@ -92,6 +92,7 @@
       </form>
     </div>
   </div>
+</div>
 
 </body>
 
