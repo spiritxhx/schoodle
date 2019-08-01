@@ -168,7 +168,7 @@ module.exports = () => {
   });
 
 
-  router.post("/attendee", (req, res) => {
+  router.post("/attendee/add", (req, res) => {
     // console.log(req.body);
     const attendeeInfo = {
       name: req.body.attendeeName.toLowerCase(),
