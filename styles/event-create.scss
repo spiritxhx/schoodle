@@ -15,7 +15,6 @@ $formbackground: #698eb1;
   flex-direction: column;
 }
 
-<<<<<<< HEAD
 header {
   background-color: $background;
   display: flex;
@@ -26,13 +25,6 @@ header {
   justify-content: center;
   align-items: center;
   flex-direction: row;
-=======
-$background: #1f4562;
-$creme: #cca773;
-$darktext: #082540;
-$lightblue: #4f81b1;
-$formbackground: #698eb1;
->>>>>>> 37c261f66954415c540ab739a14d76268225fb82
 
   div {
     display: flex;
@@ -43,7 +35,6 @@ $formbackground: #698eb1;
     height: 100%;
   }
 
-<<<<<<< HEAD
   #icon::before {
     width: 10%;
     font-size: 7rem;
@@ -64,9 +55,6 @@ $formbackground: #698eb1;
   font-size: 1.3rem;
 }
 
-=======
-.create_div {
->>>>>>> 37c261f66954415c540ab739a14d76268225fb82
   h1 {
     padding-top: 5%;
     justify-content: center;
@@ -146,11 +134,7 @@ $formbackground: #698eb1;
       padding-left: 5%;
       padding-right: 5%;
       margin-bottom: 10%;
-<<<<<<< HEAD
       background-color: $background;
-=======
-      background-color: #1f4562;
->>>>>>> 37c261f66954415c540ab739a14d76268225fb82
       height: 80%;
     }
 
@@ -161,11 +145,7 @@ $formbackground: #698eb1;
       padding-left: 5%;
       padding-right: 5%;
       margin-bottom: 10%;
-<<<<<<< HEAD
       background-color: $background;
-=======
-      background-color: #1f4562;
->>>>>>> 37c261f66954415c540ab739a14d76268225fb82
       height: 80%;
     }
 
@@ -191,14 +171,7 @@ $formbackground: #698eb1;
     margin-top: 5%;
   }
 
-<<<<<<< HEAD
 
 
 
 
-=======
-  .date-selection {
-    font-size: 1.1rem;
-  }
-}
->>>>>>> 37c261f66954415c540ab739a14d76268225fb82
