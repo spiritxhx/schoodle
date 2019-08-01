@@ -15,6 +15,7 @@ $formbackground: #698eb1;
   flex-direction: column;
 }
 
+<<<<<<< HEAD
 header {
   background-color: $background;
   display: flex;
@@ -25,6 +26,13 @@ header {
   justify-content: center;
   align-items: center;
   flex-direction: row;
+=======
+$background: #1f4562;
+$creme: #cca773;
+$darktext: #082540;
+$lightblue: #4f81b1;
+$formbackground: #698eb1;
+>>>>>>> 37c261f66954415c540ab739a14d76268225fb82
 
   div {
     display: flex;
@@ -35,6 +43,7 @@ header {
     height: 100%;
   }
 
+<<<<<<< HEAD
   #icon::before {
     width: 10%;
     font-size: 7rem;
@@ -55,6 +64,9 @@ header {
   font-size: 1.3rem;
 }
 
+=======
+.create_div {
+>>>>>>> 37c261f66954415c540ab739a14d76268225fb82
   h1 {
     padding-top: 5%;
     justify-content: center;
@@ -134,7 +146,11 @@ header {
       padding-left: 5%;
       padding-right: 5%;
       margin-bottom: 10%;
+<<<<<<< HEAD
       background-color: $background;
+=======
+      background-color: #1f4562;
+>>>>>>> 37c261f66954415c540ab739a14d76268225fb82
       height: 80%;
     }
 
@@ -145,8 +161,19 @@ header {
       padding-left: 5%;
       padding-right: 5%;
       margin-bottom: 10%;
+<<<<<<< HEAD
       background-color: $background;
+=======
+      background-color: #1f4562;
+>>>>>>> 37c261f66954415c540ab739a14d76268225fb82
       height: 80%;
+    }
+
+    .mtr-default-value {
+      background: $lightblue!important;
+    }
+    .mtr-default-value-name{
+      background: $lightblue!important;
     }
 
     .dateTime p {
@@ -157,14 +184,21 @@ header {
     }
   }
 
-#add {
-  justify-content: center;
-  align-content: center;
-  margin-bottom: 5%;
-  margin-top: 5%;
+  #add {
+    justify-content: center;
+    align-content: center;
+    margin-bottom: 5%;
+    margin-top: 5%;
+  }
+
+<<<<<<< HEAD
+
+
+
+
+=======
+  .date-selection {
+    font-size: 1.1rem;
+  }
 }
-
-
-
-
-
+>>>>>>> 37c261f66954415c540ab739a14d76268225fb82
