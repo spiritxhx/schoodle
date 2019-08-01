@@ -1,15 +1,14 @@
 // See: https://sass-lang.com/
 
-$background: #1F4562;
-$creme:#CCA773;
-$darktext:#082540;
-$lightblue:#4F81B1;
-$formbackground:#698EB1;
+$background: #1f4562;
+$creme: #cca773;
+$darktext: #082540;
+$lightblue: #4f81b1;
+$formbackground: #698eb1;
 
 $screen-md: 768px;
 
 .create_div {
-
   h1 {
     padding-top: 5%;
     justify-content: center;
@@ -71,7 +70,7 @@ $screen-md: 768px;
       padding-left: 5%;
       padding-right: 5%;
       margin-bottom: 10%;
-      background-color: lighten($background, 70%);
+      background-color: #1f4562;
       height: 80%;
     }
 
@@ -82,26 +81,33 @@ $screen-md: 768px;
       padding-left: 5%;
       padding-right: 5%;
       margin-bottom: 10%;
-      background-color: lighten($background, 70%);
+      background-color: #1f4562;
       height: 80%;
     }
 
+    .mtr-default-value {
+      background: $lightblue!important;
+    }
+    .mtr-default-value-name{
+      background: $lightblue!important;
+    }
+
     .dateTime p {
-        margin-bottom: 0%;
-        display: flex;
-        justify-content: center;
-        height: 80%;
+      margin-bottom: 0%;
+      display: flex;
+      justify-content: center;
+      height: 80%;
+    }
   }
-}
 
-#add {
-  justify-content: center;
-  align-content: center;
-  margin-bottom: 5%;
-  margin-top: 5%;
-}
+  #add {
+    justify-content: center;
+    align-content: center;
+    margin-bottom: 5%;
+    margin-top: 5%;
+  }
 
-.date-selection {
-  font-size: 1.1rem;
-}
+  .date-selection {
+    font-size: 1.1rem;
+  }
 }
