@@ -1,5 +1,4 @@
 // See: https://sass-lang.com/
-@import "someStuff";
 
 $background: #1f4562;
 $creme: #cca773;
@@ -13,6 +12,7 @@ $formbackground: #698eb1;
   display: flex;
   justify-content: center;
   flex-direction: column;
+  text-align: center;
 }
 
 header {
@@ -53,6 +53,10 @@ header {
   color: whitesmoke;
   font-family: "Frank Ruhl Libre", serif;
   font-size: 1.3rem;
+}
+
+form {
+  width: 100%;
 }
 
 h1 {
@@ -103,7 +107,7 @@ head {
   }
 
   i:before {
-    color: whitesmoke;
+    color: $darktext;
     font-size: 15px;
   }
 
@@ -137,19 +141,21 @@ head {
   }
 }
 
-table {
+table.center {
   font-size: 1rem;
   color: $darktext;
   background-color: $formbackground;
   table-layout: fixed;
   text-align: center;
   margin-top: 5%;
-  border: 5px;
+  margin-left: auto;
+  margin-right: auto;
   vertical-align: top;
 
-  p {
-    margin: 0;
-  }
+
+  // p {
+  //   margin: 0%;
+  // }
 
   tr {
     padding-left: 5px;
@@ -180,4 +186,21 @@ table {
 
 .no-attendees {
   padding-top: 10%;
+}
+
+@media only screen and (max-width: 639px) {
+  .organiser-page {
+    width: 90%;
+  }
+
+  p {
+    margin-top: 15%;
+  }
+
+}
+
+@media only screen and (min-width: 640px) {
+  .organiser-page {
+    width: 70%;
+  }
 }

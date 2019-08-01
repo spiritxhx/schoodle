@@ -44,8 +44,8 @@
 
   <div id="page-layout">
     <h1>Planning a New Event?</h1>
-    <p>Tell me about you</p>
-    <form action="/create" method="POST">
+    <p class="organiser-details">Tell me about you</p>
+    <form id="form" action="/create" method="POST">
       <div class="owner-info">
         <input type='text' name="creatorName" placeholder='Your Name' />
         <input type='text' name="creatorEmail" placeholder='Your Email' />
@@ -57,7 +57,7 @@
           placeholder='Let your friends know a little something about your event....'></textarea>
       </div>
       <div class="date-select">
-        <p>Select some available dates and time</p>
+        <p id="select-header">Select some available dates and time</p>
         <!-- dateTimePicker -->
         <div class="dateTime">
           <!-- style="width:500px;">

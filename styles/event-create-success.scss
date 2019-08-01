@@ -69,11 +69,10 @@ h2 {
   font-size: 2.2rem;
   align-content: center;
   text-align: center;
-  padding-bottom: 5%;
 }
 
 h3 {
-  font-size: 1.8;
+  font-size: 1.6;
   text-align: center;
 }
 
@@ -91,31 +90,23 @@ head {
 
 #attendeeURL {
   text-align: center;
-  div {
-    padding-top: 3%;
-  }
   p {
     display: flex;
     flex-direction: column;
-  }
-  h3 {
-    font-size: 1.4rem;
+    margin-bottom: 0%;
   }
 }
 
 #ownerURL {
   padding-top: 10%;
   text-align: center;
-  cursor: pointer;
   div {
     padding-top: 3%;
   }
   p {
     display: flex;
     flex-direction: column;
-  }
-  h3 {
-    font-size: 1.4rem;
+    margin-bottom: 0%;
   }
 }
 
@@ -130,14 +121,44 @@ head {
   align-self: flex-end;
 }
 
-#attendee-url {
+#attendee-url, #owner-url {
+  color: $darktext;
+  overflow-wrap: break-word;
+  margin-bottom: 5px;
+  font-size: 1rem;
+}
+
+#owner-link {
+  cursor: pointer;
   color: whitesmoke;
 }
 
-#owner-url {
-  color: whitesmoke;
+#important {
+  padding-top: 10%;
 }
 
-.date-selection {
-  font-size: 1.1rem;
+.to-note {
+  padding-top: 10%;
+  font-size: 1rem;
 }
+
+@media only screen and (max-width: 639px) {
+  .success-page {
+    width: 90%;
+  }
+
+  h2 {
+    padding-top: 10%;
+  }
+
+  #attendeeURL, #ownerURL, .to-note {
+    padding-top: 15%;
+  }
+}
+
+@media only screen and (min-width: 640px) {
+  .success-page {
+    width: 60%;
+  }
+}
+

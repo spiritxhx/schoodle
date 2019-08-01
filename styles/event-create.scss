@@ -54,6 +54,11 @@ header {
   font-size: 1.3rem;
 }
 
+#form {
+  width: 100%;
+}
+
+
 h1 {
   padding-top: 5%;
   justify-content: center;
@@ -94,6 +99,12 @@ p {
   padding-bottom: 10%;
   align-items: center;
   justify-content: center;
+
+  input {
+    background-color: lighten($background, 70%);
+    width: 100%;
+    margin-bottom: 5%;
+  }
 }
 
 .event-info {
@@ -101,18 +112,18 @@ p {
   align-items: center;
   flex-direction: column;
   padding-bottom: 10%;
-}
 
-input {
-  background-color: lighten($background, 70%);
-  margin-top: 5%;
-  width: 100%;
-}
-
-textarea {
-  background-color: lighten($background, 70%);
-  margin-top: 5%;
-  width: 100%;
+  input {
+    background-color: lighten($background, 70%);
+    width: 100%;
+    margin-bottom: 5%;
+  }
+  textarea {
+    background-color: lighten($background, 70%);
+    width: 100%;
+    padding-bottom: 10%;
+    margin-bottom: 5%;
+  }
 }
 
 .date-select {
@@ -160,8 +171,14 @@ textarea {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-bottom: 10%;
+    padding-bottom: 0%;
     height: 80%;
+  }
+
+  #select-header {
+    margin-bottom: 5%;
+  }
+
 
     .dateTime {
       width: 80%;
@@ -195,14 +212,6 @@ textarea {
     .mtr-default-value-name{
       background: $lightblue!important;
     }
-
-    .dateTime p {
-      margin-bottom: 0%;
-      display: flex;
-      justify-content: center;
-      height: 80%;
-    }
-  }
 }
 
 #add {
@@ -210,4 +219,25 @@ textarea {
   align-content: center;
   margin-bottom: 5%;
   margin-top: 5%;
+}
+
+@media only screen and (max-width: 639px) {
+  #form {
+    width: 90%;
+  }
+
+  p {
+    margin-top: 15%;
+  }
+
+  .event-info, .date-select, .organiser-details {
+    margin-top: 10%;
+  }
+
+}
+
+@media only screen and (min-width: 640px) {
+  #form {
+    width: 60%;
+  }
 }

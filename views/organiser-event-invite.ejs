@@ -32,23 +32,44 @@
 <body id="body">
   <% include ./header %>
   <div id="page-layout">
+      <div class="organiser-page">
     <form action="" method="GET">
-<div class="organiser-page">
+
       <h1>Welcome <span class="text-capitalize"><%=data[0].name%></span></h1>
 
-      <h2>See the responses for your event</h2><h2><%=data[0].title %></h2>
+      <h3>See the responses for your event</h3><h3><%=data[0].title %></h3>
 
     </form>
 
     <div id="form">
-      <table align="center">
+      <table class="center">
         <tr>
           <th id="attendee"><i class="fas fa-users"></i></th>
           <% for (const info in timeslots) { %>
-          <th><p><%=timeslots[info].start_date_time.toString().slice(4,21) + " " + timeslots[info].start_date_time.toString().slice(0,3)%></p><p>~</p><p>
-            <%=timeslots[info].end_date_time.toString().slice(4,21) + " " + timeslots[info].end_date_time.toString().slice(0,3) %></p>
+          <th>
+            <p>
+              <%=timeslots[info].start_date_time.toString().slice(4,21) + " " + timeslots[info].start_date_time.toString().slice(0,3)%>
+            </p>
           </th>
           <% } %>
+        </tr>
+        <tr>
+          <th></th>
+            <% for (const info in timeslots) { %>
+              <th>
+                <p>~</p>
+              </th>
+              <% } %>
+        </tr>
+        <tr>
+            <th></th>
+            <% for (const info in timeslots) { %>
+              <th>
+                <p>
+                  <%=timeslots[info].end_date_time.toString().slice(4,21) + " " + timeslots[info].end_date_time.toString().slice(0,3) %>
+                </p>
+              </th>
+              <% } %>
         </tr>
         <% if (attendees.length === 0) { %>
         <tr><p class="no-attendees">
