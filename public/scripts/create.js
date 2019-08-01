@@ -3,7 +3,7 @@
 const dateFormatting = date => {
   let ans = "";
   let dateArr = date.split(':');
-  ans = (dateArr[0]+':'+dateArr[1]).toString();
+  ans = (dateArr[0] + ':' + dateArr[1]).toString();
   return ans;
 };
 const timeFormatting = dateTime => {
@@ -53,15 +53,18 @@ $(document).ready(function () {
   $('.submitAll').hide();
   $('.addTime').on('click', function () {
     // let startDate = $('#dateTimePicker');
-    $('.submitAll').show();
     //add the numOfTimeSlots
-    numOfTimeSlots++;
-    let startDateTime = dateFormatting(myDatepicker.toString());
-    let endDateTime = dateFormatting(myDatepicker2.toString());
-    let oriStart = timeFormatting(myDatepicker.toISOString());
-    let oriEnd = timeFormatting(myDatepicker2.toISOString());
+    if (new Date(myDatepicker2.toISOString().slice(0,19)).getTime() >= new Date(myDatepicker.toISOString().slice(0,19)).getTime()) {
+      numOfTimeSlots++;
+      $('.submitAll').show();
+      let startDateTime = dateFormatting(myDatepicker.toString());
+      let endDateTime = dateFormatting(myDatepicker2.toString());
+      let oriStart = timeFormatting(myDatepicker.toISOString());
+      let oriEnd = timeFormatting(myDatepicker2.toISOString());
 
-    createInput(startDateTime, endDateTime, numOfTimeSlots, oriStart, oriEnd);
-    // $(`.selction${numOfTimeSlots}`).slideDown();
+      createInput(startDateTime, endDateTime, numOfTimeSlots, oriStart, oriEnd);
+    } else {
+      alert("We are not building a time machine! Please pick the end time later than start time!!");
+    }
   });
 });
