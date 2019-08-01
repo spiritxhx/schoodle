@@ -6,7 +6,7 @@ const database = require('../db/database');
 module.exports = () => {
   //new invite for the event url page
   //contains all the information of the events
-  //and including the table of availability
+  //and includes the table of availability
   router.get("/attendee/:url", (req, res) => {
     let url_infos = database.checkURL(req.params.url);
     let fetchAttendees = database.fetchAttendees(req.params.url);
