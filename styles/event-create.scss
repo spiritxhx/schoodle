@@ -58,7 +58,6 @@ header {
   width: 100%;
 }
 
-
 h1 {
   padding-top: 5%;
   justify-content: center;
@@ -133,6 +132,26 @@ p {
   padding-bottom: 10%;
   height: 80%;
 
+  .mtr-default-value {
+    background: $lightblue !important;
+  }
+  .mtr-default-value-name {
+    background: $lightblue !important;
+  }
+
+  .dateTime p {
+    margin-bottom: 0%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 0%;
+    height: 80%;
+  }
+
+  #select-header {
+    margin-bottom: 5%;
+  }
+
   .dateTime {
     width: 80%;
   }
@@ -165,53 +184,6 @@ p {
   .mtr-default-value-name {
     background: $lightblue !important;
   }
-
-  .dateTime p {
-    margin-bottom: 0%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-bottom: 0%;
-    height: 80%;
-  }
-
-  #select-header {
-    margin-bottom: 5%;
-  }
-
-
-    .dateTime {
-      width: 80%;
-    }
-
-    #dateTimePicker {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding-left: 5%;
-      padding-right: 5%;
-      margin-bottom: 10%;
-      background-color: $background;
-      height: 80%;
-    }
-
-    #dateTimePicker2 {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding-left: 5%;
-      padding-right: 5%;
-      margin-bottom: 10%;
-      background-color: $background;
-      height: 80%;
-    }
-
-    .mtr-default-value {
-      background: $lightblue!important;
-    }
-    .mtr-default-value-name{
-      background: $lightblue!important;
-    }
 }
 
 #add {
@@ -219,9 +191,18 @@ p {
   align-content: center;
   margin-bottom: 5%;
   margin-top: 5%;
+  background-color: #6ab9d2;
 }
 
-@media only screen and (max-width: 639px) {
+#submit {
+  justify-content: center;
+  align-content: center;
+  margin-bottom: 5%;
+  margin-top: 5%;
+  background-color: rgb(108, 220, 113);
+}
+
+@media only screen and (max-width: 1080px) {
   #form {
     width: 90%;
   }
@@ -230,13 +211,14 @@ p {
     margin-top: 15%;
   }
 
-  .event-info, .date-select, .organiser-details {
+  .event-info,
+  .date-select,
+  .organiser-details {
     margin-top: 10%;
   }
-
 }
 
-@media only screen and (min-width: 640px) {
+@media only screen and (min-width: 1081px) {
   #form {
     width: 60%;
   }
