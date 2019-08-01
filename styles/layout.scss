@@ -1,11 +1,11 @@
 // See: https://sass-lang.com/
-@import'someStuff';
+@import "someStuff";
 
-$background: #1F4562;
-$creme:#CCA773;
-$darktext:#082540;
-$lightblue:#4F81B1;
-$formbackground:#698EB1;
+$background: #1f4562;
+$creme: #cca773;
+$darktext: #082540;
+$lightblue: #4f81b1;
+$formbackground: #698eb1;
 
 $screen-md: 768px;
 
@@ -37,11 +37,11 @@ header {
     height: 100%;
   }
 
-    #icon::before {
-      width: 10%;
-      font-size: 7rem;
-      color: whitesmoke;
-    }
+  #icon::before {
+    width: 10%;
+    font-size: 7rem;
+    color: whitesmoke;
+  }
 }
 
 #page-layout {
@@ -53,15 +53,15 @@ header {
   width: 100%;
   padding: 5%;
   color: whitesmoke;
-  font-family: 'Frank Ruhl Libre', serif;
+  font-family: "Frank Ruhl Libre", serif;
   font-size: 1.3rem;
 
   @media (max-width: 768px) {
     width: 60%;
-      margin-left: 20%;
-      margin-right: 20%;
-      padding-left: 0%;
-      padding-right: 0%;
+    margin-left: 20%;
+    margin-right: 20%;
+    padding-left: 0%;
+    padding-right: 0%;
   }
 
   h1 {
@@ -139,11 +139,10 @@ header {
       padding-left: 5%;
       padding-right: 5%;
       margin-bottom: 10%;
-<<<<<<< HEAD
+      <<<<<<<HEAD
       background-color: $formbackground;
-=======
-      background-color: lighten($background, 70%);
->>>>>>> organiser-page
+      =======background-color: lighten($background, 70%);
+      >>>>>>>organiser-page
       height: 80%;
     }
 
@@ -154,24 +153,18 @@ header {
       padding-left: 5%;
       padding-right: 5%;
       margin-bottom: 10%;
-<<<<<<< HEAD
       background-color: $formbackground;
-=======
-      background-color: lighten($background, 70%);
->>>>>>> organiser-page
       height: 80%;
     }
 
     .dateTime p {
-        margin-bottom: 0%;
-        display: flex;
-        justify-content: center;
-        height: 80%;
+      margin-bottom: 0%;
+      display: flex;
+      justify-content: center;
+      height: 80%;
+    }
   }
 }
-
-}
-
 
 #add {
   justify-content: center;
@@ -180,7 +173,6 @@ header {
   margin-top: 5%;
 }
 
-
 head {
   display: flex;
   flex-direction: column;
@@ -188,32 +180,32 @@ head {
 
 #attendeeURL {
   text-align: center;
-    div {
-      padding-top: 3%;
-    }
-    p {
-      display: flex;
-      flex-direction: column;
-    }
-    h3 {
-      font-size: 1.4rem;
-    }
+  div {
+    padding-top: 3%;
+  }
+  p {
+    display: flex;
+    flex-direction: column;
+  }
+  h3 {
+    font-size: 1.4rem;
+  }
 }
 
 #ownerURL {
   padding-top: 10%;
   text-align: center;
   cursor: pointer;
-    div {
-      padding-top: 3%;
-    }
-    p {
-      display: flex;
-      flex-direction: column;
-    }
-    h3 {
-      font-size: 1.4rem;
-    }
+  div {
+    padding-top: 3%;
+  }
+  p {
+    display: flex;
+    flex-direction: column;
+  }
+  h3 {
+    font-size: 1.4rem;
+  }
 }
 
 .copy-button {
@@ -247,7 +239,7 @@ head {
   align-items: center;
   justify-content: center;
 
-  p{
+  p {
     margin-bottom: 0%;
   }
 
@@ -261,7 +253,7 @@ head {
   }
 
   #name {
-    background-color: #1F4562;
+    background-color: #1f4562;
     border: none;
     font-style: inherit;
     color: whitesmoke;
@@ -271,7 +263,6 @@ head {
   #name:focus {
     outline: none !important;
   }
-
 
   #description {
     background-color: $background;
@@ -285,7 +276,6 @@ head {
   #description:focus {
     outline: none !important;
   }
-
 }
 
 table {
@@ -320,18 +310,15 @@ table {
     min-width: 100px;
   }
 
-
   i:before {
     font-size: 1.6rem;
     color: whitesmoke;
-    }
-    i.fa-users:before {
-      color: $darktext;
-    }
+  }
+  i.fa-users:before {
+    color: $darktext;
+  }
 }
 
 .no-attendees {
   padding-top: 10%;
 }
-
-
