@@ -26,8 +26,6 @@ module.exports = () => {
           timeslots[timeslot.id].start_date_time = timeslot.start_date_time;
           timeslots[timeslot.id].end_date_time = timeslot.end_date_time;
           timeslots[timeslot.id].attendees = [];
-          console.log('timeslot.start_date_time: ', timeslot.start_date_time);
-          console.log('timeslot.start_date_time.toString(): ', timeslot.start_date_time.toString());
           if (values[1]) {
             for (attendee of values[1]) {
               if (attendee.datetimeid === timeslot.id) {
@@ -78,7 +76,6 @@ module.exports = () => {
         //time slot information contains the attendee who is available in this time slot
         let timeslots = {};
         for (const timeslot of values[0]) {
-          console.log('timeslot: ', timeslot);
           timeslots[timeslot.id] = {};
           timeslots[timeslot.id].start_date_time = timeslot.start_date_time;
           timeslots[timeslot.id].end_date_time = timeslot.end_date_time;
@@ -132,14 +129,9 @@ module.exports = () => {
         let fetchEventInfo = database.fetchEventInfo(eventid);
         let fetchAttendees = database.fetchAttendeesByEventId(eventid);
         Promise.all([fetchEventInfo, fetchAttendees])
-          .then(values => {
-            let templateVars = {
-              data: values[0],
-              attendees: values[1],
-              eventid: eventid
-            };
-            console.log('data: ', values[0]);
-            res.render('organiser-event-invite', templateVars);
+          .then(res3 => {
+            //refresh the page
+            res.redirect('back');
           })
           .catch(err => console.log(err));
       });
@@ -155,14 +147,8 @@ module.exports = () => {
         let fetchEventInfo = database.fetchEventInfo(eventid);
         let fetchAttendees = database.fetchAttendeesByEventId(eventid);
         Promise.all([fetchEventInfo, fetchAttendees])
-          .then(values => {
-            let templateVars = {
-              data: values[0],
-              attendees: values[1],
-              eventid: eventid
-            };
-            console.log('data: ', values[0]);
-            res.render('organiser-event-invite', templateVars);
+          .then(res3 => {
+            res.redirect('back');
           })
           .catch(err => console.log(err));
       });
@@ -185,7 +171,6 @@ module.exports = () => {
     }
     database.addAttendeeDetails(attendeeInfo)
       .then(res2 => {
-        let url = '/event/attendee/' + attendeeInfo.eventURL;
         res.render('event-invite-availability-submitted', attendeeInfo);
       })
   });
@@ -203,7 +188,6 @@ module.exports = () => {
     // console.log("attendeeInfo: ", attendeeInfo);
     database.updateAttendeeDetails(attendeeInfo)
       .then(res2 => {
-        let url = '/event/attendee/' + attendeeInfo.eventURL;
         res.render('event-invite-availability-submitted', attendeeInfo);
       })
       .catch(err => console.log(err));
