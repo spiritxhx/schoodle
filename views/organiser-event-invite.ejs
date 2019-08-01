@@ -7,10 +7,6 @@
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
   <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
   <!-- <link rel="stylesheet" href="/styles/layout.css" type="text/css" /> -->
-  <link rel="stylesheet" href="/styles/organiser-event-invite.css" type="text/css" />
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
 
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"
@@ -18,13 +14,12 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
     integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
     crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-    crossorigin="anonymous"></script>
 
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
   <script src="https://kit.fontawesome.com/ef0d3f5c2f.js"></script>
+  <link rel="stylesheet" href="/styles/organiser-event-invite.css" type="text/css" />
 
 </head>
 
@@ -33,7 +28,7 @@
   <% include ./header %>
   <div id="page-layout">
       <div class="organiser-page">
-    <form action="" method="GET">
+    <form action="" method="GET" id="head">
 
       <h1>Welcome <span class="text-capitalize"><%=data[0].name%></span></h1>
 
@@ -56,15 +51,15 @@
         <tr>
           <th></th>
             <% for (const info in timeslots) { %>
-              <th>
-                <p>~</p>
+              <th class="break">
+                ~
               </th>
               <% } %>
         </tr>
         <tr>
-            <th></th>
+            <th class="from-time"></th>
             <% for (const info in timeslots) { %>
-              <th>
+              <th class="from-time">
                 <p>
                   <%=timeslots[info].end_date_time.toString().slice(4,21) + " " + timeslots[info].end_date_time.toString().slice(0,3) %>
                 </p>
@@ -98,7 +93,7 @@
       <form action="/event/organiser/modifyname" method="POST">
         <input type="text" name="modify-name" class="validate" id="name" value="<%=data[0].title%>">
 
-        <button name="modify-name" type="submit"><i class="fas fa-pencil-alt"></i></button>
+        <button name="modify-name" type="submit" id="name-btn" ><i class="fas fa-pencil-alt"></i></button>
 
         <input name="eventIdVal" type="hidden" value=<%=eventid%>>
       </form>
@@ -107,7 +102,7 @@
         <textarea name="modify-description" id="description"
           value="<%=data[0].description%>"><%=data[0].description%></textarea>
 
-        <button name="modify-description" type="submit"><i class="fas fa-pencil-alt"></i></button>
+        <button name="modify-description" id="description-btn" type="submit"><i class="fas fa-pencil-alt"></i></button>
 
         <input name="eventIdVal" type="hidden" value=<%=eventid%>>
       </form>
