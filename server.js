@@ -35,11 +35,13 @@ app.use(express.static("public"));
 // Note: Feel free to replace the example routes below with your own
 const eventCreate = require("./routes/create");
 const eventInvite = require("./routes/event");
+const homePage = require("./routes/index");
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 app.use("/create", eventCreate());
 app.use("/event", eventInvite());
+app.use("/", homePage());
 // Note: mount other resources here, using the same pattern above
 
 
