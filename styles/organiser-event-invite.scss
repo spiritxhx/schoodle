@@ -1,5 +1,4 @@
 // See: https://sass-lang.com/
-@import'someStuff';
 
 $background: #1F4562;
 $creme:#CCA773;
@@ -8,61 +7,6 @@ $lightblue:#4F81B1;
 $formbackground:#698EB1;
 
 $screen-md: 768px;
-
-#body {
-  background-color: $background;
-  padding-bottom: 5%;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-}
-
-header {
-  background-color: $background;
-  display: flex;
-  border: $background solid 2px;
-  margin: 0;
-  padding: 0;
-  padding-top: 10%;
-  justify-content: center;
-  align-items: center;
-  flex-direction: row;
-
-  div {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: row;
-    margin: 0;
-    height: 100%;
-  }
-
-    #icon::before {
-      width: 10%;
-      font-size: 7rem;
-      color: whitesmoke;
-    }
-}
-
-#page-layout {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  background-color: $background;
-  align-items: center;
-  width: 100%;
-  padding: 5%;
-  color: whitesmoke;
-  font-family: 'Frank Ruhl Libre', serif;
-  font-size: 1.3rem;
-
-  @media (max-width: 768px) {
-    width: 60%;
-      margin-left: 20%;
-      margin-right: 20%;
-      padding-left: 0%;
-      padding-right: 0%;
-  }
 
   h1 {
     padding-top: 5%;
@@ -139,11 +83,7 @@ header {
       padding-left: 5%;
       padding-right: 5%;
       margin-bottom: 10%;
-<<<<<<< HEAD
-      background-color: $formbackground;
-=======
       background-color: lighten($background, 70%);
->>>>>>> organiser-page
       height: 80%;
     }
 
@@ -154,11 +94,7 @@ header {
       padding-left: 5%;
       padding-right: 5%;
       margin-bottom: 10%;
-<<<<<<< HEAD
-      background-color: $formbackground;
-=======
       background-color: lighten($background, 70%);
->>>>>>> organiser-page
       height: 80%;
     }
 
@@ -288,50 +224,7 @@ head {
 
 }
 
-table {
-  font-size: 1rem;
-  color: $darktext;
-  background-color: $formbackground;
-  table-layout: fixed;
-  text-align: center;
-  margin-top: 5%;
-  border: 5px;
-  vertical-align: top;
-
-  p {
-    margin: 0;
-  }
-
-  tr {
-    padding-left: 5px;
-    padding-right: 5px;
-    border: 5px;
-  }
-
-  th {
-    padding-top: 5px;
-    max-width: 120px;
-    padding-left: 5px;
-    // border-right: solid 5px #1F4562;
-  }
-
-  #attendee {
-    max-width: 150px;
-    min-width: 100px;
-  }
 
 
-  i:before {
-    font-size: 1.6rem;
-    color: whitesmoke;
-    }
-    i.fa-users:before {
-      color: $darktext;
-    }
-}
-
-.no-attendees {
-  padding-top: 10%;
-}
 
 

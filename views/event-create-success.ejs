@@ -12,39 +12,42 @@
 
   <!-- <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script> -->
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"
-  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-  integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-  crossorigin="anonymous"></script>
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-  integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-  crossorigin="anonymous"></script>
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
   <script src="https://kit.fontawesome.com/ef0d3f5c2f.js"></script>
 </head>
 
 <body id="body">
-    <% include ./header %>
+  <% include ./header %>
   <div id="page-layout">
-    <h1>Congratulations!</h1>
-    <h2>Event Created</h2>
-  <div id="attendeeURL">
-    <h3>Your event's unique link:</h3>
-    <p>
-    <a id="attendee-url" href="http://localhost:8080/event/attendee/<%=eventURL%>" target="_blank">http://localhost:8080/event/attendee/<%=eventURL%></a>
-    <button class="copy-button" onclick="copyToClipboard('#attendee-url')">Copy</button>
-    </p>
-    <script>
-      function copyToClipboard(element) {
-        var $temp = $("<input>");
-        $("body").append($temp);
-        $temp.val($(element).text()).select();
-        document.execCommand("copy");
-        $temp.remove();
-      }
-    </script>
-      <div>Send the link to all your guests to check their availability</div>
-  </div>
+    <div class="success-page">
+      <h1>Congratulations!</h1>
+      <h2>Event Created</h2>
+      <div id="attendeeURL">
+        <h3>Your event's unique link:</h3>
+        <p>
+          <a id="attendee-url" href="http://localhost:8080/event/attendee/<%=eventURL%>"
+            target="_blank">http://localhost:8080/event/attendee/<%=eventURL%></a>
+          <button class="copy-button" onclick="copyToClipboard('#attendee-url')">Copy</button>
+        </p>
+        <script>
+          function copyToClipboard(element) {
+            var $temp = $("<input>");
+            $("body").append($temp);
+            $temp.val($(element).text()).select();
+            document.execCommand("copy");
+            $temp.remove();
+          }
+        </script>
+        <div>Send the link to all your guests to check their availability</div>
+      </div>
 
+<<<<<<< HEAD
   <div id="ownerURL">
       <h3>Your unique event link:</h3><p><a id="owner-url" href="http://localhost:8080/event/organiser/<%=ownerURL%>" target="_blank">http://localhost:8080/event/organiser/<%=ownerURL%></a>
       <button class="copy-button" onclick="copyToClipboard('#owner-url')">Copy</button>
@@ -60,10 +63,27 @@
       </script>
       <div>Don't share this link! Use it to make any changes to your event</div>
       <div>Save the links before you leave or refresh this page!!</div>
+=======
+      <div id="ownerURL">
+        <h3>Your unique event link:</h3>
+        <p><a id="owner-url" href="http://localhost:8080/event/organiser/<%=ownerURL%>"
+            target="_blank">http://localhost:8080/event/organiser/<%=ownerURL%></a>
+          <button class="copy-button" onclick="copyToClipboard('#owner-url')">Copy</button>
+        </p>
+        <script>
+          function copyToClipboard(element) {
+            var $temp = $("<input>");
+            $("body").append($temp);
+            $temp.val($(element).text()).select();
+            document.execCommand("copy");
+            $temp.remove();
+          }
+        </script>
+        <div>Don't share this link! Use it to make any changes to your event</div>
+      </div>
+>>>>>>> organiser-page
     </div>
   </div>
 </body>
 
 </html>
-
-

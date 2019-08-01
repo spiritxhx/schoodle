@@ -34,14 +34,14 @@
 
     <form action="" method="GET">
 
-      <h2>Welcome <span class="text-capitalize"><%=data[0].name%></span></h2>
+      <h1>Welcome <span class="text-capitalize"><%=data[0].name%></span></h1>
 
-      <h3>See the responses for your event</h3><h3><%=data[0].title %></h3>
+      <h2>See the responses for your event</h2><h2><%=data[0].title %></h2>
 
     </form>
 
-    <div>
-      <table>
+    <div id="form">
+      <table align="center">
         <tr>
           <th id="attendee"><i class="fas fa-users"></i></th>
           <% for (const info in timeslots) { %>
