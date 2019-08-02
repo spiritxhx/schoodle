@@ -1,15 +1,16 @@
-LHL Node Skeleton
+Schoodle
 =========
+## Schoodle Project
 
-## Project Setup
+Schoodle is a simplified event scheduling tool similar to Doodle where users can create a new event and request availability from guests. 
 
-1. Create your own empty repo on GitHub, ideally using the name of your project
-2. Clone this repository (<mark>do not fork!</mark>)
-  - When cloning, specify a different folder name that is relevant to your project
-3. Remove the git remote: `git remote rm origin`
-4. Add a remote for your origin: `git remote add origin <your github repo URL>`
-5. Push to the new origin: `git push -u origin master`
-6. Verify that the skeleton code now shows up in your repo on GitHub
+## Description 
+
+Attendees can see the availability of other guests, add their availability and modify it. Organisers are able to see the availability of attendees and modify the event name and description.
+
+## Final Product Screenshots
+
+
 
 ## Getting Started
 
