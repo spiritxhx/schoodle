@@ -1,10 +1,12 @@
 // See: https://sass-lang.com/
 
-$background: #1F4562;
-$creme:#CCA773;
-$darktext:#082540;
-$lightblue:#4F81B1;
-$formbackground:#698EB1;
+
+
+$background: #1f4562;
+$creme: #cca773;
+$darktext: #082540;
+$lightblue: #4f81b1;
+$formbackground: #698eb1;
 
 $screen-md: 768px;
 
@@ -36,23 +38,23 @@ header {
     height: 100%;
   }
 
-    #icon::before {
-      width: 10%;
-      font-size: 7rem;
-      color: whitesmoke;
-    }
+  #icon::before {
+    width: 10%;
+    font-size: 7rem;
+    color: whitesmoke;
+  }
 }
 
 #page-layout {
-  display: flex;
+  // display: flex;
   justify-content: center;
-  flex-direction: column;
-  background-color: $background;
-  align-items: center;
-  width: 100%;
+  // flex-direction: column;
+  // background-color: $background;
+  // align-items: center;
+  // width: 100%;
   padding: 5%;
   color: whitesmoke;
-  font-family: 'Frank Ruhl Libre', serif;
+  font-family: "Frank Ruhl Libre", serif;
   font-size: 1.3rem;
 
   h1 {
@@ -83,7 +85,6 @@ header {
     text-align: center;
   }
 
-
   input {
     width: 80%;
     background-color: lighten($background, 70%);
@@ -97,16 +98,30 @@ header {
 }
 
 // add/update btn
-#add {
-  align-self: flex-end;
-  justify-self: flex-end;
+// #add {
+//   align-self: flex-end;
+//   justify-self: flex-end;
+// }
+
+.invite-layout {
+  display: flex;
+  // flex-direction: column;
+  // justify-content: center;
+  align-items: center;
+  .new-availability,
+  .availability-table {
+    display: flex;
+    // flex-direction: row;
+    // justify-content: center;
+    align-items: center;
+    padding-bottom: 10%;
+  }
+  .updateBtn
+  .addBtn {
+    margin-left: 500px!important;
+  }
 }
 
-.new-availability, .availability-table {
-  display: flex;
-  justify-content: center;
-  padding-bottom: 10%;
-}
 
 #title {
   display: flex;
@@ -136,7 +151,6 @@ table.center {
   margin-right: auto;
   vertical-align: top;
 
-
   p {
     margin: 0%;
   }
@@ -150,7 +164,7 @@ table.center {
   th {
     padding-top: 5px;
     max-width: 120px;
-    border-right: solid 5px #1F4562;
+    border-right: solid 5px #1f4562;
   }
 
   .break {
@@ -159,9 +173,8 @@ table.center {
   }
 
   .from-time {
-    border-bottom: solid 5px #1F4562;
+    border-bottom: solid 5px #1f4562;
   }
-
 
   #attendee {
     max-width: 150px;
@@ -189,7 +202,6 @@ table.center {
   .invite-layout {
     width: 90%;
   }
-
 }
 
 @media only screen and (min-width: 1081px) {
@@ -197,6 +209,3 @@ table.center {
     width: 60%;
   }
 }
-
-
-
