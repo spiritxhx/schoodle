@@ -29,9 +29,9 @@
   <div id="page-layout">
     <div class="success-page">
       <h1>Congratulations!</h1>
-      <h2>Event Created</h2>
+      <h2 class="event-created">Event Created</h2>
       <div id="attendeeURL">
-        <h3>Your event's unique link:</h3>
+        <h3>Your event link:</h3>
         <p>Send this link to all your guests</p>
         <p>
           <input type="text" id="attendee-url" value="http://localhost:8080/event/attendee/<%=eventURL%>" disabled>
@@ -50,7 +50,7 @@
       </div>
 
       <div id="ownerURL">
-        <h3>Your unique event link:</h3>
+        <h3>Your private organiser link:</h3>
         <p>Don't share this link!</p><p>Use it to make any changes to your event</p>
         <p>
           <input type="text" id="owner-url" value="http://localhost:8080/event/organiser/<%=ownerURL%>" disabled>

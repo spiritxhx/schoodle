@@ -7,9 +7,6 @@
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
   <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
 
- <link rel="stylesheet" href="/styles/event-invite.css" type="text/css" />
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
@@ -20,12 +17,11 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
     integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
     crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-    crossorigin="anonymous"></script>
   <script src="https://kit.fontawesome.com/ef0d3f5c2f.js"></script>
   <!-- jQuery file to handle the button click event -->
   <script type="text/javascript" src="/scripts/new-invite.js"></script>
+
+  <link rel="stylesheet" href="/styles/event-invite.css" type="text/css" />
 
 </head>
 
@@ -33,61 +29,102 @@
 <body id="body">
   <% include ./header %>
   <div id="page-layout">
-    <h2>Let <span class="text-capitalize"><%=infos.owner %></span> know you're availability to attend their event <%=infos.title %> </h2>
+    <div class="invite-layout>">
+      <div id="title">
+    <h2>Let <span class="text-capitalize"><%=infos.owner %></span>know you're availability to attend <%=infos.title %>
+    </h2>
+  </div>
 
-    <div>
-      <p>Need a little more information about the event?</p><span class="text-capitalize"><%=infos.title %></span>
-      <p>says....</p><span><%=infos.description %></span>
+    <div class="more-info">
+      <h3>Need a little more information?</h3><h3 class="text-capitalize"><%=infos.owner %> says....</h3><h3><%=infos.description %></h3>
     </div>
-    <div>
-      <table>"table showing everyones availability"
-        <tr>
-          <th>Attendees</th>
-          <% for (const info in timeslots) { %>
-          <th>From <%=timeslots[info].start_date_time.toString().slice(0,21) %> To
-            <%=timeslots[info].end_date_time.toString().slice(0,21) %>
-          </th>
-          <% } %>
-        </tr>
-        <% if (! attendees.length) { %>
-        <tr>
-          No one accepted yet! :(
-        </tr>
-        <%} else {%>
-        <% for (const attendeeName of attendees) { %>
-        <tr>
-          <th class="text-capitalize"><%=attendeeName %></th>
-          <% for (const ts in timeslots) { %>
-          <% if(timeslots[ts].attendees.includes(attendeeName)) { %>
-          <th>available</th>
-          <% } else { %>
-          <th>not available</th>
-          <% } %>
-          <% } %>
-        </tr>
-        <% } %>
-        <% } %>
-      </table>
-      <button class="updateBtn">Update Your Availability</button>
-      <button class="addBtn">Add Your Availability</button>
+    <div class="availability-table">
+        <table class="center">
+            <tr>
+              <th id="attendee"><i class="fas fa-users"></i></th>
+              <% for (const info in timeslots) { %>
+              <th>
+                <p>
+                  <%=timeslots[info].start_date_time.toString().slice(4,21) + " " + timeslots[info].start_date_time.toString().slice(0,3)%>
+                </p>
+              </th>
+              <% } %>
+            </tr>
+            <tr>
+              <th></th>
+                <% for (const info in timeslots) { %>
+                  <th class="break">
+                    ~
+                  </th>
+                  <% } %>
+            </tr>
+            <tr>
+                <th class="from-time"></th>
+                <% for (const info in timeslots) { %>
+                  <th class="from-time">
+                    <p>
+                      <%=timeslots[info].end_date_time.toString().slice(4,21) + " " + timeslots[info].end_date_time.toString().slice(0,3) %>
+                    </p>
+                  </th>
+                  <% } %>
+            </tr>
+            <% if (attendees.length === 0) { %>
+            <tr><p class="no-attendees">
+              No one has added their availability just yet!</p>
+            </tr>
+            <%} else {%>
+            <% for (const attendeeName of attendees) { %>
+            <tr>
+              <th class="text-capitalize"><%=attendeeName %></th>
+              <% for (const ts in timeslots) { %>
+              <% if(timeslots[ts].attendees.includes(attendeeName)) { %>
+              <th><i class="far fa-check-circle"></i></th>
+              <% } else { %>
+              <th><i class="far fa-times-circle"></i></th>
+              <% } %>
+              <% } %>
+            </tr>
+            <% } %>
+            <% } %>
+          </table>
+
+      <button class="updateBtn" id="add">Update</button>
+      <button class="addBtn" id="add">Add</button>
     </div>
-    <div name="add-new-availability">
+    <div class="new-availability" name="add-new-availability">
       <form method="POST" action="/event/attendee/add" class="addAttendee">
-        <p>Firstly tell us little about yourself</p>
+        <h3>Firstly tell us little about yourself</h3>
         <input type="text" name="attendeeName" placeholder="Your Name">
         <input type="text" name="attendeeEmail" placeholder="Your Email">
         <input type="hidden" name="eventURL" value=<%=infos.eventURL %>>
         <input type="hidden" name="eventId" value=<%=infos.eventId %>>
         <br>
-        <table>
-          table to select availability....
-          <tr>
-            <% for (const info in timeslots) { %>
-            <th>From <%=timeslots[info].start_date_time.toString().slice(0,21) %> To
-              <%=timeslots[info].end_date_time.toString().slice(0,21) %>
-            </th>
-            <% } %>
-          </tr>
+        <table class="center">
+            <tr>
+                <% for (const info in timeslots) { %>
+                <th>
+                  <p>
+                    <%=timeslots[info].start_date_time.toString().slice(4,21) + " " + timeslots[info].start_date_time.toString().slice(0,3)%>
+                  </p>
+                </th>
+                <% } %>
+              </tr>
+              <tr>
+                  <% for (const info in timeslots) { %>
+                    <th class="break">
+                      ~
+                    </th>
+                    <% } %>
+              </tr>
+              <tr>
+                  <% for (const info in timeslots) { %>
+                    <th class="from-time">
+                      <p>
+                        <%=timeslots[info].end_date_time.toString().slice(4,21) + " " + timeslots[info].end_date_time.toString().slice(0,3) %>
+                      </p>
+                    </th>
+                    <% } %>
+              </tr>
           <tr>
             <% for (const tsid in timeslots) { %>
             <th>
@@ -97,26 +134,60 @@
           </tr>
         </table>
         <input type="hidden" name="owner" value=<%=infos.owner %> >
-        <button>Submit</button>
+        <button id="submit">Submit</button>
       </form>
 
       <!-- the form will show up when user click the update button -->
       <form method="POST" action="/event/attendee/update" class="updateAttendee">
-        <p>Please Confirm Your Name And Email</p>
+        <h3>Please Confirm Your Name And Email</h3>
         <input type="text" name="attendeeName" placeholder="Your Name">
         <input type="text" name="attendeeEmail" placeholder="Your Email">
         <input type="hidden" name="eventURL" value=<%=infos.eventURL %>>
         <input type="hidden" name="eventId" value=<%=infos.eventId %>>
         <br>
         <table>
-          table to select availability....
           <tr>
-            <% for (const info in timeslots) { %>
-            <th>From <%=timeslots[info].start_date_time %> To
-              <%=timeslots[info].end_date_time %>
-            </th>
-            <% } %>
-          </tr>
+              <% for (const info in timeslots) { %>
+              <th>
+                <p>
+                  <%=timeslots[info].start_date_time.toString().slice(4,21) + " " + timeslots[info].start_date_time.toString().slice(0,3)%>
+                </p>
+              </th>
+              <% } %>
+            </tr>
+            <tr>
+                <% for (const info in timeslots) { %>
+                  <th class="break">
+                    ~
+                  </th>
+                  <% } %>
+            </tr>
+            <tr>
+                <% for (const info in timeslots) { %>
+                <th>
+                  <p>
+                    <%=timeslots[info].start_date_time.toString().slice(4,21) + " " + timeslots[info].start_date_time.toString().slice(0,3)%>
+                  </p>
+                </th>
+                <% } %>
+              </tr>
+              <tr>
+                  <% for (const info in timeslots) { %>
+                    <th class="break">
+                      ~
+                    </th>
+                    <% } %>
+              </tr>
+              <tr>
+                  <th class="from-time"></th>
+                  <% for (const info in timeslots) { %>
+                    <th class="from-time">
+                      <p>
+                        <%=timeslots[info].end_date_time.toString().slice(4,21) + " " + timeslots[info].end_date_time.toString().slice(0,3) %>
+                      </p>
+                    </th>
+                    <% } %>
+              </tr>
           <tr>
             <% for (const tsid in timeslots) { %>
             <th>
@@ -127,9 +198,10 @@
           </tr>
         </table>
         <input type="hidden" name="owner" value=<%=infos.owner %> >
-        <button>Comfirm</button>
+        <button id="submit">Comfirm</button>
       </form>
     </div>
+  </div>
   </div>
 </body>
 
