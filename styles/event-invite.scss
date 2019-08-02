@@ -1,7 +1,5 @@
 // See: https://sass-lang.com/
 
-
-
 $background: #1f4562;
 $creme: #cca773;
 $darktext: #082540;
@@ -45,18 +43,14 @@ header {
   }
 }
 
+
+
 #page-layout {
-  // display: flex;
   justify-content: center;
-  // flex-direction: column;
-  // background-color: $background;
-  // align-items: center;
-  // width: 100%;
   padding: 5%;
   color: whitesmoke;
   font-family: "Frank Ruhl Libre", serif;
   font-size: 1.3rem;
-
   h1 {
     padding-top: 5%;
     justify-content: center;
@@ -84,11 +78,18 @@ header {
     display: block;
     text-align: center;
   }
+  .invite-layout {
+    display: flex;
+    // flex-direction: column;
+    justify-content: center;
+    // align-items: center;
 
-  input {
-    width: 80%;
-    background-color: lighten($background, 70%);
-    margin-top: 5%;
+
+
+    .availability-table {
+      padding-bottom: 10%;
+    }
+
   }
 }
 
@@ -103,25 +104,24 @@ header {
 //   justify-self: flex-end;
 // }
 
-.invite-layout {
-  display: flex;
-  // flex-direction: column;
-  // justify-content: center;
-  align-items: center;
-  .new-availability,
-  .availability-table {
-    display: flex;
-    // flex-direction: row;
-    // justify-content: center;
-    align-items: center;
-    padding-bottom: 10%;
+.new-availability {
+  .addAttendee {
+    margin-top: 20px;
+    input {
+      width: 80%;
+      background-color: lighten($background, 70%);
+      margin-top: 5%;
+    }
   }
-  .updateBtn
-  .addBtn {
-    margin-left: 500px!important;
+  .updateAttendee {
+    margin-top: 20px;
+    input {
+      width: 80%;
+      background-color: lighten($background, 70%);
+      margin-top: 5%;
+    }
   }
 }
-
 
 #title {
   display: flex;
@@ -149,6 +149,7 @@ table.center {
   margin-top: 5%;
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 50px;
   vertical-align: top;
 
   p {

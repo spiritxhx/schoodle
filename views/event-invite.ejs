@@ -4,14 +4,9 @@
 <head>
   <title>Event Invitation</title>
 
-  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
-  <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
-
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-
-  <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"
     integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
@@ -91,12 +86,13 @@
           <% } %>
           <% } %>
         </table>
-
+      </div>
+      <div class="text-center">
         <button class="updateBtn" id="add">Update</button>
         <button class="addBtn" id="add">Add</button>
       </div>
       <div class="new-availability" name="add-new-availability">
-        <form method="POST" action="/event/attendee/add" class="addAttendee">
+        <form method="POST" action="/event/attendee/add" class="addAttendee text-center">
           <h3>Firstly tell us little about yourself</h3>
           <input type="text" name="attendeeName" placeholder="Your Name">
           <input type="text" name="attendeeEmail" placeholder="Your Email">
@@ -142,7 +138,7 @@
         </form>
 
         <!-- the form will show up when user click the update button -->
-        <form method="POST" action="/event/attendee/update" class="updateAttendee">
+        <form method="POST" action="/event/attendee/update" class="updateAttendee text-center">
           <h3>Please Confirm Your Name And Email</h3>
           <input type="text" name="attendeeName" placeholder="Your Name">
           <input type="text" name="attendeeEmail" placeholder="Your Email">
