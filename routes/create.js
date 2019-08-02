@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const database = require('../db/database');
-const { generateEventURLS, timeFormatting } = require('../helper');
+const { generateEventURLS } = require('../helper');
 
 module.exports = () => {
   // the home page (temperarily) thinking about making a another home page
