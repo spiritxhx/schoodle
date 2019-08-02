@@ -54,7 +54,7 @@ module.exports = () => {
           // console.log('templateVars: ', templateVars);
           res.render('event-invite', templateVars);
         } else {
-          res.status(404).send('Error - Page Does Not Exist!');
+          res.render('404');
         }
       });
   });
@@ -109,7 +109,7 @@ module.exports = () => {
           };
           res.render('organiser-event-invite', templateVars);
         } else {
-          res.status(404).send('Error - Page Does Not Exist!');
+          res.render('404');
         }
       })
       .catch(err => console.log(err));
@@ -167,12 +167,13 @@ module.exports = () => {
       eventOwner: req.body.owner
     };
     if (!attendeeInfo.name || !attendeeInfo.email || !attendeeInfo.timeslotId) {
-      res.status(400).send('Please input all the information! (including the timeslots, your name and email)');
+      res.render('404');
+    } else {
+      database.addAttendeeDetails(attendeeInfo)
+        .then(res2 => {
+          res.render('event-invite-availability-submitted', attendeeInfo);
+        })
     }
-    database.addAttendeeDetails(attendeeInfo)
-      .then(res2 => {
-        res.render('event-invite-availability-submitted', attendeeInfo);
-      })
   });
 
   //the update attendee availability function
@@ -186,11 +187,15 @@ module.exports = () => {
       eventOwner: req.body.owner
     };
     // console.log("attendeeInfo: ", attendeeInfo);
-    database.updateAttendeeDetails(attendeeInfo)
-      .then(res2 => {
-        res.render('event-invite-availability-submitted', attendeeInfo);
-      })
-      .catch(err => console.log(err));
+    if (!attendeeInfo.name || !attendeeInfo.email || !attendeeInfo.timeslotId) {
+      res.render('404');
+    } else {
+      database.updateAttendeeDetails(attendeeInfo)
+        .then(res2 => {
+          res.render('event-invite-availability-submitted', attendeeInfo);
+        })
+        .catch(err => console.log(err));
+    }
   });
 
   return router;
