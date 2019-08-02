@@ -9,7 +9,11 @@ Schoodle is a simplified event scheduling tool similar to Doodle where users can
 Attendees can see the availability of other guests, add their availability and modify it. Organisers are able to see the availability of attendees and modify the event name and description.
 
 ## Final Product Screenshots
+![create page](https://github.com/spiritxhx/schoodle/blob/master/screenshots/create.png)
 
+![event-attendee](https://github.com/spiritxhx/schoodle/blob/master/screenshots/event-attendee.png)
+
+![event-organiser](https://github.com/spiritxhx/schoodle/blob/master/screenshots/event-organiser.png)
 
 
 ## Getting Started
