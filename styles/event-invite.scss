@@ -180,9 +180,14 @@ table.center {
     min-width: 100px;
   }
 
-  i:before {
+  .fa-check-circle:before {
     font-size: 1.6rem;
-    color: whitesmoke;
+    color: #1a781a;
+  }
+
+  .fa-times-circle:before {
+    font-size: 1.6rem;
+    color: #aa2e21;
   }
   i.fa-users:before {
     color: $darktext;
