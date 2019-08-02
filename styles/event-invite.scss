@@ -95,14 +95,13 @@ header {
 
 .more-info {
   margin-top: 10%;
-  margin-bottom: 10%;
+  margin-bottom: 5%;
 }
 
 // add/update btn
-// #add {
-//   align-self: flex-end;
-//   justify-self: flex-end;
-// }
+button {
+  border-radius: 4px;
+}
 
 .new-availability {
   .addAttendee {
