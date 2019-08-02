@@ -4,6 +4,8 @@ Schoodle
 
 Schoodle is a simplified event scheduling tool similar to Doodle where users can create a new event and request availability from guests. 
 
+This was created as a group midterm project for Lighthouse Labs by [Hans](https://github.com/spiritxhx) and [Nelly](https://github.com/Nelly31).
+
 ## Description 
 
 Attendees can see the availability of other guests, add their availability and modify it. Organisers are able to see the availability of attendees and modify the event name and description.
