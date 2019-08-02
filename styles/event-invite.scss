@@ -103,6 +103,7 @@ button {
   border-radius: 4px;
 }
 
+<<<<<<< HEAD
 .new-availability {
   .addAttendee {
     margin-top: 20px;
@@ -120,6 +121,24 @@ button {
       margin-top: 5%;
     }
   }
+=======
+.new-availability{
+  display: flex;
+  justify-content: center;
+  padding-bottom: 10%;
+}
+
+// availbility-table {
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+// }
+
+#table-box {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 10%;
+>>>>>>> master
 }
 
 #title {
@@ -150,6 +169,10 @@ table.center {
   margin-right: auto;
   margin-bottom: 50px;
   vertical-align: top;
+<<<<<<< HEAD
+=======
+  padding-bottom: 5%;
+>>>>>>> master
 
   p {
     margin: 0%;
