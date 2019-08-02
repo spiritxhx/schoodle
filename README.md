@@ -9,10 +9,17 @@ Schoodle is a simplified event scheduling tool similar to Doodle where users can
 Attendees can see the availability of other guests, add their availability and modify it. Organisers are able to see the availability of attendees and modify the event name and description.
 
 ## Final Product Screenshots
-![create page](https://github.com/spiritxhx/schoodle/blob/master/screenshots/create.png)
+1. Create a new event with the organisers details and the event details and select multiple date/times for the event using Data Time Picker.  
+![create page](https://github.com/spiritxhx/schoodle/blob/master/screenshots/create.png) 
 
+
+
+2. Attendee can view the event details and other attendees availability. They can select there availability for the provided time slots and update their availability. 
 ![event-attendee](https://github.com/spiritxhx/schoodle/blob/master/screenshots/event-attendee.png)
 
+
+
+3. The organiser can review their event, see all the attendees responses and edit the event name and description. 
 ![event-organiser](https://github.com/spiritxhx/schoodle/blob/master/screenshots/event-organiser.png)
 
 
@@ -45,3 +52,13 @@ Attendees can see the availability of other guests, add their availability and m
 - Node 10.x or above
 - NPM 5.x or above
 - PG 6.x
+- body-parser 
+- chalk
+- dotenv
+- ejs
+- express
+- morgan
+- mtr-datepicker
+- node-sass-middleware
+- pg-native
+- uuid
