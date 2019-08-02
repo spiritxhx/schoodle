@@ -42,7 +42,7 @@ const addAttendeeDetails = attendee => {
       const addTable1 = db.query(addEventAttendeeQuery, [attendee.eventId, res.rows[0].id]);
       addTable1
         .then(res2 => {
-          if (attendee.timeslotId.length) {
+          if (Array.isArray(attendee.timeslotId)) {
             for (const ts of attendee.timeslotId) {
               db.query(addAttendeeDateTimeQuery, [ts, res.rows[0].id]);
             }
@@ -69,7 +69,7 @@ const updateAttendeeDetails = attendee => {
       db.query(getAttendeeIdQuery, [attendee.name, attendee.email])
         .then(res2 => {
           console.log('res2.rows[0]: ', res2.rows[0]);
-          if (attendee.timeslotId.length) {
+          if (Array.isArray(attendee.timeslotId)) {
             for (const ts of attendee.timeslotId) {
               db.query(addAttendeeDateTimeQuery, [ts, res2.rows[0].id]);
             }

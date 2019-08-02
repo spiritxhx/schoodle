@@ -186,7 +186,7 @@ module.exports = () => {
       timeslotId: req.body.timeslotId,
       eventOwner: req.body.owner
     };
-    // console.log("attendeeInfo: ", attendeeInfo);
+    // console.log("attendeeInfo: ", attendeeInfo.timeslotId);
     if (!attendeeInfo.name || !attendeeInfo.email || !attendeeInfo.timeslotId) {
       res.render('404');
     } else {
